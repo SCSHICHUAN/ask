@@ -1,5 +1,6 @@
 package yzm;
 
+import com.aliyuncs.exceptions.ClientException;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -19,6 +20,12 @@ public class Servletyzm extends HttpServlet {
 //
         String phone = (String) request.getParameter("phone");
 //        System.out.println(buttonName);
+        try {
+            Verification.sendSms(phone);
+        }catch (ClientException e){
+            e.printStackTrace();
+        }
+
 //
         Map<String, String> pop = new HashMap<>();
         pop.put("a", "稻香");
