@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ask" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="aliyun-java-sdk-core-3.3.1" />
+          <element id="library" level="project" name="aliyun-java-sdk-core-3.3.11" />
+        </element>
       </element>
     </root>
   </artifact>
