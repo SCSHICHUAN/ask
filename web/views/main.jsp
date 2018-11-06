@@ -20,7 +20,7 @@
 
 <div class="t1">AZ市场部测评项目</div>
 <div class="t2">市场部基础知识测评试卷</div>
-<form action="/yzm">
+
 <input type="text" name="name" class="name" placeholder="姓名">
 <input type="text" name="tell" class="tell" placeholder="电话" type="number" pattern="\d*">
 <div class="yzm-tell">
@@ -31,35 +31,31 @@
 <input type="text" name="company" class="company" placeholder="公司">
 <input type="text" name="post" class="post" placeholder="职位">
 <button class="button">确定</button>
-    <form action="/yzm">
-<script>
 
-
+<script type="text/javascript">
     $(".buttonYzm").click(
         function() {
 
-            var phone = $(".tell").val();
-
+            var tell = $(".tell").val();
 
             $.ajax({
-                url : "http://localhost:8080/ask/yzm",
+                url : "http://localhost:8080/yzm",
                 type : "post",
                 data : {
-                    tell : phone
+                    phone : tell
                 },
                 dataType : "json",
                 success : function(json) {
-                    var elema = json.a;
-                    console.log(elema);
+                     var elema = json.a;
+                    // var elemb = json.b;
+                    // var elemc = json.c;
 
+                    console.log(elema);
                 }
 
             });
 
         });
-
-
-
 </script>
 </body>
 </html>

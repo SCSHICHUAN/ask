@@ -14,11 +14,7 @@ import java.util.Map;
 @WebServlet(name = "Servlet")
 public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        Map<String, String> pop = new HashMap<>();
-//        pop.put("a", "稻香");
-//        JSONObject jsonarr = new JSONObject(pop);
-//        response.getOutputStream().write(jsonarr.toString().getBytes());
-        System.out.println("++++++++++++++++++++");
+        System.out.println("++++++Servlet++++++");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
