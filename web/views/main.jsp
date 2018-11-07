@@ -49,11 +49,14 @@
 <div class="page2">
     <div class="clock">29:00</div>
 
-        <div class="question">1、对定位的描述下列哪个选项正确?</div>
+    <div class="question">1、对定位的描述下列哪个选项正确?</div>
+    <div class="chose">
         <div class="A">A.是要将品牌留在客户心目中</div>
         <div class="B">B.客户熟知品牌</div>
         <div class="C">C.给客户传递的关键信息</div>
         <div class="D">D.与竞品区隔, 以实现公司的潜在利益最大化</div>
+    </div>
+
 
 </div>
 
@@ -130,7 +133,7 @@
         setTimeout(function () {
             $(".start").animate({width: '100%', height: '100%', top: '0px'}, 250);
             setTimeout(function () {
-                $(".start").animate({'border-radius': '0'}, 250);
+                $(".start").animate({'border-radius': '0'}, 50);
                 setTimeout(function () {
                     $(".start").css({display: 'none'});
                     $(".success").css({display: 'none'});
@@ -139,27 +142,43 @@
 
 
                     setTimeout(function () {
-                        $(".A").animate({opacity:'1'},100);
+                        $(".A").animate({opacity: '1'}, 100);
                         setTimeout(function () {
-                            $(".B").animate({opacity:'1'},100);
+                            $(".B").animate({opacity: '1'}, 100);
                             setTimeout(function () {
-                                $(".C").animate({opacity:'1'},100);
+                                $(".C").animate({opacity: '1'}, 100);
                                 setTimeout(function () {
-                                    $(".D").animate({opacity:'1'},100);
-                                },50);
-                            },100);
-                        },150);
-                    },200);
+                                    $(".D").animate({opacity: '1'}, 100);
+                                }, 50);
+                            }, 100);
+                        }, 150);
+                    }, 200);
 
 
-
-
-
-                }, 500);
+                }, 250);
             }, 250);
         }, 250);
 
+    })
 
+    $(".chose").click(function (even) {
+
+        var element = $(even.target);
+        var color = $(even.target).css('border-color');
+        var elName = even.target.className;
+
+
+        if (elName == 'A' | elName == 'B' | elName == 'C' | elName == 'D') {
+            //获取背景颜色攫取颜色值
+            if (color.substring(4, 7) == '100') {
+                element.css({'border': 'rgb(0,0,0) 0px solid'});
+            } else {
+                element.css({'border': 'rgb(100,100,100) 5px solid'});
+            }
+
+
+            console.log('你选择了'+elName);
+        }
     })
 
 

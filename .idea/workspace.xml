@@ -7,6 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/views/main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/main.jsp" afterDir="false" />
     </list>
@@ -60,7 +63,7 @@
           <entry key="CSS" value="1217" />
           <entry key="EL" value="15" />
           <entry key="JAVA" value="714" />
-          <entry key="JSP" value="2339" />
+          <entry key="JSP" value="2958" />
           <entry key="XML" value="111" />
         </counts>
       </usages-collector>
@@ -71,7 +74,7 @@
         <counts>
           <entry key="css" value="1217" />
           <entry key="java" value="714" />
-          <entry key="jsp" value="2354" />
+          <entry key="jsp" value="2973" />
           <entry key="xml" value="111" />
         </counts>
       </usages-collector>
@@ -82,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="147" column="69" selection-start-line="147" selection-start-column="69" selection-end-line="147" selection-end-column="69" />
+            <state relative-caret-position="762">
+              <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -91,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="200" column="3" lean-forward="true" selection-start-line="200" selection-start-column="3" selection-end-line="200" selection-end-column="3" />
+            <state relative-caret-position="1064">
+              <caret line="183" column="10" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -251,7 +254,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541577415025" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541582631543" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -372,19 +375,19 @@
       <workItem from="1541386212280" duration="778000" />
       <workItem from="1541405032290" duration="1183000" />
       <workItem from="1541406360045" duration="20839000" />
-      <workItem from="1541495509761" duration="19950000" />
+      <workItem from="1541495509761" duration="24678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46507000" />
+    <option name="totallyTimeSpent" value="51235000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="146" y="65" width="1591" height="1305" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.7246377" visible="true" weight="0.24575739" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.7246377" visible="true" weight="0.24575739" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Test Runs" order="4" />
       <window_info id="UI Designer" order="5" />
@@ -395,7 +398,7 @@
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4996873" visible="true" weight="0.21474878" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4996873" visible="true" weight="0.21474878" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.15802269" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -541,15 +544,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="200" column="3" lean-forward="true" selection-start-line="200" selection-start-column="3" selection-end-line="200" selection-end-column="3" />
+        <state relative-caret-position="1064">
+          <caret line="183" column="10" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="147" column="69" selection-start-line="147" selection-start-column="69" selection-end-line="147" selection-end-column="69" />
+        <state relative-caret-position="762">
+          <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
         </state>
       </provider>
     </entry>
