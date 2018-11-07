@@ -33,20 +33,25 @@
 <button class="button">确定</button>
 
 <script type="text/javascript">
+    var sc_server = "https://www.stanserver.cn/ask";
+    var sc_local = "http://localhost:8080";
+
+
+    //获取验证
     $(".buttonYzm").click(
-        function() {
+        function () {
 
             var tell = $(".tell").val();
 
             $.ajax({
-                url : "http://localhost:8080/yzm",
-                type : "post",
-                data : {
-                    phone : tell
+                url: sc_local + "/yzm",
+                type: "post",
+                data: {
+                    phone: tell
                 },
-                dataType : "json",
-                success : function(json) {
-                     var elema = json.a;
+                dataType: "json",
+                success: function (json) {
+                    var elema = json.a;
                     // var elemb = json.b;
                     // var elemc = json.c;
 
@@ -56,6 +61,26 @@
             });
 
         });
+    //confirm button
+    $(".button").click(
+        function () {
+            var name = $("[name='name']").val();
+
+
+            $.ajax({
+                url: sc_local + "/confirm",
+                type: "post",
+                data: {
+                    name: name
+                },
+                dataType: "text",
+                success: function (result) {
+                    console.log(result);
+                }
+            })
+        }
+    )
+
 </script>
 </body>
 </html>

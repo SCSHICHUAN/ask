@@ -14,4 +14,12 @@
         <servlet-name>yzm1</servlet-name>
         <url-pattern>/yzm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>yzm2</servlet-name>
+        <servlet-class>main.Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>yzm2</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
 </web-app>

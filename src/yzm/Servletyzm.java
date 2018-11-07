@@ -17,16 +17,16 @@ public class Servletyzm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws  IOException {
 
 
-//
+
         String phone = (String) request.getParameter("phone");
-//        System.out.println(buttonName);
+
         try {
             Verification.sendSms(phone);
         }catch (ClientException e){
             e.printStackTrace();
         }
 
-//
+
         Map<String, String> pop = new HashMap<>();
         pop.put("a", "稻香");
         pop.put("b", "晴天");
