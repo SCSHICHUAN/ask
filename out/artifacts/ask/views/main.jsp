@@ -135,6 +135,26 @@
                     $(".start").css({display: 'none'});
                     $(".success").css({display: 'none'});
                     $(".page1").css({display: 'none'});
+                    $(".page2").css({display: 'block'});
+
+
+                    setTimeout(function () {
+                        $(".A").animate({opacity:'1'},100);
+                        setTimeout(function () {
+                            $(".B").animate({opacity:'1'},100);
+                            setTimeout(function () {
+                                $(".C").animate({opacity:'1'},100);
+                                setTimeout(function () {
+                                    $(".D").animate({opacity:'1'},100);
+                                },50);
+                            },100);
+                        },150);
+                    },200);
+
+
+
+
+
                 }, 500);
             }, 250);
         }, 250);
