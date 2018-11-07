@@ -19,6 +19,7 @@ public class Servletyzm extends HttpServlet {
 
 
         String phone = (String) request.getParameter("phone");
+        System.out.println(phone+"+++++++");
 
         try {
             Verification.sendSms(phone);

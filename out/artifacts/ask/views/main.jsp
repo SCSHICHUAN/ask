@@ -31,6 +31,14 @@
 <input type="text" name="company" class="company" placeholder="公司">
 <input type="text" name="post" class="post" placeholder="职位">
 <button class="button">确定</button>
+<div class="success">
+    <div class="t3">上海壹萌商务咨询有限公司</div>
+    <div class="t4">姓名：<span class="name1"></span></div>
+    <div class="t4">电话：<span class="tell1"></span></div>
+    <div class="t4">公司：<span class="company1"></span></div>
+    <div class="t4">职位：<span class="post1"></span></div>
+    <div class="t4">密码：<span class="yzm1"></span></div>
+</div>
 
 <script type="text/javascript">
     var sc_server = "https://www.stanserver.cn/ask";
@@ -65,17 +73,32 @@
     $(".button").click(
         function () {
             var name = $("[name='name']").val();
+            var tell = $("[name='tell']").val();
+            var yzm = $("[name='yzm']").val();
+            var company = $("[name='company']").val();
+            var post = $("[name='post']").val();
 
 
             $.ajax({
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 url: sc_local + "/confirm",
                 type: "post",
                 data: {
-                    name: name
+                    name: name,
+                    tell: tell,
+                    yzm: yzm,
+                    company: company,
+                    post: post
                 },
                 dataType: "text",
                 success: function (result) {
                     console.log(result);
+                    $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
+                    $(".name1").text($(".name").val());
+                    $(".tell1").text($(".tell").val());
+                    $(".company1").text($(".company").val());
+                    $(".post1").text($(".post").val());
+                    $(".yzm1").text($(".yzm").val());
                 }
             })
         }
