@@ -116,7 +116,7 @@
                     console.log(result);
                     $(".page1").css({display: 'none'});
                     $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
-                    $(".start").animate({top: '900px'}, 500);
+                    $(".start").animate({top: '70%'}, 500);
                     $(".name1").text($(".name").val());
                     $(".tell1").text($(".tell").val());
                     $(".company1").text($(".company").val());
@@ -171,7 +171,7 @@
         if (elName == 'A' | elName == 'B' | elName == 'C' | elName == 'D') {
             //获取背景颜色攫取颜色值
             if (color.substring(4, 7) == '100') {
-                element.css({'border': 'rgb(0,0,0) 0px solid'});
+                element.css({'border': 'white 5px solid'});
             } else {
                 element.css({'border': 'rgb(100,100,100) 5px solid'});
             }
