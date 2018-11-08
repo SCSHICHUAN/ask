@@ -19,12 +19,20 @@ public class Servletyzm extends HttpServlet {
 
 
         String phone = (String) request.getParameter("phone");
+        String password = randomString();
+
+        request.getSession().setAttribute("phone",phone);
+        request.getSession().setAttribute("password",password);
+
+        System.out.println("+++++phone:"+phone);
+        System.out.println("+++++password:"+password);
+
 
         try {
             /**
              * 获取验证码
              */
-            String flag = Verification.sentMessPhone(phone,randomString());
+            String flag = Verification.sentMessPhone(phone,password);
 
             Map<String, String> pop = new HashMap<>();
             pop.put("flag", flag);
@@ -39,8 +47,8 @@ public class Servletyzm extends HttpServlet {
             e.printStackTrace();
         }
 
-        System.out.println("rum+++==="+(int)(1+Math.random()*(100000-1+1)));
-        System.out.println("++++Servlet-yzm++++" + phone);
+
+        System.out.println("++++Servlet-yzm++++");
 
     }
 

@@ -12,22 +12,21 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.Objects;
 
 
 @WebServlet(name = "Servlet")
 public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ok = "++++Servlet++++";
-        getPar(request);
-        response.getOutputStream().write(ok.getBytes("utf-8"));
-
+        System.out.println("+++++++Servlet++++++");
+        getPar(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
 
-    private void getPar(HttpServletRequest request) {
+    private void getPar(HttpServletRequest request, HttpServletResponse response) {
 
         String name = (String) request.getParameter("name");
         String tell = (String) request.getParameter("tell");
@@ -40,11 +39,33 @@ public class Servlet extends HttpServlet {
 
         System.out.println(user.toString());
 
-        if(AddUser(user)){
-            System.out.println("增加user成功");
-        }else {
-            System.out.println("增加user失败");
+
+        String phone = (String) request.getSession().getAttribute("phone");
+        String password = (String) request.getSession().getAttribute("password");
+
+        System.out.println("phone:" + phone);
+        System.out.println("password:" + yzm);
+
+        String  responseStr="";
+        if (Objects.equals(phone, tell) && Objects.equals(password, yzm)) {
+            if (AddUser(user)) {
+                responseStr = "0";
+                System.out.println("增加user成功");
+            } else {
+                responseStr = "1";
+                System.out.println("增加user失败");
+            }
+        } else {
+            responseStr = "2";
+            System.out.println("手机号或者验证码错误.....");
         }
+
+        try {
+            response.getOutputStream().write(responseStr.getBytes("utf-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

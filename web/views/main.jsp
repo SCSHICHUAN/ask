@@ -88,7 +88,7 @@
                     var elema = json.flag;
                     $(".page3").css({display: 'block'});
                     if (elema == "true") {
-                        $(".t5").text('验证码发送成功...');
+                        showtips('验证码发送成功...');
 
                         var i = 59;
                         var colok = setInterval(function () {
@@ -103,13 +103,11 @@
                         },1000);
 
                     }else {
-                        $(".t5").text('验证码发送失败...');
+                        showtips('验证码发送失败...');
                     }
 
 
-                    setTimeout(function () {
-                        $(".page3").css({display: 'none'});
-                    },2000);
+
                     console.log(elema);
                 }
 
@@ -140,14 +138,23 @@
                 dataType: "text",
                 success: function (result) {
                     console.log(result);
-                    $(".page1").css({display: 'none'});
-                    $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
-                    $(".start").animate({top: '70%'}, 500);
-                    $(".name1").text($(".name").val());
-                    $(".tell1").text($(".tell").val());
-                    $(".company1").text($(".company").val());
-                    $(".post1").text($(".post").val());
-                    $(".yzm1").text($(".yzm").val());
+                    if(result == '0'){
+                        $(".page1").css({display: 'none'});
+                        $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
+                        $(".start").animate({top: '70%'}, 500);
+                        $(".name1").text($(".name").val());
+                        $(".tell1").text($(".tell").val());
+                        $(".company1").text($(".company").val());
+                        $(".post1").text($(".post").val());
+                        $(".yzm1").text($(".yzm").val());
+                    }else if(result == '1'){
+                        showtips('增加用户信息失败...');
+                    }else if(result == '2'){
+                        showtips('手机号或者验证码错误.....');
+                    }
+
+
+
                 }
             })
         }
@@ -206,6 +213,15 @@
             console.log('你选择了' + elName);
         }
     })
+
+    function showtips(str) {
+        $(".page3").css({display: 'block'});
+        $(".t5").text(str);
+        setTimeout(function () {
+            $(".page3").css({display: 'none'});
+        },2000);
+    }
+
 
 
 </script>
