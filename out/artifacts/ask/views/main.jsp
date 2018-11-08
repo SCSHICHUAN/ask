@@ -14,6 +14,7 @@
 </head>
 <body>
 <div class="page1">
+    <form  method="post">
     <img src="img/timg.jpeg" class="img1">
     <img src="img/le.png" class="img2">
     <img src="img/logo.png" class="img3">
@@ -22,7 +23,7 @@
     <div class="t2">市场部基础知识测评试卷</div>
 
     <input type="text" name="name" class="name" placeholder="姓名">
-    <input type="text" name="tell" class="tell" placeholder="电话" type="number" pattern="\d*">
+    <input type="text" name="tell" class="tell" placeholder="电话" type="number" pattern="1[3578]\d{9}" required="required">
     <div class="yzm-tell">
         <input type="text" name="yzm" class="yzm" placeholder="验证码" type="number" pattern="\d*">
         <button class="buttonYzm">获取验证码</button>
@@ -31,6 +32,7 @@
     <input type="text" name="company" class="company" placeholder="公司">
     <input type="text" name="post" class="post" placeholder="职位">
     <button class="button">确定</button>
+    </form>
 </div>
 
 <div class="success">
