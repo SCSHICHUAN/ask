@@ -147,10 +147,10 @@
                         $(".company1").text($(".company").val());
                         $(".post1").text($(".post").val());
                         $(".yzm1").text($(".yzm").val());
-                    }else if(result == '1'){
-                        showtips('增加用户信息失败...');
                     }else if(result == '2'){
                         showtips('手机号或者验证码错误.....');
+                    }else {
+                        showtips(result);
                     }
 
 
@@ -216,7 +216,7 @@
 
     function showtips(str) {
         $(".page3").css({display: 'block'});
-        $(".t5").text(str);
+        $(".t5").html(str);
         setTimeout(function () {
             $(".page3").css({display: 'none'});
         },2000);
