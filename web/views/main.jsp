@@ -103,6 +103,7 @@
                             i--;
                             console.log("++")
                             if (i < 0) {
+                                $(".buttonYzm").text('重新获取验证码');
                                 $(".buttonYzm").css({pointerEvents: 'visible', color: 'white'});
                                 clearInterval(colok);
                             }
@@ -141,7 +142,7 @@
 
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                url: "ask/confirm",
+                url: "/ask/confirm",
                 type: "post",
                 data: {
                     name: name,
@@ -152,7 +153,7 @@
                 },
                 dataType: "text",
                 success: function (result) {
-                    console.log(result);
+                    console.log('result='+result);
                     if (result == '0') {
                         $(".page1").css({display: 'none'});
                         $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
@@ -163,16 +164,16 @@
                         $(".post1").text($(".post").val());
                         $(".yzm1").text($(".yzm").val());
                     } else if (result == '2') {
-                        tipStr = '手机号或者验证码错误.....';
+                        showtips('手机号或验证码错误.....');
                     } else {
-                        tipStr = result;
+                        showtips(result);
                     }
 
 
                 }
             })
 
-            showtips('手机号或者验证码错误.....');
+
         }
     )
 

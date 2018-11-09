@@ -44,16 +44,29 @@ public class Servlet extends HttpServlet {
 
 
         String phone = (String) request.getSession().getAttribute("phone");
+        /**
+         * 获取系统生层到验证码
+         */
         String password = (String) request.getSession().getAttribute("password");
 
         System.out.println("phone:" + phone);
-        System.out.println("password:" + yzm);
+        System.out.println("password:" + password);
 
-        String responseStr = "";
+        System.out.println("tell:" + tell);
+        System.out.println("yzm:" + yzm);
+
+        String responseStr = "无信息";
+        /**
+         * Objects.equals(password, yzm)
+         * 判断用户输入的验证码
+         */
         if (Objects.equals(phone, tell) && Objects.equals(password, yzm)) {
+
             if (AddUser(user)) {
+
                 responseStr = "0";
                 System.out.println("增加user成功");
+
             } else {
 
                 System.out.println("增加user失败");
@@ -62,9 +75,10 @@ public class Servlet extends HttpServlet {
                 responseStr = "你已有信息,密码:&nbsp;&nbsp;"+user1.yzm;
 
             }
+
         } else {
             responseStr = "2";
-            System.out.println("手机号或者验证码错误.....");
+            System.out.println("手机号或验证码错误.....");
         }
 
         try {
@@ -100,11 +114,11 @@ public class Servlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         } finally {
             JDBC.close(connection, preparedStatement);
         }
 
-        return false;
     }
 
 

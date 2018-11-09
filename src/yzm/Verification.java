@@ -37,16 +37,8 @@ public class Verification {
         System.out.println("RequestId=" + response.getRequestId());
         System.out.println("BizId=" + response.getBizId());
 
-
-        if (Objects.equals(response.getMessage(), "OK")) {
-            return "true";
-        } else {
-            return "false";
-        }
-
-
-//        Thread.sleep(3000L);
-
+//       Thread.sleep(3000L);
+//
 //        //查明细
 //        if(response.getCode() != null && response.getCode().equals("OK")) {
 //            QuerySendDetailsResponse querySendDetailsResponse = querySendDetails(response.getBizId());
@@ -69,6 +61,13 @@ public class Verification {
 //            System.out.println("TotalCount=" + querySendDetailsResponse.getTotalCount());
 //            System.out.println("RequestId=" + querySendDetailsResponse.getRequestId());
 //        }
+
+
+        if (Objects.equals(response.getMessage(), "OK")) {
+            return "true";
+        } else {
+            return "false";
+        }
 
     }
 

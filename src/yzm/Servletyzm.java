@@ -3,7 +3,7 @@ package yzm;
 import com.aliyuncs.exceptions.ClientException;
 import org.json.JSONObject;
 
-import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +19,14 @@ public class Servletyzm extends HttpServlet {
 
 
         String phone = (String) request.getParameter("phone");
-        String password = randomString();
+        /**
+         * 生层获取验证码
+         */
+        String password = "123";
 
+        /**
+         * 生层的验证码保存到当前到会话中
+         */
         request.getSession().setAttribute("phone",phone);
         request.getSession().setAttribute("password",password);
 
@@ -30,7 +36,7 @@ public class Servletyzm extends HttpServlet {
 
         try {
             /**
-             * 获取验证码
+             * 向手机发送验证码
              */
             String flag = Verification.sentMessPhone(phone,password);
 
