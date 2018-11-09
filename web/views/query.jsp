@@ -13,8 +13,8 @@
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
 <body>
-<input type="text"  name="phoneQuery"  class="phoneQuery" placeholder="电话">
-<input type="text"  name="passwordQuery" class="passwordQuery" placeholder="密码">
+<input type="text"  name="phoneQuery"  class="phoneQuery" placeholder="电话" type="number" pattern="\d*">
+<input type="text"  name="passwordQuery" class="passwordQuery" placeholder="密码" type="number" pattern="\d*">
 <button class="button">查询</button>
 <div class="uerName"></div>
 <div class="uerTell"></div>
