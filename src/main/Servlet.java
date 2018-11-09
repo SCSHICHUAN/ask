@@ -59,7 +59,7 @@ public class Servlet extends HttpServlet {
                 System.out.println("增加user失败");
                 List<User> users = query(phone);
                 User user1 = users.get(0);
-                responseStr = "你已有信息,密码:"+user1.yzm;
+                responseStr = "你已有信息,密码:&nbsp;&nbsp;"+user1.yzm;
 
             }
         } else {

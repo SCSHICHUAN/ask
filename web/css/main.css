@@ -240,3 +240,12 @@ img1 {
     line-height: 250px;
     text-align: center;
 }
+.log{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 50px;
+    height: 400px;
+    background-color: white;
+}

@@ -61,12 +61,12 @@
     <div class="backView">
         <div class="t5"></div>
     </div>
-</div>
+<%--</div>--%>
+<%--<div class="log">--%>
+<%--</div>--%>
 
 
 <script type="text/javascript">
-    var sc_server = "https://www.stanserver.cn/ask";
-    var sc_local = "http://localhost:8080";
 
 
     //获取验证
@@ -74,50 +74,50 @@
         function () {
 
             var tell = $(".tell").val();
-            var elema = null;
+            if(tell == ''){
+                showtips("请输入手机号...");
+                return;
+            }
 
-            /**
-             * 注意ajax的请求是在子线程中
-             * 如果是手机IE浏览器UI操作无效
-             */
+
+
             $.ajax({
-                url: sc_server + "/yzm",
+                url: "/ask/yzm",
                 type: "post",
                 data: {
                     phone: tell
                 },
                 dataType: "json",
                 success: function (json) {
-                    elema  = json.flag;
-                }
+                    var elema = json.flag;
 
+
+
+                    if (elema == "true") {
+                        showtips('验证码发送成功...');
+
+                        var i = 59;
+                        var colok = setInterval(function () {
+                            $(".buttonYzm").text(i + '秒后获取');
+                            $(".buttonYzm").css({pointerEvents: 'none', color: 'red'});
+                            i--;
+                            console.log("++")
+                            if (i < 0) {
+                                $(".buttonYzm").css({pointerEvents: 'visible', color: 'white'});
+                                clearInterval(colok);
+                            }
+                        }, 1000);
+
+                    } else if (elema != '') {
+                        showtips('验证码发送失败...');
+                    }
+
+                }
             });
 
-
-            if (elema == "true") {
-                showtips('验证码发送成功...');
-
-                var i = 59;
-                var colok = setInterval(function () {
-                    $(".buttonYzm").text(i + '秒后获取');
-                    $(".buttonYzm").css({pointerEvents: 'none', color: 'red'});
-                    i--;
-                    console.log("++")
-                    if (i < 0) {
-                        $(".buttonYzm").css({pointerEvents: 'visible', color: 'white'});
-                        clearInterval(colok);
-                    }
-                }, 1000);
-
-            } else {
-                showtips('验证码发送失败...');
-            }
-
-
-            console.log(elema);
-
-
         });
+
+
     //confirm button
     $(".button").click(
         function () {
@@ -126,12 +126,22 @@
             var yzm = $("[name='yzm']").val();
             var company = $("[name='company']").val();
             var post = $("[name='post']").val();
-            var tipStr = null;
+            var tipStr = '';
+
+            if(tell == ''){
+                showtips("请输入手机号...");
+                return;
+            }else if(yzm == ''){
+                showtips('请输入验证码...');
+                return;
+            }
+
+
 
 
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                url: sc_server + "/confirm",
+                url: "ask/confirm",
                 type: "post",
                 data: {
                     name: name,
@@ -165,6 +175,7 @@
             showtips('手机号或者验证码错误.....');
         }
     )
+
 
     //start button
     $(".start").mousedown(function () {
@@ -221,11 +232,13 @@
     })
 
     function showtips(tipsStr) {
+        if(tipsStr == '') return;
         $(".page3").css({display: 'block'});
-        $(".t5").text(tipsStr);
-        $(".page3").click(function () {
+        $(".t5").html(tipsStr)
+        setTimeout(function () {
             $(".page3").css({display: 'none'});
-        })
+        }, 2500)
+
     }
 
 

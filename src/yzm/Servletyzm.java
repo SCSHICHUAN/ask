@@ -66,7 +66,7 @@ public class Servletyzm extends HttpServlet {
     }
 
     private static char randomChar(){
-        String string = "abcdefghjkmnopqrstuvwxyz0123456789";
+        String string = "0123456789";
         Random random = new Random();
         return string.charAt(random.nextInt(string.length()));
     }
