@@ -2,6 +2,7 @@ package main;
 
 import Models.User;
 import jdbc.JDBC;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,16 +14,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 @WebServlet(name = "Servlet")
 public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("+++++++Servlet++++++");
-        getPar(request, response);
+        String path = request.getServletPath();
+
+        if (Objects.equals(path, "/confirm")) {
+            getPar(request, response);
+        } else if (Objects.equals(path, "/query")) {
+            querTestResult(request, response);
+        }
+
+
+        System.out.println("+++++++++=" + path);
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,7 +82,7 @@ public class Servlet extends HttpServlet {
                 System.out.println("增加user失败");
                 List<User> users = query(phone);
                 User user1 = users.get(0);
-                responseStr = "你已有信息,密码:&nbsp;&nbsp;"+user1.yzm;
+                responseStr = "你已有信息,密码:&nbsp;&nbsp;" + user1.yzm;
 
             }
 
@@ -154,6 +164,45 @@ public class Servlet extends HttpServlet {
             JDBC.close(connection, preparedStatement, resultSet);
         }
         return users;
+    }
+
+
+    public void querTestResult(HttpServletRequest request, HttpServletResponse response) {
+
+        System.out.println("+++++++querTestResult++++++");
+
+
+        String phone = request.getParameter("phoneQuery1");
+        String password = request.getParameter("passwordQuery1");
+
+        List<User> users = query(phone);
+        User user = users.get(0);
+
+        System.out.println("user=" + user);
+
+
+        try {
+            if (Objects.equals(phone, user.tell) && Objects.equals(password, user.yzm)) {
+
+                Map<String, String> userMap = new HashMap<>();
+                userMap.put("name", user.name);
+                userMap.put("tell", user.tell);
+                userMap.put("yzm", user.yzm);
+                userMap.put("conpany", user.conpany);
+                userMap.put("post", user.post);
+
+                JSONObject json = new JSONObject(userMap);
+                response.getOutputStream().write(json.toString().getBytes("utf8"));
+
+
+            } else {
+                response.getOutputStream().write("fales".getBytes("utf8"));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

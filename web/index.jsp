@@ -7,10 +7,30 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>main.png</title>
-  </head>
-  <body>
-  <h1>ABC</h1>
-  </body>
+<head>
+    <title>wencome</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+</head>
+<body>
+
+<img src="img/logo.png" class="img2">
+<img src="img/index.jpeg" class="img1">
+<div class="head">上海壹萌商务咨询有限公司</div>
+<div class="all">
+    <form action="/ask/views/main.jsp">
+        <button class="start1">填写信息开始测试</button>
+    </form>
+    <form action="/ask/views/query.jsp">
+        <button class="start2">查询测试结果</button>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+
+
+</script>
+
+</body>
 </html>

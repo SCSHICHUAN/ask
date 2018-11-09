@@ -9,14 +9,14 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+    <link rel="stylesheet" href="/ask/css/main.css">
+    <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
 <body>
 <div class="page1">
-    <img src="img/timg.jpeg" class="img1">
-    <img src="img/le.png" class="img2">
-    <img src="img/logo.png" class="img3">
+    <img src="/ask/img/timg.jpeg" class="img1">
+    <img src="/ask/img/le.png" class="img2">
+    <img src="/ask/img/logo.png" class="img3">
 
     <div class="t1">AZ市场部测评项目</div>
     <div class="t2">市场部基础知识测评试卷</div>
@@ -31,6 +31,7 @@
     <input type="text" name="company" class="company" placeholder="公司">
     <input type="text" name="post" class="post" placeholder="职位">
     <button class="button">确定</button>
+
 </div>
 
 <div class="success">
@@ -127,7 +128,10 @@
             var yzm = $("[name='yzm']").val();
             var company = $("[name='company']").val();
             var post = $("[name='post']").val();
-            var tipStr = '';
+
+
+            console.log(name+"--"+tell+"--"+yzm+"---"+company+"----")
+
 
             if(tell == ''){
                 showtips("请输入手机号...");
