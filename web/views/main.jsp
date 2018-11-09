@@ -223,9 +223,9 @@
     function showtips(tipsStr) {
         $(".page3").css({display: 'block'});
         $(".t5").text(tipsStr);
-        window.setTimeout(function () {
+        $(".page3").click(function () {
             $(".page3").css({display: 'none'});
-        }, 3000);
+        })
     }
 
 
