@@ -14,7 +14,6 @@
 </head>
 <body>
 <div class="page1">
-    <form  method="post">
     <img src="img/timg.jpeg" class="img1">
     <img src="img/le.png" class="img2">
     <img src="img/logo.png" class="img3">
@@ -23,7 +22,7 @@
     <div class="t2">市场部基础知识测评试卷</div>
 
     <input type="text" name="name" class="name" placeholder="姓名">
-    <input type="text" name="tell" class="tell" placeholder="电话" type="number" pattern="1[3578]\d{9}" required="required">
+    <input type="text" name="tell" class="tell" placeholder="电话" type="number" pattern="\d*">
     <div class="yzm-tell">
         <input type="text" name="yzm" class="yzm" placeholder="验证码" type="number" pattern="\d*">
         <button class="buttonYzm">获取验证码</button>
@@ -32,7 +31,6 @@
     <input type="text" name="company" class="company" placeholder="公司">
     <input type="text" name="post" class="post" placeholder="职位">
     <button class="button">确定</button>
-    </form>
 </div>
 
 <div class="success">
@@ -76,42 +74,48 @@
         function () {
 
             var tell = $(".tell").val();
+            var elema = null;
 
+            /**
+             * 注意ajax的请求是在子线程中
+             * 如果是手机IE浏览器UI操作无效
+             */
             $.ajax({
-                url: sc_local + "/yzm",
+                url: sc_server + "/yzm",
                 type: "post",
                 data: {
                     phone: tell
                 },
                 dataType: "json",
                 success: function (json) {
-                    var elema = json.flag;
-                    $(".page3").css({display: 'block'});
-                    if (elema == "true") {
-                        showtips('验证码发送成功...');
-
-                        var i = 59;
-                        var colok = setInterval(function () {
-                            $(".buttonYzm").text(i+'秒后获取');
-                            $(".buttonYzm").css({ pointerEvents: 'none',color:'red'});
-                            i--;
-                            console.log("++")
-                            if (i < 0){
-                                $(".buttonYzm").css({ pointerEvents:'visible',color:'white'});
-                                clearInterval(colok);
-                            }
-                        },1000);
-
-                    }else {
-                        showtips('验证码发送失败...');
-                    }
-
-
-
-                    console.log(elema);
+                    elema  = json.flag;
                 }
 
             });
+
+
+            if (elema == "true") {
+                showtips('验证码发送成功...');
+
+                var i = 59;
+                var colok = setInterval(function () {
+                    $(".buttonYzm").text(i + '秒后获取');
+                    $(".buttonYzm").css({pointerEvents: 'none', color: 'red'});
+                    i--;
+                    console.log("++")
+                    if (i < 0) {
+                        $(".buttonYzm").css({pointerEvents: 'visible', color: 'white'});
+                        clearInterval(colok);
+                    }
+                }, 1000);
+
+            } else {
+                showtips('验证码发送失败...');
+            }
+
+
+            console.log(elema);
+
 
         });
     //confirm button
@@ -122,11 +126,12 @@
             var yzm = $("[name='yzm']").val();
             var company = $("[name='company']").val();
             var post = $("[name='post']").val();
+            var tipStr = null;
 
 
             $.ajax({
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                url: sc_local + "/confirm",
+                url: sc_server + "/confirm",
                 type: "post",
                 data: {
                     name: name,
@@ -138,7 +143,7 @@
                 dataType: "text",
                 success: function (result) {
                     console.log(result);
-                    if(result == '0'){
+                    if (result == '0') {
                         $(".page1").css({display: 'none'});
                         $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
                         $(".start").animate({top: '70%'}, 500);
@@ -147,16 +152,17 @@
                         $(".company1").text($(".company").val());
                         $(".post1").text($(".post").val());
                         $(".yzm1").text($(".yzm").val());
-                    }else if(result == '2'){
-                        showtips('手机号或者验证码错误.....');
-                    }else {
-                        showtips(result);
+                    } else if (result == '2') {
+                        tipStr = '手机号或者验证码错误.....';
+                    } else {
+                        tipStr = result;
                     }
-
 
 
                 }
             })
+
+            showtips('手机号或者验证码错误.....');
         }
     )
 
@@ -214,14 +220,13 @@
         }
     })
 
-    function showtips(str) {
+    function showtips(tipsStr) {
         $(".page3").css({display: 'block'});
-        $(".t5").html(str);
-        setTimeout(function () {
+        $(".t5").text(tipsStr);
+        window.setTimeout(function () {
             $(".page3").css({display: 'none'});
-        },2000);
+        }, 3000);
     }
-
 
 
 </script>
