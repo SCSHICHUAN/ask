@@ -13,9 +13,11 @@
     <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
 </head>
 <body>
-<img src="img/logo.png" class="img2">
+
 <img src="img/index.jpeg" class="img1">
+<img src="img/logo.png" class="img2">
 <div class="head">上海壹萌商务咨询有限公司</div>
+
 <div class="all">
     <form action="/ask/views/main.jsp">
         <button class="start1">填写信息开始测试</button>

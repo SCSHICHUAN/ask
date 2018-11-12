@@ -158,7 +158,7 @@
                 dataType: "text",
                 success: function (result) {
                     console.log('result='+result);
-                    // if (result == '0') {
+                     if (result == '0') {
                         $(".page1").css({display: 'none'});
                         $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
                         $(".start").animate({top: '70%'}, 500);
@@ -167,11 +167,11 @@
                         $(".company1").text($(".company").val());
                         $(".post1").text($(".post").val());
                         $(".yzm1").text($(".yzm").val());
-                    // } else if (result == '2') {
-                    //     showtips('手机号或验证码错误.....');
-                    // } else {
-                    //     showtips(result);
-                    // }
+                    } else if (result == '2') {
+                        showtips('手机号或验证码错误.....');
+                    } else {
+                        showtips(result);
+                    }
 
 
                 }
