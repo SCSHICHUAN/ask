@@ -37,9 +37,9 @@
 <div class="success">
     <div class="t3">上海壹萌商务咨询有限公司</div>
     <div class="t4">姓名：<span class="name1"></span></div>
-    <div class="t4">电话：<span class="tell1"></span></div>
     <div class="t4">公司：<span class="company1"></span></div>
     <div class="t4">职位：<span class="post1"></span></div>
+    <div class="t4">电话：<span class="tell1"></span></div>
     <div class="t4">密码：<span class="yzm1"></span></div>
     <div class="tipes"><span class="tipes1">注意事项:</span>你的查询密码是你的验证码，请妥善保管。
         <br>本次测评一共50题，整个测评时间 为30分，点击开始后即开始计时，30分钟到了 后，系统会自动交卷。
@@ -158,7 +158,7 @@
                 dataType: "text",
                 success: function (result) {
                     console.log('result='+result);
-                    if (result == '0') {
+                     if (result == '0') {
                         $(".page1").css({display: 'none'});
                         $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
                         $(".start").animate({top: '70%'}, 500);

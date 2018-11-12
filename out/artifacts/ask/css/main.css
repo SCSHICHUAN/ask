@@ -119,17 +119,15 @@ img1 {
     text-align: center;
 }
 
-.t4 {
+.t4{
     color: white;
-    font-size: 30px;
-    margin-top: 20px;
-    margin-left: 40px;
+    font-size: 40px;
+    margin: 50px;
+    border-bottom: white solid 1px;
 }
 
 .yzm1 {
     color: red;
-    font-size: 50px;
-    text-shadow: black 2px 2px 10px;
 }
 
 .tipes {
