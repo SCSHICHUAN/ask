@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>管理员登录</title>
     <link rel="stylesheet" href="/ask/css/administer.css">
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
@@ -30,7 +30,6 @@
         if ("${flag}" == "false") {
             $(".tips").css({display: 'block'});
         }
-
 
         console.log("+++++flag="+"${flag}");
     }

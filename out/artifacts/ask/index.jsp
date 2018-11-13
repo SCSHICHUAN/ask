@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>wencome</title>
+    <title>欢迎</title>
     <link rel="stylesheet" href="css/index.css">
     <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
 </head>

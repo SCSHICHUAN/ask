@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>录入信息</title>
     <link rel="stylesheet" href="/ask/css/main.css">
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>

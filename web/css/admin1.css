@@ -1,0 +1,83 @@
+body{
+    margin: 0;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    font-weight: 200;
+}
+.img3{
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 12px;
+}
+.headerT{
+    color: white;
+    float: left;
+    margin-left: 6px;
+    line-height: 50px;
+}
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(36,42,46);
+}
+.left{
+    border-top: rgb(54,64,67) solid 1px;
+    width: 50px;
+    height: 100%;
+    background-color:rgb(37,42,48);
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+button{
+    outline: none !important;
+    background-color: rgb(37,42,48);
+    width: 100%;
+    height: 50px;
+    color: white;
+    border: none;
+    font-size: 12px;
+    font-weight: 200;
+}
+button:hover{
+    background-color: rgb(3,192,222);
+}
+button:active{
+    background-color: rgb(37,42,48);;
+}
+.page1{
+    margin-top: 50px;
+    display: none;
+}
+textarea{
+    display: block;
+    margin: 0 auto;
+    width: 700px;
+    height: 100px;
+    margin-top: 20px;
+    text-indent: 5px;
+}
+input{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 700px;
+    height: 50px;
+    text-indent: 20px;
+}
+[placeholder="答案"]{
+    display: inline;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+}
+.answer{
+    margin: 0 auto;
+    width: 700px;
+}
+h2{
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 10px;
+}

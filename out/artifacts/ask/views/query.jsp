@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>查询</title>
+    <title>用户查询</title>
     <link rel="stylesheet" href="/ask/css/query.css">
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
