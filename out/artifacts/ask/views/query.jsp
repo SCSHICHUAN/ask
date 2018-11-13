@@ -51,7 +51,7 @@
             },
             dataType: "json",
             success: function (result) {
-                $(".resultQuery").animate({top: '0'}, 350);
+                $(".resultQuery").css({ 'display':'block'}).animate({top: '0'}, 350);
                 $(".queryPage").animate({top: '10%', left: '10%', width: '80%', height: '80%'}, 350);
                 console.log('result=' + result.name);
                 $(".uerName").html("姓名:&nbsp;&nbsp;" + result.name);

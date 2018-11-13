@@ -25,10 +25,10 @@ body{
     height: 200px;
 
 }
-.start1,.start2{
+.start1,.start2,.administrator{
     display: block;
     width: 99.95%;
-    height: 400px;
+    height: 350px;
     background-color: deepskyblue;
     margin: 0 auto;
     font-size: 50px;
@@ -50,6 +50,9 @@ body{
     background-color: rgb(240,240,240);
     overflow: hidden;
 
+}
+.administrator{
+    background-color: rgb(237,29,122);
 }
 button{
     /*outline:0 none !important;*/

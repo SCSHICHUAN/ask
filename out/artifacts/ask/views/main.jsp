@@ -76,7 +76,7 @@
     <script type="text/javascript">
 
 
-        //获取验证
+        //获取验证 按钮
         $(".buttonYzm").click(
             function () {
 
@@ -122,6 +122,7 @@
                 });
 
             });
+
 
 
         //confirm button
@@ -181,9 +182,9 @@
                 //     }
                 // })
 
-                $(".start").mousedown();
             }
         )
+
 
 
         //start button
@@ -199,7 +200,6 @@
                         $(".page1").css({display: 'none'});
                         $(".page2").css({display: 'block'});
 
-
                         setTimeout(function () {
                             $(".A").animate({opacity: '1'}, 100);
                             setTimeout(function () {
@@ -213,7 +213,7 @@
                                             var a = parseInt(i / 60);
                                             var b = i % 60;
                                             $(".clock").text(a + ":" + b);
-                                            if(i<=1800-5){
+                                            if(i<=0){
                                                 clearInterval(clock);
                                                 i = 1800-1;
                                             }
@@ -231,6 +231,7 @@
             }, 250);
 
         })
+        $(".start").mousedown();
 
         $(".chose").click(function (even) {
 

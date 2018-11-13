@@ -25,6 +25,9 @@
     <form action="/ask/views/query.jsp">
         <button class="start2">查询测试结果</button>
     </form>
+    <form action="/ask/views/administer.jsp">
+        <button class="administrator">管理人员登录</button>
+    </form>
 </div>
 
 

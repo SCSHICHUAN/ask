@@ -20,15 +20,32 @@
 
 
     <servlet>
-        <servlet-name>yzm2</servlet-name>
+        <servlet-name>main</servlet-name>
         <servlet-class>main.Servlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>yzm2</servlet-name>
+        <servlet-name>main</servlet-name>
         <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>yzm2</servlet-name>
+        <servlet-name>main</servlet-name>
         <url-pattern>/query</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/adm</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>filter</filter-name>
+        <filter-class>main.Filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filter</filter-name>
+        <url-pattern>/views/admin1.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+
+
 </web-app>

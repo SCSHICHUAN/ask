@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>录入信息</title>
     <link rel="stylesheet" href="/ask/css/main.css">
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
@@ -76,7 +76,7 @@
     <script type="text/javascript">
 
 
-        //获取验证
+        //获取验证 按钮
         $(".buttonYzm").click(
             function () {
 
@@ -122,6 +122,7 @@
                 });
 
             });
+
 
 
         //confirm button
@@ -181,9 +182,9 @@
                 //     }
                 // })
 
-                $(".start").mousedown();
             }
         )
+
 
 
         //start button
@@ -198,7 +199,7 @@
                         $(".success").css({display: 'none'});
                         $(".page1").css({display: 'none'});
                         $(".page2").css({display: 'block'});
-                        
+
                         setTimeout(function () {
                             $(".A").animate({opacity: '1'}, 100);
                             setTimeout(function () {
@@ -230,6 +231,7 @@
             }, 250);
 
         })
+        $(".start").mousedown();
 
         $(".chose").click(function (even) {
 
