@@ -35,6 +35,18 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/adm</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/ques</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+
+
 
     <filter>
         <filter-name>filter</filter-name>

@@ -25,6 +25,8 @@ public class Servlet extends HttpServlet {
             UserManger.querTestResult(request, response);
         }else if(Objects.equals(path,"/adm")){
             Administer.landAdmin(request,response);
+        }else if(Objects.equals(path,"/ques")){
+            Questions.getPar(request,response);
         }
 
 

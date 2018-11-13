@@ -42,7 +42,6 @@
 </div>
 
 
-
 <div class="page3">
     <div class="backView">
         <div class="t5"></div>
@@ -71,28 +70,60 @@
         var C = $("[name=\"answerC\"]").attr('checked');
         var D = $("[name=\"answerD\"]").attr('checked');
 
-        if ((category == "")){
+        if ((category == "")) {
             showtips("请输入类别....")
-        }else if ((title == "")){
+        } else if ((title == "")) {
             showtips("请输入题目....")
-        }else if ((tA == "")){
+        } else if ((tA == "")) {
             showtips("请输入A选项....")
-        }else if ((tB == "")){
+        } else if ((tB == "")) {
             showtips("请输入B选项....")
-        }else if ((tC == "")){
+        } else if ((tC == "")) {
             showtips("请输入C选项....")
-        }else if ((tD == "")){
+        } else if ((tD == "")) {
             showtips("请输入D选项....")
-        }else if (!(A|B|C|D)){
+        } else if (!(A | B | C | D)) {
             showtips("答案为空....")
         }
 
 
+        var answer = "";
+        if (A) {
+            answer = answer + "A";
+        }
+        if (B) {
+            answer = answer + "B"
+        }
+        if (C) {
+            answer = answer + "C"
+        }
+        if (D) {
+            answer = answer + "D"
+        }
+
+        console.log(answer);
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/ques",
+            data: {
+                category: category,
+                title: title,
+                tA: tA,
+                tB: tB,
+                tC: tC,
+                tD: tD,
+                answer:answer
+            },
+            dataType: "json",
+            success: function (json) {
+
+            }
+        })
 
 
     })
-
-
 
 
     function showtips(tipsStr) {
@@ -104,8 +135,6 @@
         }, 2500)
 
     }
-
-
 
 
 </script>
