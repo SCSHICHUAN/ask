@@ -26,15 +26,17 @@ body{
 
 }
 .start1,.start2{
+    display: block;
+    width: 99.95%;
     height: 400px;
-    width: 100%;
-    line-height: 400px;
-    text-align: center;
+    background-color: deepskyblue;
+    margin: 0 auto;
     font-size: 50px;
+    color: white;
+    border-radius: 6px;
 
 }
 .start1{
-    margin-top: 100px;
     background-color: rgb(120,190,50);
     color: white;
 }
@@ -44,13 +46,13 @@ body{
 }
 .all{
     margin-top: -266px;
-    border-radius: 50px;
+    border-radius: 10px;
     background-color: rgb(240,240,240);
     overflow: hidden;
 
 }
 button{
-    outline:0 none !important;
-    ssion(this.onFocus=this.blur());
+    /*outline:0 none !important;*/
+    /*ssion(this.onFocus=this.blur());*/
     border: none;
 }

@@ -9,7 +9,11 @@
     <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/ask.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ask.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/ask.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/main.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +41,7 @@
           <entry key="iml" value="1" />
           <entry key="java" value="18" />
           <entry key="js" value="2" />
-          <entry key="jsp" value="19" />
+          <entry key="jsp" value="20" />
           <entry key="png" value="2" />
           <entry key="xhtml" value="1" />
           <entry key="xml" value="8" />
@@ -50,7 +54,7 @@
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="2" />
           <entry key="JAVA" value="18" />
-          <entry key="JSP" value="19" />
+          <entry key="JSP" value="20" />
           <entry key="JavaScript" value="2" />
           <entry key="XHTML" value="1" />
           <entry key="XML" value="8" />
@@ -59,10 +63,10 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="2320" />
-          <entry key="EL" value="59" />
+          <entry key="CSS" value="2398" />
+          <entry key="EL" value="61" />
           <entry key="JAVA" value="3437" />
-          <entry key="JSP" value="5256" />
+          <entry key="JSP" value="5442" />
           <entry key="XML" value="176" />
         </counts>
       </usages-collector>
@@ -71,9 +75,9 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="2320" />
+          <entry key="css" value="2398" />
           <entry key="java" value="3437" />
-          <entry key="jsp" value="5315" />
+          <entry key="jsp" value="5503" />
           <entry key="xml" value="176" />
         </counts>
       </usages-collector>
@@ -81,11 +85,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="724">
+              <caret line="215" column="56" selection-start-line="215" selection-start-column="56" selection-end-line="215" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-878">
-              <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            <state relative-caret-position="300">
+              <caret line="172" column="8" lean-forward="true" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -117,10 +130,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
+            <state relative-caret-position="206">
               <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
@@ -163,11 +176,11 @@
         <option value="$PROJECT_DIR$/src/c3p0-config.xml" />
         <option value="$PROJECT_DIR$/src/main/Servlet.java" />
         <option value="$PROJECT_DIR$/web/views/query.jsp" />
-        <option value="$PROJECT_DIR$/web/views/main.jsp" />
-        <option value="$PROJECT_DIR$/web/css/main.css" />
         <option value="$PROJECT_DIR$/web/css/query.css" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/css/index.css" />
+        <option value="$PROJECT_DIR$/web/css/main.css" />
+        <option value="$PROJECT_DIR$/web/views/main.jsp" />
       </list>
     </option>
   </component>
@@ -185,8 +198,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="934" />
-    <option name="y" value="46" />
+    <option name="x" value="760" />
+    <option name="y" value="49" />
     <option name="width" value="1545" />
     <option name="height" value="1250" />
   </component>
@@ -214,24 +227,6 @@
             <path>
               <item name="ask" type="b2602c69:ProjectViewProjectNode" />
               <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -239,12 +234,6 @@
               <item name="ask" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ask" type="b2602c69:ProjectViewProjectNode" />
@@ -263,7 +252,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542012094968" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542073921426" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -393,10 +382,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114979000" />
+    <option name="totallyTimeSpent" value="118346000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="934" y="46" width="1545" height="1250" extended-state="0" />
+    <frame x="760" y="49" width="1545" height="1250" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -576,13 +566,6 @@
     <entry file="file://$PROJECT_DIR$/web/img/male203.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
-          <caret line="160" column="20" lean-forward="true" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/query.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -597,13 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-878">
-          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -613,8 +589,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="206">
           <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="172" column="8" lean-forward="true" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="215" column="56" selection-start-line="215" selection-start-column="56" selection-end-line="215" selection-end-column="56" />
         </state>
       </provider>
     </entry>
