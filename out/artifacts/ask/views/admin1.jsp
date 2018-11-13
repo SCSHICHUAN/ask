@@ -21,7 +21,7 @@
     <button class="button2">添加</button>
     <button class="button3">试卷</button>
 </div>
-<i class="page1">
+<div class="page1">
     <h2>请输入你要调查的问题:</h2>
     <input type="text" name="category" placeholder="类别">
     <textarea name="" cols="30" rows="10" placeholder="题目"></textarea>
@@ -36,17 +36,79 @@
         <input type="checkbox" name="answerC" placeholder="答案">C</input>
         <input type="checkbox" name="answerD" placeholder="答案">D</input>
     </div>
+    <button class="button4">加入题库</button>
+
+
+</div>
+
+
+
+<div class="page3">
+    <div class="backView">
+        <div class="t5"></div>
     </div>
-
-    <script type="text/javascript">
-
-
-        $(".button2").click(function () {
-            $(".page1").css({'display': 'block'});
-        })
+</div>
+<script type="text/javascript">
 
 
-    </script>
+    $(".button2").click(function () {
+        $(".page1").css({'display': 'block'});
+    })
+
+    $(".button4").click(function () {
+
+        var category = $("[name=\"category\"]").val();
+        var title = $("[placeholder=\"题目\"]").val();
+
+        var tA = $("[placeholder=\"A选项\"]").val();
+        var tB = $("[placeholder=\"B选项\"]").val();
+        var tC = $("[placeholder=\"C选项\"]").val();
+        var tD = $("[placeholder=\"D选项\"]").val();
+
+
+        var A = $("[name=\"answerA\"]").attr('checked');
+        var B = $("[name=\"answerB\"]").attr('checked');
+        var C = $("[name=\"answerC\"]").attr('checked');
+        var D = $("[name=\"answerD\"]").attr('checked');
+
+        if ((category == "")){
+            showtips("请输入类别....")
+        }else if ((title == "")){
+            showtips("请输入题目....")
+        }else if ((tA == "")){
+            showtips("请输入A选项....")
+        }else if ((tB == "")){
+            showtips("请输入B选项....")
+        }else if ((tC == "")){
+            showtips("请输入C选项....")
+        }else if ((tD == "")){
+            showtips("请输入D选项....")
+        }else if (!(A|B|C|D)){
+            showtips("答案为空....")
+        }
+
+
+
+
+    })
+
+
+
+
+    function showtips(tipsStr) {
+        if (tipsStr == '') return;
+        $(".page3").css({display: 'block'});
+        $(".t5").html(tipsStr)
+        setTimeout(function () {
+            $(".page3").css({display: 'none'});
+        }, 2500)
+
+    }
+
+
+
+
+</script>
 
 </body>
 </html>

@@ -71,8 +71,6 @@
     <%--</div>--%>
     <%--<div class="log">--%>
     <%--</div>--%>
-
-
     <script type="text/javascript">
 
 
