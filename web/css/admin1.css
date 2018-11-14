@@ -54,11 +54,12 @@ textarea{
     display: block;
     margin: 0 auto;
     width: 700px;
-    height: 100px;
+    height: 80px;
     margin-top: 20px;
     text-indent: 5px;
+    border: solid 2px rgb(153,153,153);
 }
-input{
+[name="category"]{
     display: block;
     margin: 0 auto;
     margin-top: 20px;
@@ -117,4 +118,7 @@ h2{
     font-size: 40px;
     line-height: 200px;
     text-align: center;
+}
+[type="checkbox"]{
+    font-size: 50px;
 }

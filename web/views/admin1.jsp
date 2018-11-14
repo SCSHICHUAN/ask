@@ -19,7 +19,9 @@
 <div class="left">
     <button class="button1">查看</button>
     <button class="button2">添加</button>
-    <button class="button3">试卷</button>
+    <button class="button3">问卷</button>
+    <button class="button5">试题</button>
+    <button class="button6">发布</button>
 </div>
 <div class="page1">
     <h2>请输入你要调查的问题:</h2>
@@ -132,7 +134,7 @@
         $(".t5").html(tipsStr)
         setTimeout(function () {
             $(".page3").css({display: 'none'});
-        }, 2500)
+        }, 1500)
 
     }
 
