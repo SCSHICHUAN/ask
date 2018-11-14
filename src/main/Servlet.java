@@ -17,7 +17,7 @@ public class Servlet extends HttpServlet {
 
         System.out.println("+++++++mainServlet++++++");
         String path = request.getServletPath();
-        System.out.println("+++++++++=" + path);
+        System.out.println("path =" + path);
 
         if (Objects.equals(path, "/confirm")) {
             UserManger.getPar(request, response);
@@ -27,6 +27,8 @@ public class Servlet extends HttpServlet {
             Administer.landAdmin(request,response);
         }else if(Objects.equals(path,"/ques")){
             Questions.getPar(request,response);
+        }else if(Objects.equals(path,"/queryItem")){
+            Questions.querItems(request,response);
         }
 
 

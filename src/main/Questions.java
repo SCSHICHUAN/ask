@@ -2,12 +2,20 @@ package main;
 
 import Models.TestIteam;
 import jdbc.JDBC;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Questions {
 
@@ -22,26 +30,64 @@ public class Questions {
         String answer = (String) request.getParameter("answer");
 
 
-        TestIteam testIteam = new TestIteam(category,title,A,B,C,D,answer);
+        TestIteam testIteam = new TestIteam(category, title, A, B, C, D, answer);
         testIteam.showString();
 
 
         try {
 
-            if (addTestItem(testIteam)){
+            if (addTestItem(testIteam)) {
                 response.getOutputStream().write("true".getBytes("utf8"));
-            }else {
+            } else {
                 response.getOutputStream().write("false".getBytes("utf8"));
             }
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
 
     }
 
-    private static Boolean addTestItem(TestIteam iteam){
+    public static void querItems(HttpServletRequest request, HttpServletResponse response) {
+
+
+        int currentPage = Integer.parseInt((String)request.getParameter("currentPage"));
+        int pageContent = 5;
+        int totalRows = TestItemCoun();
+        /**
+         * 判断有几页，如果不能整除就加一
+         */
+        int pages = totalRows % pageContent == 0 ? totalRows / pageContent
+                                                 : totalRows / pageContent + 1;
+        if(currentPage>pages){
+            currentPage = pages;
+        }
+        int start = (currentPage - 1)*pageContent;
+        int end = currentPage*pageContent;
+
+
+
+        List<TestIteam> testIteams = queryTest(start,end);
+        JSONArray jsonObject = ListToJSONArray(testIteams);
+        System.out.println(jsonObject.toString());
+
+
+        try {
+            response.getOutputStream().write(jsonObject.toString().getBytes("utf8"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        System.out.println("pages = " + pages+"  currentPage = "+currentPage);
+
+
+    }
+
+    private static Boolean addTestItem(TestIteam iteam) {
+
+
+        TestItemCoun();
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -50,33 +96,115 @@ public class Questions {
             connection = JDBC.GetConnection();
             String sql = "insert into questions value (null,?,?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,iteam.category);
-            preparedStatement.setObject(2,iteam.title);
-            preparedStatement.setObject(3,iteam.A);
-            preparedStatement.setObject(4,iteam.B);
-            preparedStatement.setObject(5,iteam.C);
-            preparedStatement.setObject(6,iteam.D);
-            preparedStatement.setObject(7,iteam.answer);
+            preparedStatement.setObject(1, iteam.category);
+            preparedStatement.setObject(2, iteam.title);
+            preparedStatement.setObject(3, iteam.A);
+            preparedStatement.setObject(4, iteam.B);
+            preparedStatement.setObject(5, iteam.C);
+            preparedStatement.setObject(6, iteam.D);
+            preparedStatement.setObject(7, iteam.answer);
 
             int row = preparedStatement.executeUpdate();
 
 
-            if (row>0){
+            if (row > 0) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }finally {
-            JDBC.close(connection,preparedStatement);
+        } finally {
+            JDBC.close(connection, preparedStatement);
         }
 
     }
 
+    private static int TestItemCoun() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select count(*) from questions";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            int total = 0;
+            while (resultSet.next()) {
+                total = resultSet.getInt(1);
+            }
+
+            System.out.println("total row = " + total);
+            return total;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, preparedStatement, resultSet);
+        }
+
+
+        return -1;
+    }
+
+    private static List<TestIteam> queryTest(int start,int end){
+
+
+        List<TestIteam> testIteams = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select * from questions limit ?,?  ";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,start);
+            preparedStatement.setObject(2,end);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                TestIteam testIteam = new TestIteam(
+                        resultSet.getString("category"),
+                        resultSet.getString("title"),
+                        resultSet.getString("A"),
+                        resultSet.getString("B"),
+                        resultSet.getString("C"),
+                        resultSet.getString("D"),
+                        resultSet.getString("answer"));
+                testIteam.showString();
+                testIteams.add(testIteam);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, preparedStatement, resultSet);
+        }
+
+
+        return testIteams;
+    }
+
+
+
+    public static JSONArray ListToJSONArray(List<TestIteam> list){
+        JSONArray json = new JSONArray();
+        for(TestIteam pLog : list){
+            JSONObject jo = new JSONObject();
+            jo.put("id", pLog.title);
+            jo.put("time", pLog.A);
+
+            json.put(jo);
+        }
+        return json;
+    }
 
 
 

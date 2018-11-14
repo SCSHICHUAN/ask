@@ -39,8 +39,19 @@
         <input type="checkbox" name="answerD" placeholder="答案">D</input>
     </div>
     <button class="button4">加入题库</button>
-
-
+</div>
+<div class="page2">
+    <div class="ques">
+        <div class="category">类别</div>
+        <div class="title">是目前调查业中所广泛采用的调查方式</div>
+        <div class="A">A:调查方式具有较强的科学性，同时也便于操作</div>
+        <div class="B">B:调查方式具有较强的科学性</div>
+        <div class="C">C:不同的问卷所包括的开头部分会有一定的差别</div>
+        <div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>
+        <div class="answer">答案:AC</div>
+    </div>
+    <button class="pgUp">上一页</button>
+    <button class="pgDn">下一页</button>
 </div>
 
 
@@ -54,6 +65,7 @@
 
     $(".button2").click(function () {
         $(".page1").css({'display': 'block'});
+        $(".page2").css({'display': 'none'});
     })
 
     $(".button4").click(function () {
@@ -123,17 +135,43 @@
                 tB: tB,
                 tC: tC,
                 tD: tD,
-                answer:answer
+                answer: answer
             },
             dataType: "text",
             success: function (json) {
-              if(json == "true"){
-                  showtips("添加成功...")
-              }else {
-                  showtips("添加失败，题目可能重复...")
-              }
+                if (json == "true") {
+                    showtips("添加成功...")
+                } else {
+                    showtips("添加失败，题目可能重复...")
+                }
             }
         })
+
+
+    })
+
+    var mid;
+
+    $(".button5").click(function () {
+        $(".page2").css({'display': 'block'});
+        $(".page1").css({'display': 'none'});
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/queryItem",
+            traditional: true,
+            data: {
+                currentPage:"1"
+            },
+            dataType:'json',
+            success: function (json) {
+                  console.log(json);
+            }
+
+        })
+
+
 
 
     })

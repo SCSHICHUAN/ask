@@ -122,3 +122,44 @@ h2{
 [type="checkbox"]{
     font-size: 50px;
 }
+.page2{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.page2 .A,.page2 .B,.page2 .C,.page2 .D{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-indent: 20px;
+}
+.page2 .category,.page2 .answer{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.page2 .title{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-weight: 500;
+}
+.page2 .ques{
+    width: 100%;
+    margin-top: 20px;
+}
+.pgUp,.pgDn{
+    position: fixed;
+    width: 100px;
+    height: 40px;
+    bottom: 10px;
+}
+.pgUp{
+    right: 120px;
+}
+.pgDn{
+    right: 10px;
+}
