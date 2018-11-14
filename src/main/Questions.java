@@ -52,34 +52,33 @@ public class Questions {
     public static void querItems(HttpServletRequest request, HttpServletResponse response) {
 
 
-        int currentPage = Integer.parseInt((String)request.getParameter("currentPage"));
+        int currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
         int pageContent = 5;
         int totalRows = TestItemCoun();
         /**
          * 判断有几页，如果不能整除就加一
          */
         int pages = totalRows % pageContent == 0 ? totalRows / pageContent
-                                                 : totalRows / pageContent + 1;
-        if(currentPage>pages){
+                : totalRows / pageContent + 1;
+        if (currentPage > pages) {
             currentPage = pages;
         }
-        int start = (currentPage - 1)*pageContent;
-        int end = currentPage*pageContent;
+        int start = (currentPage - 1) * pageContent;
+        int end = currentPage * pageContent;
 
 
-
-        List<TestIteam> testIteams = queryTest(start,end);
-        JSONArray jsonObject = ListToJSONArray(testIteams);
+        List<TestIteam> testIteams = queryTest(start, end);
+        JSONArray jsonObject = ListArrayToJSONArray(testIteams);
         System.out.println(jsonObject.toString());
 
 
         try {
             response.getOutputStream().write(jsonObject.toString().getBytes("utf8"));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("pages = " + pages+"  currentPage = "+currentPage);
+        System.out.println("pages = " + pages + "  currentPage = " + currentPage);
 
 
     }
@@ -151,7 +150,7 @@ public class Questions {
         return -1;
     }
 
-    private static List<TestIteam> queryTest(int start,int end){
+    private static List<TestIteam> queryTest(int start, int end) {
 
 
         List<TestIteam> testIteams = new ArrayList<>();
@@ -164,8 +163,8 @@ public class Questions {
             connection = JDBC.GetConnection();
             String sql = "select * from questions limit ?,?  ";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,start);
-            preparedStatement.setObject(2,end);
+            preparedStatement.setObject(1, start);
+            preparedStatement.setObject(2, end);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -193,20 +192,29 @@ public class Questions {
     }
 
 
+    public static JSONArray ListArrayToJSONArray(List<TestIteam> list) {
 
-    public static JSONArray ListToJSONArray(List<TestIteam> list){
-        JSONArray json = new JSONArray();
-        for(TestIteam pLog : list){
-            JSONObject jo = new JSONObject();
-            jo.put("id", pLog.title);
-            jo.put("time", pLog.A);
+        JSONArray jsonArray = new JSONArray();
 
-            json.put(jo);
+        for (TestIteam testIteam : list) {
+
+            /**
+             * 把 java-Object 转换为 json-Object
+             */
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", testIteam.category);
+            jsonObject.put("title", testIteam.title);
+            jsonObject.put("A", testIteam.A);
+            jsonObject.put("id", testIteam.B);
+            jsonObject.put("B", testIteam.C);
+            jsonObject.put("D", testIteam.D);
+            jsonObject.put("answer", testIteam.answer);
+
+
+            jsonArray.put(jsonObject);
         }
-        return json;
+        return jsonArray;
     }
-
-
 
 
 }
