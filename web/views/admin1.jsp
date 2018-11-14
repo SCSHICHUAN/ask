@@ -118,9 +118,13 @@
                 tD: tD,
                 answer:answer
             },
-            dataType: "json",
+            dataType: "text",
             success: function (json) {
-
+              if(json == "true"){
+                  showtips("添加成功...")
+              }else {
+                  showtips("添加失败，题目可能重复...")
+              }
             }
         })
 
