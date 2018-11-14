@@ -74,18 +74,25 @@
 
         if ((category == "")) {
             showtips("请输入类别....")
+            return;
         } else if ((title == "")) {
             showtips("请输入题目....")
+            return;
         } else if ((tA == "")) {
             showtips("请输入A选项....")
+            return;
         } else if ((tB == "")) {
             showtips("请输入B选项....")
+            return;
         } else if ((tC == "")) {
             showtips("请输入C选项....")
+            return;
         } else if ((tD == "")) {
             showtips("请输入D选项....")
+            return;
         } else if (!(A | B | C | D)) {
             showtips("答案为空....")
+            return;
         }
 
 

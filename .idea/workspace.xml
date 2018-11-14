@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/web/css/admin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/admin1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/admin1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/admin1.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +152,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
+            <state relative-caret-position="277">
               <caret line="125" column="42" selection-start-line="125" selection-start-column="42" selection-end-line="125" selection-end-column="42" />
             </state>
           </provider>
@@ -232,10 +229,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="758" />
-    <option name="y" value="70" />
-    <option name="width" value="1545" />
-    <option name="height" value="1250" />
+    <option name="x" value="744" />
+    <option name="y" value="23" />
+    <option name="width" value="1559" />
+    <option name="height" value="1362" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -310,7 +307,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542161954178" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542162725842" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -439,25 +436,25 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146068000" />
+    <option name="totallyTimeSpent" value="146331000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="758" y="70" width="1545" height="1250" extended-state="0" />
+    <frame x="744" y="23" width="1559" height="1362" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.722449" visible="true" weight="0.21682848" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.72273785" visible="true" weight="0.21488133" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Test Runs" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Web" order="6" sideWeight="0.27755103" side_tool="true" visible="true" weight="0.21682848" />
+      <window_info id="Web" order="6" sideWeight="0.27726218" side_tool="true" visible="true" weight="0.21488133" />
       <window_info id="Cloverage" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info id="Designer" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49876338" visible="true" weight="0.37659034" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49876338" visible="true" weight="0.33230054" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.15776081" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -749,7 +746,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
+        <state relative-caret-position="277">
           <caret line="125" column="42" selection-start-line="125" selection-start-column="42" selection-end-line="125" selection-end-column="42" />
         </state>
       </provider>
