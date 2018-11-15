@@ -77,8 +77,6 @@
     var xuanti = 0;
 
 
-
-
     $(".button2").click(function () {
         $(".page1").css({'display': 'block'});
         $(".page2").css({'display': 'none'});
@@ -198,15 +196,15 @@
     $(".pgQuery").click(function () {
 
         var page = $("[name=\"shousuo\"]").val();
-        if(isNaN(page) | page == "" ){
+        if (isNaN(page) | page == "") {
             showtips("请输入数字.....");
             $("[name=\"shousuo\"]").val("");
             return;
-        }else if(page > totalPage ){
+        } else if (page > totalPage) {
             showtips("超过最大页....");
             $("[name=\"shousuo\"]").val("");
             return;
-        }else if(page <=0){
+        } else if (page <= 0) {
             showtips("请输入正确的数字.....");
             $("[name=\"shousuo\"]").val("");
             return;
@@ -258,14 +256,14 @@
                         "    <div class=\"C\">C:" + C + "</div>\n" +
                         "    <div class=\"D\">D:" + D + "</div>\n" +
                         "    <div class=\"answer\">答案:" + answer + "</div>\n" +
-                        "    <div class=\"shouse\" id = \'"+id+"\'>选择</div>" +
+                        "    <div class=\"shouse\" id = \'" + id + "\'>选择</div>" +
                         "</div>";
 
                 }
 
                 console.log(html);
                 totalPage = json[json.length - 1].pages;
-                $(".totalPages").html("共&nbsp;"+totalPage+"&nbsp;页");
+                $(".totalPages").html("共&nbsp;" + totalPage + "&nbsp;页");
                 $("[name=\"shousuo\"]").val(currentPage);
 
                 $(".clear").prepend(html);
@@ -274,18 +272,25 @@
                 console.log("currentPage: " + currentPage);
 
 
-               if (xuanti == 1){
-                   $(".A,.B,.C,.D,.answer").css({'display': 'none'});
-                   $(".shouse").css({'display': 'block'});
-               }else {
-                   $(".shouse").css({'display': 'none'});
-               }
+                if (xuanti == 1) {
+                    $(".A,.B,.C,.D,.answer").css({'display': 'none'});
+                    $(".shouse").css({'display': 'block'});
+                } else {
+                    $(".shouse").css({'display': 'none'});
+                }
+
+
+                chouseedItemBackgroundColor();
 
             }
 
         })
-    }
 
+
+
+
+
+    }
 
 
     $(".button7").click(function () {
@@ -295,10 +300,53 @@
 
     })
 
+
+    var idArry = [];
     $(".clear").click(function (even) {
-       var emel =  even.target;
+
+        var emel = even.target;
+        if (emel.className != "shouse") return;
+        var id = emel.id;
+
+
+         idArry.push(id);
+
+        for (var i = 0;i<idArry.length-1;i++){
+              var oldId = idArry[i];
+
+              if (oldId == id){
+                  var elm = $("[id=\""+id+"\"]")
+                  elm.css({ 'background-color': 'rgb(255,255,255)'});
+                  idArry.splice(i,1)
+                  idArry.pop();
+              }
+
+        }
+
+
+
+
+        chouseedItemBackgroundColor();
+
+
+
+
         console.log(emel);
+
+
+
+
     })
+
+
+    function chouseedItemBackgroundColor() {
+        for (var i = 0;i<idArry.length;i++){
+            console.log(idArry[i]);
+            var id = idArry[i];
+            var elm = $("[id=\""+id+"\"]")
+            elm.css({ 'background-color': 'rgb(3,192,222)'});
+        }
+    }
 
 
 
