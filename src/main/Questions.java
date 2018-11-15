@@ -36,7 +36,7 @@ public class Questions {
         String answer = (String) request.getParameter("answer");
 
 
-        TestIteam testIteam = new TestIteam(category, title, A, B, C, D, answer);
+        TestIteam testIteam = new TestIteam(null,category, title, A, B, C, D, answer);
         testIteam.showString();
 
 
@@ -74,7 +74,7 @@ public class Questions {
         }else if(currentPage <= 0){
             currentPage = 1;
         }else if (currentPage == oldPge){
-            return;
+//            return;
         }
 
 
@@ -98,7 +98,7 @@ public class Questions {
             e.printStackTrace();
         }
 
-        
+
         oldPge = currentPage;
 
         System.out.println("pages = " + pages + "  currentPage = " + currentPage);
@@ -192,6 +192,7 @@ public class Questions {
 
             while (resultSet.next()) {
                 TestIteam testIteam = new TestIteam(
+                        resultSet.getString("id"),
                         resultSet.getString("category"),
                         resultSet.getString("title"),
                         resultSet.getString("A"),
@@ -225,6 +226,7 @@ public class Questions {
              * 把 java-Object 转换为 json-Object
              */
             JSONObject jsonObject = new JSONObject();
+            jsonObject.put("idQus", testIteam.id);
             jsonObject.put("category", testIteam.category);
             jsonObject.put("title", testIteam.title);
             jsonObject.put("A", testIteam.A);

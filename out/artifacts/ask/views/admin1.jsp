@@ -24,6 +24,7 @@
     <button class="button2">添加</button>
     <button class="button3">问卷</button>
     <button class="button5">试题</button>
+    <button class="button7">选题</button>
     <button class="button6">发布</button>
 </div>
 <div class="page1">
@@ -55,6 +56,7 @@
         <%--<div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>--%>
         <%--<div class="answer">答案:AC</div>--%>
         <%--</div>--%>
+        <%--<div class="shouse">选择</div>--%>
     </div>
     <div class="totalPages"></div>
     <button class="pgQuery">搜索</button>
@@ -72,12 +74,19 @@
 <script type="text/javascript">
 
 
+    var xuanti = 0;
+
+
+
+
     $(".button2").click(function () {
         $(".page1").css({'display': 'block'});
         $(".page2").css({'display': 'none'});
+
     })
 
     $(".button4").click(function () {
+
 
         var category = $("[name=\"category\"]").val();
         var title = $("[placeholder=\"题目\"]").val();
@@ -163,8 +172,10 @@
     var currentPage = 1;
     var totalPage = 0;
     $(".button5").click(function () {
+        xuanti = 0;
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
+        $(".A,.B,.C,.D,.answer").css({'display': 'block'});
         getTestItem(1);
     })
     $(".pgUp").click(function () {
@@ -225,6 +236,7 @@
                 $(".clear").html(html);
                 for (var i = 0; i < json.length - 1; i++) {
 
+                    var id = json[i].idQus;
                     var category = json[i].category;
                     var title = json[i].title;
                     var A = json[i].A;
@@ -238,7 +250,7 @@
                         color = 'rgb(255,255,255)';
                     }
 
-                    html += "<div class=\"ques\" style=\"background-color:" + color + "\">\n" +
+                    html += "<div class=\"ques\" id = \'"+id+"\'style=\"position: relative; background-color:" + color + "\">\n" +
                         "    <div class=\"category\">类别:" + category + "</div>\n" +
                         "    <div class=\"title\">标题:" + title + "</div>\n" +
                         "    <div class=\"A\">A:" + A + "</div>\n" +
@@ -246,7 +258,8 @@
                         "    <div class=\"C\">C:" + C + "</div>\n" +
                         "    <div class=\"D\">D:" + D + "</div>\n" +
                         "    <div class=\"answer\">答案:" + answer + "</div>\n" +
-                        "    </div>";
+                        "    <div class=\"shouse\">选择</div>" +
+                        "</div>";
 
                 }
 
@@ -261,12 +274,32 @@
                 console.log("currentPage: " + currentPage);
 
 
-
+               if (xuanti == 1){
+                   $(".A,.B,.C,.D,.answer").css({'display': 'none'});
+                   $(".shouse").css({'display': 'block'});
+               }else {
+                   $(".shouse").css({'display': 'none'});
+               }
 
             }
 
         })
     }
+
+
+
+    $(".button7").click(function () {
+        $(".A,.B,.C,.D,.answer").css({'display': 'none'});
+        $(".shouse").css({'display': 'block'});
+        xuanti = 1;
+
+    })
+
+    $(".clear").click(function (even) {
+       var emel =  even.target;
+        console.log(emel);
+    })
+
 
 
     function showtips(tipsStr) {
