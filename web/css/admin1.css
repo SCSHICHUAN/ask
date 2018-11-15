@@ -153,7 +153,7 @@ h2{
     font-weight: 500;
 }
 
-.pgUp,.pgDn{
+.pgUp,.pgDn,.pgQuery,.shousuo,.totalPages{
     position: fixed;
     width: 100px;
     height: 40px;
@@ -165,10 +165,25 @@ h2{
 .pgDn{
     right: 10px;
 }
+.pgQuery{
+    right: 230px;
+}
+.shousuo{
+    width: 40px;
+    right: 340px;
+    text-indent: 5px;
+}
+.totalPages{
+    background-color: rgb(37,42,48);
+    width: 80px;
+    right: 390px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+}
 .page22{
     width: 600px;
     height: 600px;
-    background-color: red;
 }
 .page2 .ques{
     width: 100%;

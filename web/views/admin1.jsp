@@ -56,6 +56,9 @@
         <%--<div class="answer">答案:AC</div>--%>
         <%--</div>--%>
     </div>
+    <div class="totalPages"></div>
+    <button class="pgQuery">搜索</button>
+    <input class="shousuo" name="shousuo" placeholder="页码" PATTERN="\d*">
     <button class="pgUp">上一页</button>
     <button class="pgDn">下一页</button>
 </div>
@@ -181,6 +184,25 @@
         getTestItem(currentPage);
     })
 
+    $(".pgQuery").click(function () {
+
+        var page = $("[name=\"shousuo\"]").val();
+        if(isNaN(page) | page == "" ){
+            showtips("请输入数字.....");
+            $("[name=\"shousuo\"]").val("");
+            return;
+        }else if(page > totalPage ){
+            showtips("超过最大页....");
+            $("[name=\"shousuo\"]").val("");
+            return;
+        }else if(page <=0){
+            showtips("请输入正确的数字.....");
+            $("[name=\"shousuo\"]").val("");
+            return;
+        }
+        getTestItem(page);
+    })
+
     function getTestItem(page) {
 
         $.ajax({
@@ -230,10 +252,15 @@
 
                 console.log(html);
                 totalPage = json[json.length - 1].pages;
+                $(".totalPages").html("共&nbsp;"+totalPage+"&nbsp;页");
+                $("[name=\"shousuo\"]").val(currentPage);
+
+                $(".clear").prepend(html);
+
                 console.log("totalPage: " + totalPage);
                 console.log("currentPage: " + currentPage);
 
-                $(".clear").prepend(html);
+
 
 
             }

@@ -62,6 +62,8 @@ public class Questions {
                 : totalRows / pageContent + 1;
         if (currentPage > pages) {
             currentPage = pages;
+        }else if(currentPage <= 0){
+            currentPage = 1;
         }
         int start = (currentPage - 1) * pageContent;
         int end = currentPage * pageContent;
