@@ -250,7 +250,7 @@
                         color = 'rgb(255,255,255)';
                     }
 
-                    html += "<div class=\"ques\" id = \'"+id+"\'style=\"position: relative; background-color:" + color + "\">\n" +
+                    html += "<div class=\"ques\" style=\"position: relative; background-color:" + color + "\">\n" +
                         "    <div class=\"category\">类别:" + category + "</div>\n" +
                         "    <div class=\"title\">标题:" + title + "</div>\n" +
                         "    <div class=\"A\">A:" + A + "</div>\n" +
@@ -258,7 +258,7 @@
                         "    <div class=\"C\">C:" + C + "</div>\n" +
                         "    <div class=\"D\">D:" + D + "</div>\n" +
                         "    <div class=\"answer\">答案:" + answer + "</div>\n" +
-                        "    <div class=\"shouse\">选择</div>" +
+                        "    <div class=\"shouse\" id = \'"+id+"\'>选择</div>" +
                         "</div>";
 
                 }

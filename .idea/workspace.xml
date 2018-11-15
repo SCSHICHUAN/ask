@@ -7,16 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/Models/TestIteam.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/Models/TestIteam.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Questions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/admin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/css/admin1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/admin1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/views/admin1.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ask/Models/TestIteam.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ask/Models/TestIteam.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ask/main/Questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ask/main/Questions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/TestIteam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/TestIteam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Questions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/admin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/admin1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/admin1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/admin1.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -71,7 +61,7 @@
           <entry key="EL" value="82" />
           <entry key="HTML" value="2" />
           <entry key="JAVA" value="6556" />
-          <entry key="JSP" value="8599" />
+          <entry key="JSP" value="8642" />
           <entry key="XML" value="285" />
         </counts>
       </usages-collector>
@@ -82,7 +72,7 @@
         <counts>
           <entry key="css" value="3573" />
           <entry key="java" value="6556" />
-          <entry key="jsp" value="8683" />
+          <entry key="jsp" value="8726" />
           <entry key="xml" value="285" />
         </counts>
       </usages-collector>
@@ -90,20 +80,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="872">
+            <state relative-caret-position="3800">
               <caret line="212" column="36" selection-start-line="212" selection-start-column="36" selection-end-line="212" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="252" column="91" selection-start-line="252" selection-start-column="91" selection-end-line="252" selection-end-column="91" />
+            <state relative-caret-position="381">
+              <caret line="252" column="49" selection-start-line="252" selection-start-column="49" selection-end-line="252" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -191,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/main/UserManger.java" />
         <option value="$PROJECT_DIR$/src/Models/TestIteam.java" />
         <option value="$PROJECT_DIR$/src/main/Questions.java" />
-        <option value="$PROJECT_DIR$/web/views/admin1.jsp" />
         <option value="$PROJECT_DIR$/web/css/admin1.css" />
+        <option value="$PROJECT_DIR$/web/views/admin1.jsp" />
       </list>
     </option>
   </component>
@@ -417,15 +410,15 @@
       <workItem from="1542248558119" duration="593000" />
       <workItem from="1542249155562" duration="107000" />
       <workItem from="1542249274359" duration="12449000" />
-      <workItem from="1542264991895" duration="2997000" />
+      <workItem from="1542264991895" duration="3850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186136000" />
+    <option name="totallyTimeSpent" value="186989000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="437" y="24" width="1611" height="1336" extended-state="0" />
+    <frame x="436" y="35" width="1611" height="1336" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -729,17 +722,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
+    <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="252" column="91" selection-start-line="252" selection-start-column="91" selection-end-line="252" selection-end-column="91" />
+        <state relative-caret-position="3800">
+          <caret line="212" column="36" selection-start-line="212" selection-start-column="36" selection-end-line="212" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
+    <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="872">
-          <caret line="212" column="36" selection-start-line="212" selection-start-column="36" selection-end-line="212" selection-end-column="36" />
+        <state relative-caret-position="381">
+          <caret line="252" column="49" selection-start-line="252" selection-start-column="49" selection-end-line="252" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
