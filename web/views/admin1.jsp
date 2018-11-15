@@ -45,6 +45,7 @@
 </div>
 
 <div class="page2">
+    <div class="clear">
     <%--<div class="ques">--%>
     <%--<div class="category">类别</div>--%>
     <%--<div class="title">是目前调查业中所广泛采用的调查方式</div>--%>
@@ -54,6 +55,7 @@
     <%--<div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>--%>
     <%--<div class="answer">答案:AC</div>--%>
     <%--</div>--%>
+    </div>
     <button class="pgUp">上一页</button>
     <button class="pgDn">下一页</button>
 </div>
@@ -154,11 +156,28 @@
 
     })
 
-    var mid;
 
+     var currentPage = 1;
+     var  totalPage = 0;
     $(".button5").click(function () {
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
+        getTestItem(1);
+    })
+    $(".pgUp").click(function () {
+        getTestItem(currentPage--);
+        if (currentPage<=0){
+            currentPage = 1;
+        }
+    })
+    $(".pgDn").click(function () {
+        getTestItem(++currentPage);
+        if (currentPage>=totalPage){
+            currentPage = totalPage;
+        }
+    })
+
+    function getTestItem(page) {
 
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -166,7 +185,7 @@
             url: "/ask/queryItem",
             traditional: true,
             data: {
-                currentPage: "1"
+                currentPage: page
             },
             dataType: 'json',
             success: function (json) {
@@ -177,7 +196,8 @@
 
 
                 var html = "";
-                for (var i = 0; i < json.length; i++) {
+                $(".clear").html(html);
+                for (var i = 0; i < json.length-1; i++) {
 
                     var category = json[i].category;
                     var title = json[i].title;
@@ -205,16 +225,19 @@
                 }
 
                 console.log(html);
+                totalPage = json[json.length-1].pages;
+                console.log("totalPage: "+totalPage);
+                console.log("currentPage: "+currentPage);
 
-                $(".page2").prepend(html);
+                $(".clear").prepend(html);
 
 
             }
 
         })
+    }
 
 
-    })
 
 
     function showtips(tipsStr) {

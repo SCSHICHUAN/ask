@@ -68,12 +68,16 @@ public class Questions {
 
 
         List<TestIteam> testIteams = queryTest(start, end);
-        JSONArray jsonObject = ListArrayToJSONArray(testIteams);
-        System.out.println(jsonObject.toString());
+        JSONArray jsonArray = ListArrayToJSONArray(testIteams);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("pages",pages);
+        jsonArray.put(jsonObject);
+
+        System.out.println(jsonArray.toString());
 
 
         try {
-            response.getOutputStream().write(jsonObject.toString().getBytes("utf8"));
+            response.getOutputStream().write(jsonArray.toString().getBytes("utf8"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,7 +165,7 @@ public class Questions {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from questions limit ?,?  ";
+            String sql = "select * from questions order by id desc limit ?,?  ";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, start);
             preparedStatement.setObject(2, end);
@@ -213,6 +217,8 @@ public class Questions {
 
             jsonArray.put(jsonObject);
         }
+
+
         return jsonArray;
     }
 
