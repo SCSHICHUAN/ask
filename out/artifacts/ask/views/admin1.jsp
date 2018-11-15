@@ -13,10 +13,13 @@
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
 <body>
-<img src="/ask/img/logo.png" class="img3">
-<div class="headerT">壹萌质询管理系统</div>
-<div class="header"></div>
+
+<div class="header">
+    <img src="/ask/img/logo.png" class="img3">
+    <div class="headerT">壹萌质询管理系统</div>
+</div>
 <div class="left">
+    <button class="button"></button>
     <button class="button1">查看</button>
     <button class="button2">添加</button>
     <button class="button3">问卷</button>
@@ -40,16 +43,17 @@
     </div>
     <button class="button4">加入题库</button>
 </div>
+
 <div class="page2">
-    <div class="ques">
-        <div class="category">类别</div>
-        <div class="title">是目前调查业中所广泛采用的调查方式</div>
-        <div class="A">A:调查方式具有较强的科学性，同时也便于操作</div>
-        <div class="B">B:调查方式具有较强的科学性</div>
-        <div class="C">C:不同的问卷所包括的开头部分会有一定的差别</div>
-        <div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>
-        <div class="answer">答案:AC</div>
-    </div>
+    <%--<div class="ques">--%>
+    <%--<div class="category">类别</div>--%>
+    <%--<div class="title">是目前调查业中所广泛采用的调查方式</div>--%>
+    <%--<div class="A">A:调查方式具有较强的科学性，同时也便于操作</div>--%>
+    <%--<div class="B">B:调查方式具有较强的科学性</div>--%>
+    <%--<div class="C">C:不同的问卷所包括的开头部分会有一定的差别</div>--%>
+    <%--<div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>--%>
+    <%--<div class="answer">答案:AC</div>--%>
+    <%--</div>--%>
     <button class="pgUp">上一页</button>
     <button class="pgDn">下一页</button>
 </div>
@@ -162,16 +166,52 @@
             url: "/ask/queryItem",
             traditional: true,
             data: {
-                currentPage:"1"
+                currentPage: "1"
             },
-            dataType:'json',
+            dataType: 'json',
             success: function (json) {
-                  console.log(json);
+                console.log(json);
+                var i = 1;
+                i = json.length;
+                console.log(i);
+
+
+                var html = "";
+                for (var i = 0; i < json.length; i++) {
+
+                    var category = json[i].category;
+                    var title = json[i].title;
+                    var A = json[i].A;
+                    var B = json[i].B;
+                    var C = json[i].C;
+                    var D = json[i].D;
+                    var answer = json[i].answer;
+
+                    var color = 'rgb(250,250,250)';
+                    if (i % 2 == 0) {
+                        color = 'rgb(255,255,255)';
+                    }
+
+                    html += "<div class=\"ques\" style=\"background-color:" + color + "\">\n" +
+                        "    <div class=\"category\">类别:" + category + "</div>\n" +
+                        "    <div class=\"title\">标题:" + title + "</div>\n" +
+                        "    <div class=\"A\">A:" + A + "</div>\n" +
+                        "    <div class=\"B\">B:" + B + "</div>\n" +
+                        "    <div class=\"C\">C:" + C + "</div>\n" +
+                        "    <div class=\"D\">D:" + D + "</div>\n" +
+                        "    <div class=\"answer\">答案:" + answer + "</div>\n" +
+                        "    </div>";
+
+                }
+
+                console.log(html);
+
+                $(".page2").prepend(html);
+
+
             }
 
         })
-
-
 
 
     })

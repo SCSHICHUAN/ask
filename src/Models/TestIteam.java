@@ -12,10 +12,10 @@ public class TestIteam {
     public TestIteam(String category, String title, String a, String b, String c, String d, String answer) {
         this.category = category;
         this.title = title;
-        A = a;
-        B = b;
-        C = c;
-        D = d;
+        this.A = a;
+        this.B = b;
+        this.C = c;
+        this.D = d;
         this.answer = answer;
     }
 

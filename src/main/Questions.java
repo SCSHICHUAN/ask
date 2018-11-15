@@ -53,7 +53,7 @@ public class Questions {
 
 
         int currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
-        int pageContent = 5;
+        int pageContent = 10;
         int totalRows = TestItemCoun();
         /**
          * 判断有几页，如果不能整除就加一
@@ -202,11 +202,11 @@ public class Questions {
              * 把 java-Object 转换为 json-Object
              */
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("id", testIteam.category);
+            jsonObject.put("category", testIteam.category);
             jsonObject.put("title", testIteam.title);
             jsonObject.put("A", testIteam.A);
-            jsonObject.put("id", testIteam.B);
-            jsonObject.put("B", testIteam.C);
+            jsonObject.put("B", testIteam.B);
+            jsonObject.put("C", testIteam.C);
             jsonObject.put("D", testIteam.D);
             jsonObject.put("answer", testIteam.answer);
 
