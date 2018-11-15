@@ -13,13 +13,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+
 
 public class Questions {
 
+
+
+   public static int oldPge;
+
     public static void getPar(HttpServletRequest request, HttpServletResponse response) {
+
+
 
         String category = (String) request.getParameter("category");
         String title = (String) request.getParameter("title");
@@ -52,6 +58,9 @@ public class Questions {
     public static void querItems(HttpServletRequest request, HttpServletResponse response) {
 
 
+
+
+
         int currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
         int pageContent = 10;
         int totalRows = TestItemCoun();
@@ -64,7 +73,12 @@ public class Questions {
             currentPage = pages;
         }else if(currentPage <= 0){
             currentPage = 1;
+        }else if (currentPage == oldPge){
+            return;
         }
+
+
+
         int start = (currentPage - 1) * pageContent;
         int end = currentPage * pageContent;
 
@@ -83,6 +97,9 @@ public class Questions {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        
+        oldPge = currentPage;
 
         System.out.println("pages = " + pages + "  currentPage = " + currentPage);
 
