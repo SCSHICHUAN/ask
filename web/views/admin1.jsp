@@ -279,7 +279,9 @@
                     $(".shouse").css({'display': 'none'});
                 }
 
-
+                /**
+                 * 设置选中的按钮的颜色，如果数组中有就变色
+                 */
                 chouseedItemBackgroundColor();
 
             }
@@ -293,6 +295,10 @@
     }
 
 
+    /**
+     * 如果选题按钮按下就把xuanti设置为"1"，隐藏题目，每次刷新都要看一下是不是
+     * "1"如果是，就要隐藏选项和答案，反之亦然。
+     */
     $(".button7").click(function () {
         $(".A,.B,.C,.D,.answer").css({'display': 'none'});
         $(".shouse").css({'display': 'block'});
@@ -315,27 +321,25 @@
               var oldId = idArry[i];
 
               if (oldId == id){
+
                   var elm = $("[id=\""+id+"\"]")
+                  /**
+                   *用户返选马上变色，默认是没有选中的颜色
+                   */
                   elm.css({ 'background-color': 'rgb(255,255,255)'});
+                  /**
+                   * 删除已经选中的id，和当前加入的id。
+                   */
                   idArry.splice(i,1)
                   idArry.pop();
               }
 
         }
-
-
-
-
+        /**
+         * 每点击一次就要给所有的选择按钮变色
+         */
         chouseedItemBackgroundColor();
-
-
-
-
         console.log(emel);
-
-
-
-
     })
 
 
