@@ -46,15 +46,15 @@
 
 <div class="page2">
     <div class="clear">
-    <%--<div class="ques">--%>
-    <%--<div class="category">类别</div>--%>
-    <%--<div class="title">是目前调查业中所广泛采用的调查方式</div>--%>
-    <%--<div class="A">A:调查方式具有较强的科学性，同时也便于操作</div>--%>
-    <%--<div class="B">B:调查方式具有较强的科学性</div>--%>
-    <%--<div class="C">C:不同的问卷所包括的开头部分会有一定的差别</div>--%>
-    <%--<div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>--%>
-    <%--<div class="answer">答案:AC</div>--%>
-    <%--</div>--%>
+        <%--<div class="ques">--%>
+        <%--<div class="category">类别</div>--%>
+        <%--<div class="title">是目前调查业中所广泛采用的调查方式</div>--%>
+        <%--<div class="A">A:调查方式具有较强的科学性，同时也便于操作</div>--%>
+        <%--<div class="B">B:调查方式具有较强的科学性</div>--%>
+        <%--<div class="C">C:不同的问卷所包括的开头部分会有一定的差别</div>--%>
+        <%--<div class="D">D:问候语一方面要反映以上内容；另一方面要求尽量简</div>--%>
+        <%--<div class="answer">答案:AC</div>--%>
+        <%--</div>--%>
     </div>
     <button class="pgUp">上一页</button>
     <button class="pgDn">下一页</button>
@@ -157,24 +157,28 @@
     })
 
 
-     var currentPage = 1;
-     var  totalPage = 0;
+    var currentPage = 1;
+    var totalPage = 0;
     $(".button5").click(function () {
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
         getTestItem(1);
     })
     $(".pgUp").click(function () {
-        getTestItem(currentPage--);
-        if (currentPage<=0){
+
+        --currentPage;
+        if (currentPage <= 0) {
             currentPage = 1;
         }
+        getTestItem(currentPage);
+
     })
     $(".pgDn").click(function () {
-        getTestItem(++currentPage);
-        if (currentPage>=totalPage){
+        ++currentPage;
+        if (currentPage >= totalPage) {
             currentPage = totalPage;
         }
+        getTestItem(currentPage);
     })
 
     function getTestItem(page) {
@@ -197,7 +201,7 @@
 
                 var html = "";
                 $(".clear").html(html);
-                for (var i = 0; i < json.length-1; i++) {
+                for (var i = 0; i < json.length - 1; i++) {
 
                     var category = json[i].category;
                     var title = json[i].title;
@@ -225,9 +229,9 @@
                 }
 
                 console.log(html);
-                totalPage = json[json.length-1].pages;
-                console.log("totalPage: "+totalPage);
-                console.log("currentPage: "+currentPage);
+                totalPage = json[json.length - 1].pages;
+                console.log("totalPage: " + totalPage);
+                console.log("currentPage: " + currentPage);
 
                 $(".clear").prepend(html);
 
@@ -236,8 +240,6 @@
 
         })
     }
-
-
 
 
     function showtips(tipsStr) {
