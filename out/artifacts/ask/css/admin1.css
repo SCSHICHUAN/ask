@@ -156,7 +156,7 @@ h2{
     font-size: 18px;
     font-weight: 500;
 }
-.page2 .title,.page3 .title{
+.page2 .title,.page4 .title{
     width: 600px;
     margin: 0 auto;
     margin-top: 10px;
@@ -283,11 +283,25 @@ h2{
 .button8,.button9,.button7,.button2{
     border-bottom: rgb(55,55,55) 1px solid;
 }
-.page3{
+.page4{
     background-color: white;
     width: 100%;
     height: 100%;
-    overflow: scroll;
     display: none;
 
+}
+.page4 .title1{
+    text-align: center;
+    width: 700px;
+    padding: 30px;
+    font-size: 30px;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+.button13{
+    position: fixed;
+    width: 100px;
+    right: 10px;
+    bottom: 10px;
+    height: 40px;
 }

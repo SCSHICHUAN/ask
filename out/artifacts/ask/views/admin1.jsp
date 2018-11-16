@@ -84,7 +84,11 @@
         <div class="t5"></div>
     </div>
 </div>
-<div class="page4"></div>
+<div class="page4">
+    <div class="title1"></div>
+    <div class="body"></div>
+    <button class="button13">关闭</button>
+</div>
 
 
 <script type="text/javascript">
@@ -469,16 +473,16 @@
             dataType: 'json',
             success: function (json) {
 
-                $(".page3").css({display: 'block'});
+                $(".page4").css({display: 'block'});
                 $(".yulan").css({display: 'none'});
 
 
                 var html = "";
-                $(".page3").html(html);
+                $(".page4 .body").html(html);
+                $(".page4 .title1").html(html);
                 for (var i = 0; i < json.length; i++) {
 
 
-                    var category = json[i].category;
                     var title = json[i].title;
                     var A = json[i].A;
                     var B = json[i].B;
@@ -500,13 +504,21 @@
                         "</div>";
 
                 }
-                $(".page3").html(html);
+                $(".page4 .title1").html(title);
+                $(".page4 .body").html(html);
 
             }
         })
 
 
     })
+
+    $(".button13").click(function () {
+        $(".page4").css({display: 'none'});
+        $(".yulan").css({display: 'block'});
+    })
+
+
 
 
 </script>
