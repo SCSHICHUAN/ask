@@ -65,6 +65,7 @@
     <input class="shousuo" name="shousuo" placeholder="页码" PATTERN="\d*">
     <button class="pgUp">上一页</button>
     <button class="pgDn">下一页</button>
+    <button class="button10">加入试卷</button>
 </div>
 
 

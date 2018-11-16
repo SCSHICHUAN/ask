@@ -58,11 +58,11 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="3633" />
+          <entry key="CSS" value="3675" />
           <entry key="EL" value="82" />
           <entry key="HTML" value="2" />
           <entry key="JAVA" value="6556" />
-          <entry key="JSP" value="9631" />
+          <entry key="JSP" value="9649" />
           <entry key="XML" value="285" />
         </counts>
       </usages-collector>
@@ -71,9 +71,9 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="3633" />
+          <entry key="css" value="3675" />
           <entry key="java" value="6556" />
-          <entry key="jsp" value="9715" />
+          <entry key="jsp" value="9733" />
           <entry key="xml" value="285" />
         </counts>
       </usages-collector>
@@ -84,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4356">
-              <caret line="242" column="50" selection-start-line="242" selection-start-column="20" selection-end-line="242" selection-end-column="50" />
+            <state relative-caret-position="460">
+              <caret line="32" column="38" lean-forward="true" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -123,8 +123,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5904">
-              <caret line="328" column="18" selection-start-line="328" selection-start-column="18" selection-end-line="328" selection-end-column="18" />
+            <state relative-caret-position="738">
+              <caret line="67" column="27" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="27" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,8 +135,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="784">
+              <caret line="228" column="17" lean-forward="true" selection-start-line="228" selection-start-column="3" selection-end-line="228" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -427,30 +430,31 @@
       <workItem from="1542248558119" duration="593000" />
       <workItem from="1542249155562" duration="107000" />
       <workItem from="1542249274359" duration="12449000" />
-      <workItem from="1542264991895" duration="12699000" />
+      <workItem from="1542264991895" duration="13480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195838000" />
+    <option name="totallyTimeSpent" value="196619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="436" y="35" width="1611" height="1336" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.7183908" visible="true" weight="0.20794538" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.7185978" visible="true" weight="0.20794538" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Test Runs" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Web" order="6" sideWeight="0.2816092" side_tool="true" visible="true" weight="0.20794538" />
+      <window_info id="Web" order="6" sideWeight="0.28140214" side_tool="true" visible="true" weight="0.20794538" />
       <window_info id="Cloverage" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info id="Designer" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49876338" visible="true" weight="0.17470355" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49876338" visible="true" weight="0.1881423" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.15652174" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -734,22 +738,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/main.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4356">
-          <caret line="242" column="50" selection-start-line="242" selection-start-column="20" selection-end-line="242" selection-end-column="50" />
+        <state relative-caret-position="460">
+          <caret line="32" column="38" lean-forward="true" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5904">
-          <caret line="328" column="18" selection-start-line="328" selection-start-column="18" selection-end-line="328" selection-end-column="18" />
+        <state relative-caret-position="738">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="784">
+          <caret line="228" column="17" lean-forward="true" selection-start-line="228" selection-start-column="3" selection-end-line="228" selection-end-column="17" />
         </state>
       </provider>
     </entry>
