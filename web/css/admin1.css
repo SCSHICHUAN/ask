@@ -190,8 +190,13 @@ h2{
     height: 42px;
     bottom: 10px;
 }
-
-
+.bacBU{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(240,240,240);
+    height: 70px;
+}
 .page22{
     width: 600px;
     height: 600px;
