@@ -164,34 +164,34 @@ h2{
     color: rgb(70,70,70);
 }
 
-.pgUp,.pgDn,.pgQuery,.shousuo,.totalPages{
-    position: fixed;
+.pgUp,.pgDn,.pgQuery,.shousuo,.totalPages,.button10{
+    float: left;
     width: 100px;
     height: 40px;
-    bottom: 10px;
-}
-.pgUp{
-    right: 120px;
-}
-.pgDn{
-    right: 10px;
-}
-.pgQuery{
-    right: 230px;
+    margin-left: 10px;
+    background-color: rgba(37,42,48,1);
+    color: white;
 }
 .shousuo{
-    width: 40px;
-    right: 340px;
-    text-indent: 5px;
+    width: 50px;
+    text-indent: 15px;
 }
 .totalPages{
-    background-color: rgb(37,42,48);
-    width: 80px;
-    right: 390px;
     text-align: center;
     line-height: 40px;
     color: white;
 }
+.buttons{
+    position: fixed;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: 610px;
+    height: 42px;
+    bottom: 10px;
+}
+
+
 .page22{
     width: 600px;
     height: 600px;
@@ -224,10 +224,4 @@ h2{
 .clear{
     position: relative;
 }
-.button10{
-    position: fixed;
-    height: 40px;
-    width: 100px;
-    right: 480px;
-    bottom: 10px;
-}
+

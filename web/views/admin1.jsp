@@ -60,12 +60,14 @@
         <%--</div>--%>
         <%--<div class="shouse">选择</div>--%>
     </div>
-    <div class="totalPages"></div>
-    <button class="pgQuery">搜索</button>
-    <input class="shousuo" name="shousuo" placeholder="页码" PATTERN="\d*">
-    <button class="pgUp">上一页</button>
-    <button class="pgDn">下一页</button>
-    <button class="button10">加入试卷</button>
+    <div class="buttons">
+        <div class="totalPages"></div>
+        <input class="shousuo" name="shousuo" placeholder="页码" PATTERN="\d*">
+        <button class="pgQuery">搜索</button>
+        <button class="pgUp">上一页</button>
+        <button class="pgDn">下一页</button>
+        <button class="button10">加入试卷</button>
+    </div>
 </div>
 
 
