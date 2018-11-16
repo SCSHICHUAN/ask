@@ -22,12 +22,12 @@
     <button class="button5">题库</button>
 </div>
 <div class="left">
-    <button class="buttonPage1">
+    <div class="buttonPage1">
         <button class="button8">试题</button>
         <button class="button9">题目</button>
         <button class="button7">选题</button>
         <button class="button2">添加</button>
-    </button>
+    </div>
 </div>
 <div class="page1">
     <h2>请输入你要调查的问题:</h2>
@@ -193,6 +193,7 @@
     $(".button5").click(function () {
         xuanti = 0;
         $(".page2").css({'display': 'block'});
+        $(".buttonPage1").css({display:'block'});
         $(".page1").css({'display': 'none'});
         $(".A,.B,.C,.D,.answer").css({'display': 'block'});
         getTestItem(1);

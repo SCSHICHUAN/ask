@@ -274,3 +274,9 @@ h2{
     text-align: center;
     color: white;
 }
+.left .buttonPage1{
+    display: none;
+}
+.button8{
+    margin-top: 100px;
+}
