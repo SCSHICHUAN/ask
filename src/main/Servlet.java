@@ -29,8 +29,9 @@ public class Servlet extends HttpServlet {
             Questions.getPar(request,response);
         }else if(Objects.equals(path,"/queryItem")){
             Questions.querItems(request,response);
+        }else if(Objects.equals(path,"/preview")){
+            Preview.getPar(request,response);
         }
-
 
 
 

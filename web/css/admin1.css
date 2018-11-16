@@ -143,20 +143,20 @@ h2{
     height: 100%;
     display: none;
 }
-.page2 .A,.page2 .B,.page2 .C,.page2 .D{
+ .A,.B,.C,.D{
     width: 600px;
     margin: 0 auto;
     margin-top: 10px;
     text-indent: 20px;
 }
-.page2 .category,.page2 .answer{
+.category,.answer{
     width: 600px;
     margin: 0 auto;
     margin-top: 10px;
     font-size: 18px;
     font-weight: 500;
 }
-.page2 .title{
+.page2 .title,.page3 .title{
     width: 600px;
     margin: 0 auto;
     margin-top: 10px;
@@ -201,7 +201,7 @@ h2{
     width: 600px;
     height: 600px;
 }
-.page2 .ques{
+.ques{
     width: 100%;
     padding: 25px;
 }
@@ -282,4 +282,12 @@ h2{
 }
 .button8,.button9,.button7,.button2{
     border-bottom: rgb(55,55,55) 1px solid;
+}
+.page3{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    display: none;
+
 }
