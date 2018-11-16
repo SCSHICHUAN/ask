@@ -3,6 +3,7 @@ body{
     font-family: 微软雅黑;
     font-size: 15px;
     font-weight: 200;
+    min-width: 700px;
 }
 .img3{
     float: left;
@@ -15,6 +16,8 @@ body{
     float: left;
     margin-left: 6px;
     line-height: 50px;
+    font-weight: 400;
+    font-size: 14px;
 }
 .header{
     position: relative;
@@ -49,8 +52,14 @@ button:hover{
 button:active{
     background-color: rgb(37,42,48);
 }
+.button3,.button5,.button1{
+    width: 100px;
+    float: right;
+    font-weight: 400;
+    font-size: 14px;
+}
 .button1{
-    /*margin-top: 50px;*/
+    margin-right: 50px;
 }
 .page1{
     margin-top: 50px;

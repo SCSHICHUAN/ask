@@ -16,16 +16,18 @@
 
 <div class="header">
     <img src="/ask/img/logo.png" class="img3">
-    <div class="headerT">壹萌质询管理系统</div>
+    <div class="headerT">上海壹萌商务咨询有限公司管理系统</div>
+    <button class="button1">查看</button>
+    <button class="button3">问卷</button>
+    <button class="button5">题库</button>
 </div>
 <div class="left">
-    <button class="button"></button>
-    <button class="button1">查看</button>
-    <button class="button2">添加</button>
-    <button class="button3">问卷</button>
-    <button class="button5">试题</button>
-    <button class="button7">选题</button>
-    <button class="button6">发布</button>
+    <button class="buttonPage1">
+        <button class="button8">试题</button>
+        <button class="button9">题目</button>
+        <button class="button7">选题</button>
+        <button class="button2">添加</button>
+    </button>
 </div>
 <div class="page1">
     <h2>请输入你要调查的问题:</h2>
@@ -76,13 +78,18 @@
 
     var xuanti = 0;
 
-
+    /**
+     * 添加题目
+     */
     $(".button2").click(function () {
         $(".page1").css({'display': 'block'});
         $(".page2").css({'display': 'none'});
 
     })
 
+    /**
+     * 添加入题库
+     */
     $(".button4").click(function () {
 
 
@@ -169,6 +176,9 @@
 
     var currentPage = 1;
     var totalPage = 0;
+    /**
+     * 题库
+     */
     $(".button5").click(function () {
         xuanti = 0;
         $(".page2").css({'display': 'block'});
@@ -212,6 +222,9 @@
         getTestItem(page);
     })
 
+    /**
+     * 通过页数查看题库
+     */
     function getTestItem(page) {
 
         $.ajax({
@@ -279,7 +292,9 @@
                     $(".shouse").css({'display': 'none'});
                 }
 
-
+                /**
+                 * 设置选中的按钮的颜色，如果数组中有就变色
+                 */
                 chouseedItemBackgroundColor();
 
             }
@@ -287,16 +302,47 @@
         })
 
 
-
-
-
     }
 
 
-    $(".button7").click(function () {
+    /**
+     * 题目
+     */
+    $(".button9").click(function () {
+        $(".page2").css({'display': 'block'});
+        $(".page1").css({'display': 'none'});
+
         $(".A,.B,.C,.D,.answer").css({'display': 'none'});
-        $(".shouse").css({'display': 'block'});
         xuanti = 1;
+
+    })
+
+
+    /**
+     * 试题
+     */
+    $(".button8").click(function () {
+        $(".page2").css({'display': 'block'});
+        $(".page1").css({'display': 'none'});
+
+        $(".A,.B,.C,.D,.answer").css({'display': 'block'});
+        xuanti = 0;
+    })
+
+
+    /**
+     * 选题
+     * 如果选题按钮按下就把xuanti设置为"1"，隐藏题目，每次刷新都要看一下是不是
+     * "1"如果是，就要隐藏选项和答案，反之亦然。
+     */
+    $(".button7").click(function () {
+
+        $(".page2").css({'display': 'block'});
+        $(".page1").css({'display': 'none'});
+
+
+        $(".shouse").css({'display': 'block'});
+
 
     })
 
@@ -309,45 +355,42 @@
         var id = emel.id;
 
 
-         idArry.push(id);
+        idArry.push(id);
 
-        for (var i = 0;i<idArry.length-1;i++){
-              var oldId = idArry[i];
+        for (var i = 0; i < idArry.length - 1; i++) {
+            var oldId = idArry[i];
 
-              if (oldId == id){
-                  var elm = $("[id=\""+id+"\"]")
-                  elm.css({ 'background-color': 'rgb(255,255,255)'});
-                  idArry.splice(i,1)
-                  idArry.pop();
-              }
+            if (oldId == id) {
+
+                var elm = $("[id=\"" + id + "\"]")
+                /**
+                 *用户返选马上变色，默认是没有选中的颜色
+                 */
+                elm.css({'background-color': 'rgb(255,255,255)'});
+                /**
+                 * 删除已经选中的id，和当前加入的id。
+                 */
+                idArry.splice(i, 1)
+                idArry.pop();
+            }
 
         }
-
-
-
-
+        /**
+         * 每点击一次就要给所有的选择按钮变色
+         */
         chouseedItemBackgroundColor();
-
-
-
-
         console.log(emel);
-
-
-
-
     })
 
 
     function chouseedItemBackgroundColor() {
-        for (var i = 0;i<idArry.length;i++){
+        for (var i = 0; i < idArry.length; i++) {
             console.log(idArry[i]);
             var id = idArry[i];
-            var elm = $("[id=\""+id+"\"]")
-            elm.css({ 'background-color': 'rgb(3,192,222)'});
+            var elm = $("[id=\"" + id + "\"]")
+            elm.css({'background-color': 'rgb(3,192,222)'});
         }
     }
-
 
 
     function showtips(tipsStr) {
