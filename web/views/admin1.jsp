@@ -195,12 +195,14 @@
 
     var currentPage = 1;
     var totalPage = 0;
+    var idArry = [];
     /**
      * 题库
      */
     $(".button5").click(function () {
         xuanti = 0;
         timu = 0;
+        idArry = [];
         $(".page2").css({'display': 'block'});
         $(".buttonPage1").css({display: 'block'});
         $(".page1").css({'display': 'none'});
@@ -287,6 +289,7 @@
                     }
 
                     html += "<div class=\"ques\" style=\"position: relative; background-color:" + color + "\">\n" +
+                        "    <div class=\"category\">类别:" + category + "</div>\n" +
                         "    <div class=\"title\">标题:" + title + "</div>\n" +
                         "    <div class=\"A\">A:" + A + "</div>\n" +
                         "    <div class=\"B\">B:" + B + "</div>\n" +
@@ -348,10 +351,13 @@
     })
 
 
+
+
     /**
      * 试题
      */
     $(".button8").click(function () {
+
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
 
@@ -376,7 +382,7 @@
     })
 
 
-    var idArry = [];
+
     /**
      * 添加题目
      */
@@ -455,6 +461,9 @@
         if (title == "") return showtips("请输入试卷名称.....");
         $(".QuesTitle").css({display: 'none'});
 
+        $(".page4 .title1").html("");
+        $(".page4 .title1").html(title);
+
 
         for (var i = 0; i < idArry.length; i++) {
             console.log(idArry[i] + '\n');
@@ -473,13 +482,17 @@
             dataType: 'json',
             success: function (json) {
 
+
+
+
+
+
                 $(".page4").css({display: 'block'});
                 $(".yulan").css({display: 'none'});
 
 
                 var html = "";
                 $(".page4 .body").html(html);
-                $(".page4 .title1").html(html);
                 for (var i = 0; i < json.length; i++) {
 
 
@@ -504,7 +517,7 @@
                         "</div>";
 
                 }
-                $(".page4 .title1").html(title);
+
                 $(".page4 .body").html(html);
 
             }
