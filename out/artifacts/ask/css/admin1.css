@@ -280,3 +280,6 @@ h2{
 .button8{
     margin-top: 100px;
 }
+.button8,.button9,.button7,.button2{
+    border-bottom: rgb(55,55,55) 1px solid;
+}

@@ -17,9 +17,9 @@
 <div class="header">
     <img src="/ask/img/logo.png" class="img3">
     <div class="headerT">上海壹萌商务咨询有限公司管理系统</div>
-    <button class="button1">查看</button>
-    <button class="button3">问卷</button>
-    <button class="button5">题库</button>
+    <button class="button1">查看成绩</button>
+    <button class="button3">问卷卷库</button>
+    <button class="button5">问卷题库</button>
 </div>
 <div class="left">
     <div class="buttonPage1">
@@ -88,6 +88,7 @@
 
 
     var xuanti = 0;
+    var timu = 0;
 
     /**
      * 添加题目
@@ -192,6 +193,7 @@
      */
     $(".button5").click(function () {
         xuanti = 0;
+        timu = 0;
         $(".page2").css({'display': 'block'});
         $(".buttonPage1").css({display:'block'});
         $(".page1").css({'display': 'none'});
@@ -299,11 +301,17 @@
 
 
                 if (xuanti == 1) {
-                    $(".A,.B,.C,.D,.answer").css({'display': 'none'});
                     $(".shouse").css({'display': 'block'});
-                } else {
+                } else if(xuanti == 0) {
                     $(".shouse").css({'display': 'none'});
                 }
+
+                if (timu == 1) {
+                    $(".A,.B,.C,.D,.answer").css({'display': 'none'});
+                } else if(timu == 0) {
+                    $(".A,.B,.C,.D,.answer").css({'display': 'block'});
+                }
+
 
                 /**
                  * 设置选中的按钮的颜色，如果数组中有就变色
@@ -326,7 +334,7 @@
         $(".page1").css({'display': 'none'});
 
         $(".A,.B,.C,.D,.answer").css({'display': 'none'});
-        xuanti = 1;
+        timu = 1;
 
     })
 
@@ -339,7 +347,7 @@
         $(".page1").css({'display': 'none'});
 
         $(".A,.B,.C,.D,.answer").css({'display': 'block'});
-        xuanti = 0;
+        timu = 0;
     })
 
 
@@ -352,10 +360,9 @@
 
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
-
-
         $(".shouse").css({'display': 'block'});
 
+        xuanti = 1;
 
     })
 
