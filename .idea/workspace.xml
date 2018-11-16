@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/web/css/admin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/admin1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/admin1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/admin1.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +55,7 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="3772" />
+          <entry key="CSS" value="3781" />
           <entry key="EL" value="82" />
           <entry key="HTML" value="2" />
           <entry key="JAVA" value="6556" />
@@ -71,7 +68,7 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="3772" />
+          <entry key="css" value="3781" />
           <entry key="java" value="6556" />
           <entry key="jsp" value="9751" />
           <entry key="xml" value="285" />
@@ -120,23 +117,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="3366">
+              <caret line="209" lean-forward="true" selection-start-line="209" selection-end-line="209" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="172" column="19" lean-forward="true" selection-start-line="171" selection-start-column="3" selection-end-line="172" selection-end-column="19" />
+            <state relative-caret-position="505">
+              <caret line="176" column="19" selection-start-line="176" selection-start-column="19" selection-end-line="176" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -430,12 +424,12 @@
       <workItem from="1542248558119" duration="593000" />
       <workItem from="1542249155562" duration="107000" />
       <workItem from="1542249274359" duration="12449000" />
-      <workItem from="1542264991895" duration="14997000" />
+      <workItem from="1542264991895" duration="15385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198136000" />
+    <option name="totallyTimeSpent" value="198524000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="436" y="35" width="1611" height="1336" extended-state="0" />
@@ -705,13 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/TestIteam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="775">
@@ -743,20 +730,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
+    <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="505">
+          <caret line="176" column="19" selection-start-line="176" selection-start-column="19" selection-end-line="176" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
+    <entry file="file://$PROJECT_DIR$/src/Models/TestIteam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="172" column="19" lean-forward="true" selection-start-line="171" selection-start-column="3" selection-end-line="172" selection-end-column="19" />
+        <state relative-caret-position="486">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3366">
+          <caret line="209" lean-forward="true" selection-start-line="209" selection-end-line="209" />
         </state>
       </provider>
     </entry>

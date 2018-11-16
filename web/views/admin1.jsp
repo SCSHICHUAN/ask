@@ -222,6 +222,7 @@
             $("[name=\"shousuo\"]").val("");
             return;
         }
+        currentPage = page;
         getTestItem(page);
     })
 
