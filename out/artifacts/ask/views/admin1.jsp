@@ -70,6 +70,12 @@
             <button class="button10">加入试卷</button>
         </div>
     </div>
+    <div class="QuesTitle">
+        <div class="title2">生层试卷</div>
+        <input name="title" class="title" placeholder="试卷名称">
+        <button class="button12">预览试卷</button>
+        <button class="button11">发送到试卷库</button>
+    </div>
 </div>
 
 
@@ -398,7 +404,6 @@
         }
     }
 
-
     function showtips(tipsStr) {
         if (tipsStr == '') return;
         $(".page3").css({display: 'block'});
@@ -409,8 +414,30 @@
 
     }
 
+    /**
+     * 加入题库
+     */
+    $(".button10").click(function () {
+        if(idArry.length == 0){
+            return showtips("请选择题目...")
+        }
+        $(".QuesTitle").css({display:'block'});
+        // var textTitle =
+
+    })
+    $(".button11").click(function () {
+
+        var title =  $("[placeholder=\"试卷名称\"]").val();
+        if (title == "") return showtips("请输入试卷名称.....");
+        $(".QuesTitle").css({display:'none'});
+
+
+    })
+
+
+
+
 
 </script>
-
 </body>
 </html>
