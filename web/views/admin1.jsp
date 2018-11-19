@@ -616,6 +616,8 @@
         $(".page1").css({'display': 'none'});
         $(".page6").css({display:'block'});
         $(".page2").css({display:'none'});
+        $(".buttonPage1").css({display:'none'});
+
 
 
 
