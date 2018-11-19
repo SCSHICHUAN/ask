@@ -534,15 +534,6 @@
         $(".page5").css({display: 'block'});
 
     })
-    $(".page5button").click(function () {
-        $(".page5").css({display: 'none'});
-    })
-    $(".page5button1").click(function () {
-
-
-
-        
-    })
 
 
 </script>
