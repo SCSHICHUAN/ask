@@ -484,11 +484,12 @@
         var title = $("[placeholder=\"试卷名称\"]").val();
         if (title == "") return showtips("请输入试卷名称.....");
         $(".QuesTitle").css({display: 'none'});
+
     })
     $(".button12").click(function () {
         var title = $("[placeholder=\"试卷名称\"]").val();
         if (title == "") return showtips("请输入试卷名称.....");
-        $(".QuesTitle").css({display: 'none'});
+
 
         $(".page4 .title1").html("");
         $(".page4 .title1").html(title);
