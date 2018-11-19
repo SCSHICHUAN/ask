@@ -237,10 +237,10 @@ h2{
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: white;
     box-shadow: 0px 0px 50px  rgba(0,0,0,0.5);
     display: none;
     background-color: rgb(37,42,48);
+    border: rgb(55,55,55) 1px solid;
 }
 .QuesTitle .title{
     font-size: 20px;

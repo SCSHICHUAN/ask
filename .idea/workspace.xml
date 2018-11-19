@@ -7,8 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ask.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ask.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/ask.war" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/DeleteItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/admin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/css/admin1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/admin1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ask/views/admin1.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Preview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Preview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Servlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/css/admin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/admin1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/admin1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/admin1.jsp" afterDir="false" />
     </list>
@@ -36,12 +41,12 @@
           <entry key="class" value="4" />
           <entry key="css" value="27" />
           <entry key="iml" value="1" />
-          <entry key="java" value="48" />
+          <entry key="java" value="50" />
           <entry key="js" value="2" />
           <entry key="jsp" value="41" />
           <entry key="png" value="2" />
           <entry key="xhtml" value="1" />
-          <entry key="xml" value="12" />
+          <entry key="xml" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -50,22 +55,22 @@
           <entry key="CSS" value="27" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="48" />
+          <entry key="JAVA" value="50" />
           <entry key="JSP" value="41" />
           <entry key="JavaScript" value="2" />
           <entry key="XHTML" value="1" />
-          <entry key="XML" value="12" />
+          <entry key="XML" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="4675" />
+          <entry key="CSS" value="4678" />
           <entry key="EL" value="90" />
           <entry key="HTML" value="2" />
-          <entry key="JAVA" value="7221" />
-          <entry key="JSP" value="10816" />
-          <entry key="XML" value="293" />
+          <entry key="JAVA" value="7337" />
+          <entry key="JSP" value="11105" />
+          <entry key="XML" value="304" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -73,10 +78,10 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="4675" />
-          <entry key="java" value="7221" />
-          <entry key="jsp" value="10908" />
-          <entry key="xml" value="293" />
+          <entry key="css" value="4678" />
+          <entry key="java" value="7337" />
+          <entry key="jsp" value="11197" />
+          <entry key="xml" value="304" />
         </counts>
       </usages-collector>
     </session>
@@ -86,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="543" column="8" selection-start-line="543" selection-start-column="8" selection-end-line="543" selection-end-column="8" />
+            <state relative-caret-position="707">
+              <caret line="373" column="26" selection-start-line="373" selection-start-column="26" selection-end-line="373" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -99,10 +104,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/UserManger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1091">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/DeleteItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="597">
+              <caret line="51" column="32" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="335" column="12" selection-start-line="335" selection-start-column="1" selection-end-line="335" selection-end-column="12" />
+            <state relative-caret-position="566">
+              <caret line="248" column="36" lean-forward="true" selection-start-line="248" selection-start-column="2" selection-end-line="248" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -110,8 +148,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Preview.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="524">
+              <caret line="36" column="60" lean-forward="true" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,8 +160,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Servlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+            <state relative-caret-position="594">
+              <caret line="33" column="49" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,7 +172,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Questions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1256">
+            <state relative-caret-position="684">
               <caret line="235" column="55" selection-start-line="227" selection-start-column="11" selection-end-line="235" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -176,8 +214,14 @@
       <find>xuanti</find>
       <find>button9</find>
       <find>button2</find>
-      <find>idArry</find>
       <find>box-s</find>
+      <find>idArry</find>
+      <find>button4</find>
+      <find>answerA</find>
+      <find>button7</find>
+      <find>button5</find>
+      <find>getTestItem</find>
+      <find>refreshQuestions</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,13 +249,14 @@
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/views/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/Administer.java" />
-        <option value="$PROJECT_DIR$/src/main/UserManger.java" />
         <option value="$PROJECT_DIR$/src/Models/TestIteam.java" />
         <option value="$PROJECT_DIR$/src/main/Questions.java" />
+        <option value="$PROJECT_DIR$/web/css/admin1.css" />
+        <option value="$PROJECT_DIR$/src/main/Preview.java" />
+        <option value="$PROJECT_DIR$/src/main/DeleteItem.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/Servlet.java" />
-        <option value="$PROJECT_DIR$/src/main/Preview.java" />
-        <option value="$PROJECT_DIR$/web/css/admin1.css" />
+        <option value="$PROJECT_DIR$/src/main/UserManger.java" />
         <option value="$PROJECT_DIR$/web/views/admin1.jsp" />
       </list>
     </option>
@@ -308,7 +353,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542354765409" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542600563293" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -438,12 +483,12 @@
       <workItem from="1542249155562" duration="107000" />
       <workItem from="1542249274359" duration="12449000" />
       <workItem from="1542264991895" duration="28571000" />
-      <workItem from="1542354802066" duration="9895000" />
+      <workItem from="1542354802066" duration="15092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221605000" />
+    <option name="totallyTimeSpent" value="226802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="525" y="37" width="1762" height="1343" extended-state="0" />
@@ -679,16 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/UserManger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="168" column="14" lean-forward="true" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/json.jar!/org/json/JSONArray.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -710,47 +745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="47" column="29" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="30" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Questions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1256">
-          <caret line="235" column="55" selection-start-line="227" selection-start-column="11" selection-end-line="235" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Servlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Preview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,15 +761,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/admin1.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="335" column="12" selection-start-line="335" selection-start-column="1" selection-end-line="335" selection-end-column="12" />
+        <state relative-caret-position="566">
+          <caret line="248" column="36" lean-forward="true" selection-start-line="248" selection-start-column="2" selection-end-line="248" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Preview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="36" column="60" lean-forward="true" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Questions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="235" column="55" selection-start-line="227" selection-start-column="11" selection-end-line="235" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Servlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="49" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/DeleteItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/UserManger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1091">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="543" column="8" selection-start-line="543" selection-start-column="8" selection-end-line="543" selection-end-column="8" />
+        <state relative-caret-position="707">
+          <caret line="373" column="26" selection-start-line="373" selection-start-column="26" selection-end-line="373" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />

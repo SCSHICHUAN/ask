@@ -31,6 +31,8 @@ public class Servlet extends HttpServlet {
             Questions.querItems(request,response);
         }else if(Objects.equals(path,"/preview")){
             Preview.getPar(request,response);
+        }else if(Objects.equals(path,"/delectItem")){
+            DeleteItem.DeleteItem(request,response);
         }
 
 

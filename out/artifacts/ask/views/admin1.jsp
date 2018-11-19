@@ -187,7 +187,24 @@
             dataType: "text",
             success: function (json) {
                 if (json == "true") {
-                    showtips("添加成功...")
+                    showtips("添加成功...");
+
+
+                    $("[name=\"category\"]").val("");
+                    $("[placeholder=\"题目\"]").val("");
+
+                    $("[placeholder=\"A选项\"]").val("");
+                    $("[placeholder=\"B选项\"]").val("");
+                    $("[placeholder=\"C选项\"]").val("");
+                    $("[placeholder=\"D选项\"]").val("");
+
+
+                    $("[name=\"answerA\"]").attr('checked',false);
+                    $("[name=\"answerB\"]").attr('checked',false);
+                    $("[name=\"answerC\"]").attr('checked',false);
+                    $("[name=\"answerD\"]").attr('checked',false);
+
+
                 } else {
                     showtips("添加失败，题目可能重复...")
                 }
@@ -212,7 +229,7 @@
         $(".buttonPage1").css({display: 'block'});
         $(".page1").css({'display': 'none'});
         $(".A,.B,.C,.D,.answer").css({'display': 'block'});
-        getTestItem(1);
+        refreshQuestions();
     })
     $(".button5").click();
     $(".pgUp").click(function () {
@@ -344,10 +361,17 @@
     }
 
 
+    function refreshQuestions(){
+        getTestItem(1);
+    }
+
+
+
     /**
      * 题目
      */
     $(".button9").click(function () {
+        refreshQuestions();
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
 
@@ -361,6 +385,7 @@
      * 试题
      */
     $(".button8").click(function () {
+        refreshQuestions();
 
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
@@ -376,6 +401,7 @@
      * "1"如果是，就要隐藏选项和答案，反之亦然。
      */
     $(".button7").click(function () {
+        refreshQuestions();
 
         $(".page2").css({'display': 'block'});
         $(".page1").css({'display': 'none'});
@@ -532,6 +558,30 @@
     $(".button14").click(function () {
         if (idArry.length <= 0) return showtips("请选择要删除的题目...");
         $(".page5").css({display: 'block'});
+
+    })
+    $(".page5button").click(function () {
+        $(".page5").css({display: 'none'});
+    })
+    $(".page5button1").click(function () {
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/delectItem',
+            traditional: true,
+            data: {
+                ids: JSON.stringify(idArry),
+            },
+            dataType: 'text',
+            success: function (text) {
+                refreshQuestions();
+                $(".page5").css({display: 'none'});
+                console.log("你成功删除" + text + "题目...");
+                showtips("成功删除:&nbsp;" + text + "&nbsp;道题。");
+            }
+        })
+
 
     })
 
