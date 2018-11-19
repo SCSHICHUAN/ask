@@ -480,10 +480,31 @@
         // var textTitle =
 
     })
+
     $(".button11").click(function () {
+
         var title = $("[placeholder=\"试卷名称\"]").val();
         if (title == "") return showtips("请输入试卷名称.....");
         $(".QuesTitle").css({display: 'none'});
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/QuestionBack',
+            traditional: true,
+            data: {
+                title: title,
+                ids: JSON.stringify(idArry),
+            },
+            dataType: 'text',
+            success: function (text) {
+                showtips(text);
+            }
+        })
+
+
+
+
 
     })
     $(".button12").click(function () {

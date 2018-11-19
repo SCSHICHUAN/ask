@@ -51,6 +51,10 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/delectItem</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/QuestionBack</url-pattern>
+    </servlet-mapping>
 
 
 

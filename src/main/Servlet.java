@@ -33,6 +33,8 @@ public class Servlet extends HttpServlet {
             Preview.getPar(request,response);
         }else if(Objects.equals(path,"/delectItem")){
             DeleteItem.DeleteItem(request,response);
+        }else if(Objects.equals(path,"/QuestionBack")){
+            QuestionBack.getPar(request,response);
         }
 
 
