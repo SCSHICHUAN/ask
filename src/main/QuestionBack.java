@@ -1,7 +1,6 @@
 package main;
 
-import Models.TestIteam;
-import Models.User;
+
 import jdbc.JDBC;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -80,6 +79,18 @@ public class QuestionBack {
         System.out.println(flag);
 
 
+
+
+    }
+
+    public static void getTables(HttpServletRequest request, HttpServletResponse response) {
+        JSONArray jsonArray = new JSONArray();
+        for (String table : showTables()){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("table",table);
+            jsonArray.put(jsonObject);
+        }
+        responesToCline(response,jsonArray.toString());
 
 
     }

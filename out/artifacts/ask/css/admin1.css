@@ -342,9 +342,31 @@ h2{
     right: 27px;
     border: darkred 2px solid;
 }
-
-
-
+.page6title{
+    margin: 0 auto;
+    width: 600px;
+}
+.page6body{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    font-size: 15px;
+}
+.page6hover{
+    padding-left: 20px;
+}
+.page6hover:hover{
+    padding-left: 10px;
+    background-color: rgb(0,105,217);
+    color: white;
+}
+.page6h2{
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+}
 
 
 

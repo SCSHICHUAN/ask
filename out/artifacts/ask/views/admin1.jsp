@@ -94,6 +94,14 @@
     <button class="page5button">取消删除题目</button>
     <button class="page5button1">确定删除题目</button>
 </div>
+<div class="page6">
+    <h2 class="page6h2">问卷列表</h2>
+    <div class="page6title">
+        <%--<div class="page6body" style="background-color: red">关于贵州的问卷调查</div>--%>
+        <%--<div class="page6body" style="background-color: red">关于贵州的问卷调查</div>--%>
+        <%--<div class="page6body" style="background-color: red">关于贵州的问卷调查</div>--%>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -108,6 +116,7 @@
     $(".button2").click(function () {
         $(".page1").css({'display': 'block'});
         $(".page2").css({'display': 'none'});
+        $(".page6").css({'display': 'none'});
 
     })
 
@@ -502,10 +511,6 @@
             }
         })
 
-
-
-
-
     })
     $(".button12").click(function () {
         var title = $("[placeholder=\"试卷名称\"]").val();
@@ -602,6 +607,48 @@
                 idArry = [];
                 console.log("你成功删除" + text + "题目...");
                 showtips("成功删除:&nbsp;" + text + "&nbsp;道题。");
+            }
+        })
+
+
+    })
+    $(".button3").click(function () {
+        $(".page1").css({'display': 'none'});
+        $(".page6").css({display:'block'});
+        $(".page2").css({display:'none'});
+
+
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/showTables',
+            traditional: true,
+            dataType: 'json',
+            success: function (json) {
+
+
+                var html = "";
+                $(".page6title").html(html);
+                for (var i = 0; i < json.length; i++) {
+
+
+                    var table = json[i].table;
+
+                    console.log("table="+table)
+
+                    var color = 'rgb(250,250,250)';
+                    if (i % 2 == 0) {
+                        color = 'rgb(255,255,255)';
+                    }
+
+
+                    html += " <div class=\"page6body\" style=\"background-color: "+color+"\"><div class='page6hover'>"+table+"</div></div>";
+
+                }
+
+                $(".page6title").html(html);
+
             }
         })
 
