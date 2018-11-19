@@ -578,6 +578,7 @@
             success: function (text) {
                 refreshQuestions();
                 $(".page5").css({display: 'none'});
+                idArry = [];
                 console.log("你成功删除" + text + "题目...");
                 showtips("成功删除:&nbsp;" + text + "&nbsp;道题。");
             }
