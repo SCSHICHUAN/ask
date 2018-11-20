@@ -1,6 +1,7 @@
 package main;
 
 
+import Models.TestIteam;
 import jdbc.JDBC;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -94,6 +95,65 @@ public class QuestionBack {
 
 
     }
+
+    public static void getQuestions(HttpServletRequest request,HttpServletResponse  respons){
+
+        String table = (String)request.getParameter("table");
+
+        System.out.println("table="+table);
+
+        if(Objects.equals("",table) || table == null){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("flag","false");
+            responesToCline(respons,jsonObject.toString());
+            return;
+        }else {
+           List<String>  tableIDs = getQuestionsIdForTableName(table);
+          List<TestIteam> testIteams = new ArrayList<>();
+           for (String id : tableIDs){
+               System.out.println("id="+id);
+               testIteams.add(Preview.getTestItemForId(id));
+           }
+           JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
+           responesToCline(respons,jsonArray.toString());
+        }
+
+
+
+
+
+
+
+    }
+    public static List<String> getQuestionsIdForTableName(String table){
+
+        List<String> ids = new ArrayList<>();
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select * from "+table;
+            statement = connection.createStatement();
+            resultSet =  statement.executeQuery(sql);
+
+            while (resultSet.next()){
+                ids.add(resultSet.getString("questionID"));
+                System.out.println("id="+resultSet.getString("questionID"));
+            }
+            return ids;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBC.close(connection,statement,resultSet);
+        }
+
+        return null;
+    }
+
 
 
     public static void responesToCline(HttpServletResponse response,String flag){

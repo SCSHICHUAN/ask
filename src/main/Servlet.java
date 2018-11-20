@@ -37,6 +37,8 @@ public class Servlet extends HttpServlet {
             QuestionBack.getPar(request,response);
         }else if(Objects.equals(path,"/showTables")){
             QuestionBack.getTables(request,response);
+        }else if(Objects.equals(path,"/showQuestions")){
+            QuestionBack.getQuestions(request,response);
         }
 
 
