@@ -112,36 +112,9 @@ public class QuestionBack {
         }
 
         responesToCline(response, String.valueOf(j));
-
-
     }
 
 
-    public static boolean deleteTable(String table) {
-
-        System.out.println("deleteTable=" + table);
-        boolean flag = false;
-
-
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            connection = JDBC.GetConnection();
-            String sql = "drop table " + table;
-            statement = connection.createStatement();
-            int row = statement.executeUpdate(sql);
-            if (row == 0) {
-                flag = true;
-            } else {
-                flag = false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            JDBC.close(connection, statement);
-        }
-        return flag;
-    }
 
 
     public static void getQuestions(HttpServletRequest request, HttpServletResponse respons) {
@@ -208,25 +181,57 @@ public class QuestionBack {
     }
 
 
+//    public static List<String> showTables() {
+//
+//
+//        List<String> tables = new ArrayList<>();
+//
+//        Connection connection = null;
+//        Statement statement = null;
+//        ResultSet resultSet = null;
+//
+//
+//        try {
+//            connection = JDBC.GetConnection();
+//            String sql = "show tables";
+//
+//            statement = connection.createStatement();
+//            resultSet = statement.executeQuery("show tables");
+//            while (resultSet.next()) {
+//                //获取字段
+//                String tableName = resultSet.getString("Tables_in_ask");
+//                tables.add(tableName);
+//                System.out.println(tableName);
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            JDBC.close(connection, statement, resultSet);
+//        }
+//
+//        return tables;
+//
+//    }
+
+
     public static List<String> showTables() {
 
 
         List<String> tables = new ArrayList<>();
 
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "show tables";
-
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("show tables");
+            String sql = "select * from tableNames order by id desc";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 //获取字段
-                String tableName = resultSet.getString("Tables_in_ask");
+                String tableName = resultSet.getString("tableNam");
                 tables.add(tableName);
                 System.out.println(tableName);
             }
@@ -234,7 +239,7 @@ public class QuestionBack {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection, statement, resultSet);
+            JDBC.close(connection, preparedStatement, resultSet);
         }
 
         return tables;
@@ -257,6 +262,7 @@ public class QuestionBack {
 
             int rows = preparedStatement.executeUpdate();
             if (rows == 0) {
+                addTableName(table);
                 return true;
             } else {
                 return false;
@@ -269,6 +275,87 @@ public class QuestionBack {
             JDBC.close(connection, preparedStatement);
         }
     }
+    public  static  boolean addTableName(String table){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            connection = JDBC.GetConnection();
+            String sql = "insert into tableNames values(null,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, table);
+
+            int rows = preparedStatement.executeUpdate();
+            if (rows > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            JDBC.close(connection, preparedStatement);
+        }
+    }
+    public static boolean deleteTable(String table) {
+
+        System.out.println("deleteTable=" + table);
+        boolean flag = false;
+
+
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "drop table " + table;
+            statement = connection.createStatement();
+            int row = statement.executeUpdate(sql);
+            if (row == 0) {
+                flag = true;
+                deleteTableName(table);
+            } else {
+                flag = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, statement);
+        }
+        return flag;
+    }
+    public  static  boolean deleteTableName(String table){
+
+            Connection connection = null;
+            PreparedStatement preparedStatement = null;
+
+            try {
+
+                connection = JDBC.GetConnection();
+                String sql = "delete from tableNames where tableNam = ?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setObject(1, table);
+                int rows = preparedStatement.executeUpdate();
+                if (rows > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            } finally {
+                JDBC.close(connection, preparedStatement);
+            }
+
+
+    }
+
+
+
 
     public static boolean addQuertion(String table, String id) {
         Connection connection = null;

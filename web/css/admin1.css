@@ -398,7 +398,8 @@ h2{
     margin-left: 60px;
     width: 300px;
     height: 90%;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);;
 }
@@ -412,7 +413,8 @@ h2{
     border:1px rgb(240,240,240) solid;
     background-color: white;
     height: 97%;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 
 }
 .page6body .ques1 {
@@ -459,8 +461,8 @@ h2{
 .page6hoverTable{
     padding-top: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
     padding-right: 50px;
-    min-height: 40px;
 }
 .buttonPage2{
     display: none;
@@ -468,8 +470,9 @@ h2{
 .buttonPage61{
     margin-top: 100px;
 }
-.buttonPage61,.buttonPage62{
+.buttonPage61,.buttonPage62,.buttonPage63{
     border-bottom: 1px solid rgb(50,50,50);
+
 }
 .page6hoverTable2{
     display: none;

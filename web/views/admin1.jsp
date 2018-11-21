@@ -31,6 +31,7 @@
         </div>
         <div class="buttonPage2">
             <button class="buttonPage61">选择</button>
+            <button class="buttonPage63">发布</button>
             <button class="buttonPage62">删除</button>
         </div>
 
@@ -851,6 +852,10 @@
                 showtips("成功删除:&nbsp;" + text + "&nbsp;卷。");
             }
         })
+
+    })
+
+    $(".buttonPage63").click(function () {
 
     })
 
