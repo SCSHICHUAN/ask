@@ -246,6 +246,11 @@ public class QuestionBack {
 
     }
 
+    /**
+     * 动态的创建table
+     * @param table
+     * @return
+     */
 
     public static boolean createTableForQuestios(String table) {
         Connection connection = null;
@@ -275,6 +280,12 @@ public class QuestionBack {
             JDBC.close(connection, preparedStatement);
         }
     }
+
+    /**
+     * 把table的名字级联添加到tableNames的表中保存下来
+     * @param table
+     * @return
+     */
     public  static  boolean addTableName(String table){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -300,6 +311,11 @@ public class QuestionBack {
             JDBC.close(connection, preparedStatement);
         }
     }
+    /**
+     * 动态的删除table
+     * @param table
+     * @return
+     */
     public static boolean deleteTable(String table) {
 
         System.out.println("deleteTable=" + table);
@@ -326,6 +342,11 @@ public class QuestionBack {
         }
         return flag;
     }
+    /**
+     * 级联把table的名字重tableNames的表中删除
+     * @param table
+     * @return
+     */
     public  static  boolean deleteTableName(String table){
 
             Connection connection = null;

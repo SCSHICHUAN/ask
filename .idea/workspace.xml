@@ -168,8 +168,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/QuestionBack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="228" column="67" selection-start-line="228" selection-start-column="67" selection-end-line="228" selection-end-column="67" />
+            <state relative-caret-position="606">
+              <caret line="336" column="71" lean-forward="true" selection-start-line="336" selection-start-column="30" selection-end-line="336" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -371,7 +371,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542793253995" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542793377938" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -501,12 +501,12 @@
       <workItem from="1542249155562" duration="107000" />
       <workItem from="1542249274359" duration="12449000" />
       <workItem from="1542264991895" duration="28571000" />
-      <workItem from="1542354802066" duration="75750000" />
+      <workItem from="1542354802066" duration="75989000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="287460000" />
+    <option name="totallyTimeSpent" value="287699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="252" y="34" width="1908" height="1351" extended-state="0" />
@@ -858,8 +858,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/QuestionBack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="228" column="67" selection-start-line="228" selection-start-column="67" selection-end-line="228" selection-end-column="67" />
+        <state relative-caret-position="606">
+          <caret line="336" column="71" lean-forward="true" selection-start-line="336" selection-start-column="30" selection-end-line="336" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
