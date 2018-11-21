@@ -39,7 +39,10 @@ public class Servlet extends HttpServlet {
             QuestionBack.getTables(request,response);
         }else if(Objects.equals(path,"/showQuestions")){
             QuestionBack.getQuestions(request,response);
+        }else if(Objects.equals(path,"/deleteTable")){
+            QuestionBack.deleteTableGetPar(request,response);
         }
+
 
 
 

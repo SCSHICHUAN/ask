@@ -23,37 +23,36 @@ public class QuestionBack {
         String flag = "";
 
 
+        String title = (String) request.getParameter("title");
+        String ids = (String) request.getParameter("ids");
 
-        String title = (String)request.getParameter("title");
-        String ids = (String)request.getParameter("ids");
-
-        for (String table :showTables()){
-            if(Objects.equals(table,title)){
+        for (String table : showTables()) {
+            if (Objects.equals(table, title)) {
                 flag = "试卷名称已经存在.....";
-                responesToCline(response,flag);
+                responesToCline(response, flag);
                 return;
             }
         }
 
 
-        System.out.println("title ="+title);
+        System.out.println("title =" + title);
 
 
         JSONArray array = new JSONArray(ids);
 
 
-        if(Objects.equals("",title) || title == null){
-             flag = "问卷名字为空....";
-            responesToCline(response,flag);
+        if (Objects.equals("", title) || title == null) {
+            flag = "问卷名字为空....";
+            responesToCline(response, flag);
             System.out.println(flag);
-             return;
-        }else {
-            if(createTableForQuestios(title)){
+            return;
+        } else {
+            if (createTableForQuestios(title)) {
                 flag = "问卷创建成功....";
                 System.out.println(flag);
-            }else {
+            } else {
                 flag = "创建问卷失败....";
-                responesToCline(response,flag);
+                responesToCline(response, flag);
                 System.out.println(flag);
                 return;
             }
@@ -61,71 +60,116 @@ public class QuestionBack {
         }
 
 
-        if (array.length()<=0){
+        if (array.length() <= 0) {
             flag = "没有添加题目到试卷....";
-            responesToCline(response,flag);
+            responesToCline(response, flag);
             System.out.println(flag);
             return;
         }
 
         int j = 0;
-        for(int i = 0;i<array.length();i++){
+        for (int i = 0; i < array.length(); i++) {
             j++;
             String id = array.get(i).toString();
-            addQuertion(title,id);
+            addQuertion(title, id);
         }
 
-        flag = "试卷添加成功,共&nbsp"+String.valueOf(j)+"&nbsp题。";
-        responesToCline(response,flag);
+        flag = "试卷添加成功,共&nbsp" + String.valueOf(j) + "&nbsp题。";
+        responesToCline(response, flag);
         System.out.println(flag);
-
-
 
 
     }
 
     public static void getTables(HttpServletRequest request, HttpServletResponse response) {
         JSONArray jsonArray = new JSONArray();
-        for (String table : showTables()){
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("table",table);
-            jsonArray.put(jsonObject);
+
+        for (String table : showTables()) {
+
+            if (! (Objects.equals("questions", table) || Objects.equals("user", table))) {
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("table", table);
+                jsonArray.put(jsonObject);
+            }
         }
-        responesToCline(response,jsonArray.toString());
+        responesToCline(response, jsonArray.toString());
 
 
     }
 
-    public static void getQuestions(HttpServletRequest request,HttpServletResponse  respons){
+    public static void deleteTableGetPar(HttpServletRequest request, HttpServletResponse response) {
 
-        String table = (String)request.getParameter("table");
+        String ids = (String) request.getParameter("ids");
 
-        System.out.println("table="+table);
+        JSONArray array = new JSONArray(ids);
+        var j = 0;
+        for (int i = 0; i < array.length(); i++) {
+            String table = array.get(i).toString();
+            if (deleteTable(table)) {
+                j++;
+            }
+        }
 
-        if(Objects.equals("",table) || table == null){
+        responesToCline(response, String.valueOf(j));
+
+
+    }
+
+
+    public static boolean deleteTable(String table) {
+
+        System.out.println("deleteTable=" + table);
+        boolean flag = false;
+
+
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "drop table " + table;
+            statement = connection.createStatement();
+            int row = statement.executeUpdate(sql);
+            if (row == 0) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, statement);
+        }
+        return flag;
+    }
+
+
+    public static void getQuestions(HttpServletRequest request, HttpServletResponse respons) {
+
+        String table = (String) request.getParameter("table");
+
+        System.out.println("table=" + table);
+
+        if (Objects.equals("", table) || table == null) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("flag","false");
-            responesToCline(respons,jsonObject.toString());
+            jsonObject.put("flag", "false");
+            responesToCline(respons, jsonObject.toString());
             return;
-        }else {
-           List<String>  tableIDs = getQuestionsIdForTableName(table);
-          List<TestIteam> testIteams = new ArrayList<>();
-           for (String id : tableIDs){
-               System.out.println("id="+id);
-               testIteams.add(Preview.getTestItemForId(id));
-           }
-           JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
-           responesToCline(respons,jsonArray.toString());
+        } else {
+            List<String> tableIDs = getQuestionsIdForTableName(table);
+            List<TestIteam> testIteams = new ArrayList<>();
+            for (String id : tableIDs) {
+                System.out.println("id=" + id);
+                testIteams.add(Preview.getTestItemForId(id));
+            }
+            JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
+            responesToCline(respons, jsonArray.toString());
         }
 
 
-
-
-
-
-
     }
-    public static List<String> getQuestionsIdForTableName(String table){
+
+    public static List<String> getQuestionsIdForTableName(String table) {
 
         List<String> ids = new ArrayList<>();
 
@@ -135,38 +179,36 @@ public class QuestionBack {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from "+table;
+            String sql = "select * from " + table;
             statement = connection.createStatement();
-            resultSet =  statement.executeQuery(sql);
+            resultSet = statement.executeQuery(sql);
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 ids.add(resultSet.getString("questionID"));
-                System.out.println("id="+resultSet.getString("questionID"));
+                System.out.println("id=" + resultSet.getString("questionID"));
             }
             return ids;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            JDBC.close(connection,statement,resultSet);
+        } finally {
+            JDBC.close(connection, statement, resultSet);
         }
 
         return null;
     }
 
 
-
-    public static void responesToCline(HttpServletResponse response,String flag){
+    public static void responesToCline(HttpServletResponse response, String flag) {
         try {
             response.getOutputStream().write(flag.getBytes("utf8"));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
-    public static List<String> showTables(){
+    public static List<String> showTables() {
 
 
         List<String> tables = new ArrayList<>();
@@ -182,7 +224,7 @@ public class QuestionBack {
 
             statement = connection.createStatement();
             resultSet = statement.executeQuery("show tables");
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 //获取字段
                 String tableName = resultSet.getString("Tables_in_ask");
                 tables.add(tableName);
@@ -195,19 +237,19 @@ public class QuestionBack {
             JDBC.close(connection, statement, resultSet);
         }
 
-        return  tables;
+        return tables;
 
     }
 
 
-    public static boolean createTableForQuestios(String table){
+    public static boolean createTableForQuestios(String table) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
 
             connection = JDBC.GetConnection();
-            String sql = "create table if not exists "+table+" (\n" +
+            String sql = "create table if not exists " + table + " (\n" +
                     "id int unsigned auto_increment key,\n" +
                     "questionID varchar(20)\n" +
                     ")ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;\n";
@@ -228,14 +270,14 @@ public class QuestionBack {
         }
     }
 
-    public static boolean addQuertion(String table,String  id) {
+    public static boolean addQuertion(String table, String id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
 
             connection = JDBC.GetConnection();
-            String sql = "insert into "+table+" values(null,?)";
+            String sql = "insert into " + table + " values(null,?)";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, id);
 
@@ -254,7 +296,6 @@ public class QuestionBack {
         }
 
     }
-
 
 
 }

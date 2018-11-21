@@ -25,10 +25,15 @@
         <div class="buttonPage1">
             <button class="button8">试题</button>
             <button class="button9">题目</button>
-            <button class="button7">选题</button>
+            <button class="button7">选择</button>
             <button class="button2">添加</button>
             <button class="button14">删除</button>
         </div>
+        <div class="buttonPage2">
+            <button class="buttonPage61">选择</button>
+            <button class="buttonPage62">删除</button>
+        </div>
+
     </div>
     <div class="page1">
         <h2>请输入你要调查的问题:</h2>
@@ -109,8 +114,10 @@
         <div class="page6body"></div>
     </div>
 </div>
-
-
+<div class="page7">
+    <button class="page7button">取消删除试卷</button>
+    <button class="page7button1">确定删除试卷</button>
+</div>
 
 <script type="text/javascript">
 
@@ -247,6 +254,7 @@
         $(".page1").css({'display': 'none'});
         $(".page6").css({'display': 'none'});
         $(".A,.B,.C,.D,.answer").css({'display': 'block'});
+        $(".buttonPage2").css({display: 'none'});
         refreshQuestions();
     })
     $(".button5").click();
@@ -342,7 +350,7 @@
 
                 }
 
-                html +="<div class=\"page6Buttom\"></div>"
+                html += "<div class=\"page6Buttom\"></div>"
 
                 console.log(html);
                 totalPage = json[json.length - 1].pages;
@@ -588,7 +596,7 @@
 
                 }
 
-                html +="<div class=\"page6Buttom\"></div>"
+                html += "<div class=\"page6Buttom\"></div>"
                 $(".page4 .body").html(html);
 
             }
@@ -634,11 +642,16 @@
 
 
     })
+
+
+    var page6Select = 0;
     $(".button3").click(function () {
+        page6Select = 0;
         $(".page1").css({'display': 'none'});
         $(".page6").css({display: 'block'});
         $(".page2").css({display: 'none'});
         $(".buttonPage1").css({display: 'none'});
+        $(".buttonPage2").css({display: 'block'});
 
 
         $.ajax({
@@ -662,13 +675,18 @@
 
                     console.log("table=" + table)
 
-                    var color = 'rgb(250,250,250)';
+                    var color = 'rgba(250,250,250,1)';
                     if (i % 2 == 0) {
-                        color = 'rgb(255,255,255)';
+                        color = 'rgba(255,255,255,1)';
                     }
 
 
-                    html += " <div class=\"page6body\" style=\"background-color: " + color + "\"><div class='page6hover'>" + table + "</div></div>";
+                    html += " <div class=\"page6body\" style=\"background-color: " + color + "\">" +
+                        "<div class='page6hover'>" +
+                        "<div class='page6hoverTable'>" + table + "</div> " +
+                        "<div class='page6hoverTable2'>选择</div>" +
+                        "</div>" +
+                        "</div>";
 
                 }
 
@@ -684,11 +702,35 @@
         $(".QuesTitle").css({display: 'none'});
     })
     $(".page6title").click(function (even) {
-        var elem = even.target;
-        if (elem.className != "page6hover") return;
-        var table = $(elem).text()
+
+
+        var elem = $(even.target);
+        /**
+         * 通过兄弟选择器来解决，选择不到目标元素的问题
+         * @type {*|jQuery}
+         */
+        var UPelem = $(elem).prev();
+
+
+        elem.attr("class") == "page6hoverTable" ? (elem = elem) : (elem = UPelem);
+
+        console.log("目标元素=" + elem.attr("class"));
+
+
+        if (elem.attr("class") != "page6hoverTable") return;
+
+        var table = elem.text()
         console.log(table);
 
+        if (page6Select != 0) {
+
+            var currentColor = elem.css('background-color');
+            console.log(currentColor);
+
+            currentColor == "rgb(237, 29, 122)" ? (elem.removeAttr('style'))
+                : elem.css({'background-color': 'rgb(237, 29, 122)', 'color': 'white'});
+
+        }
 
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -699,7 +741,7 @@
                 table: table,
             },
             error: function () {// 请求失败处理函数
-                showtips("请求过于频繁.....")
+                showtips("请求失败.....")
             },
             dataType: 'json',
             success: function (json) {
@@ -725,6 +767,7 @@
                         color = 'rgb(255,255,255)';
                     }
 
+
                     html += "<div class=\"ques1\">" +
                         "    <div class=\"title1\">" + (i + 1) + ".&nbsp;&nbsp;" + title + "</div>\n" +
                         "    <div class=\"A1\">A:" + A + "</div>\n" +
@@ -735,7 +778,8 @@
 
                 }
 
-                html +="<div class=\"page6Buttom\"></div>"
+
+                html += "<div class=\"page6Buttom\"></div>"
 
                 $(".page6Right .page6body").html(html);
 
@@ -745,6 +789,73 @@
 
 
     })
+    $(".buttonPage61").click(function () {
+        page6Select = 1;
+        $(".page6hoverTable2").css({display: 'block'});
+    })
+
+    var deleteTables = [];
+    $(".buttonPage62").click(function () {
+
+        var elems = $(".page6title").children(".page6body").children(".page6hover").children(".page6hoverTable");
+        /**
+         * 获取子元素，elems[0],的方法来获取，不过不是jQuery的对象
+         */
+        deleteTables = [];
+        $.each(elems, function (i, elem) {
+            var color = $(elem).css('background-color');
+
+            /**
+             * (color == "rgb(0, 105, 217)")
+             * 这里必须用双引号""，不然语法错误
+             */
+            if (color == "rgb(237, 29, 122)") {
+                deleteTables.push($(elem).text());
+            }
+
+        })
+        if(deleteTables.length==0)
+            return showtips("请选择要删除的问卷....");
+        $(".page7").css({display: 'block'});
+
+
+
+
+
+    })
+
+    $(".page7button").click(function () {
+        deleteTables = [];
+        $(".page7").css({display: 'none'});
+    })
+    $(".page7button1").click(function () {
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/deleteTable',
+            traditional: true,
+            data: {
+                ids: JSON.stringify(deleteTables),
+            },
+            error: function () {// 请求失败处理函数
+                showtips("请求过于频繁.....")
+            },
+            dataType: 'text',
+            success: function (text) {
+                $(".button3").click();
+
+                deleteTables = [];
+                $(".page7").css({display: 'none'});
+                console.log("你成功删除" + text + "卷...");
+                showtips("成功删除:&nbsp;" + text + "&nbsp;卷。");
+            }
+        })
+
+    })
+
+
+
 
 
 </script>
