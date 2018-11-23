@@ -45,10 +45,9 @@ public class Servlet extends HttpServlet {
             QuestionBack.releaseQuestions(request,response);
         }else if(Objects.equals(path,"/gtreleases")){
             QuestionBack.gtreleasesQuestions(request,response);
+        }else if(Objects.equals(path,"/startTest")){
+
         }
-
-
-
 
 
     }

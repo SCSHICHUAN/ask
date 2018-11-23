@@ -1,38 +1,33 @@
 package main;
 
 import javax.servlet.*;
+import javax.servlet.Filter;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
 
-@WebFilter(filterName = "Filter")
-public class Filter implements javax.servlet.Filter {
+@WebFilter(filterName = "Filter2")
+public class Filter2 implements Filter {
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
-        System.out.println("+++++++Filter+++++++");
-
+        System.out.println("+++++++Filter2+++++++");
 
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)resp;
-        String psdKey = (String) request.getSession().getAttribute("dfldfjaldfjalsdfj");
-        System.out.println("++psdKey+++==="+psdKey);
 
-        if(Objects.equals(psdKey,"true")){
+        String userLogin = (String)request.getSession().getAttribute("USER_SUCCESS_LOGIN");
+        System.out.println("++userLogin+++==="+userLogin);
+
+        if(Objects.equals(userLogin,"true")){
             chain.doFilter(req, resp);
         }else {
-            request.getRequestDispatcher("/views/administer.jsp").forward(request,response);
+            request.getRequestDispatcher("/views/query.jsp").forward(request,response);
         }
-
-
-
-
-
-
     }
 
     public void init(FilterConfig config) throws ServletException {

@@ -19,10 +19,18 @@
     </servlet-mapping>
 
 
+
+
     <servlet>
         <servlet-name>main</servlet-name>
         <servlet-class>main.Servlet</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/adm</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/confirm</url-pattern>
@@ -30,10 +38,6 @@
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/query</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>main</servlet-name>
-        <url-pattern>/adm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
@@ -75,6 +79,10 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/gtreleases</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/startTest.do</url-pattern>
+    </servlet-mapping>
 
 
 
@@ -99,6 +107,19 @@
         <url-pattern>/delectItem</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+
+
+
+    <filter>
+        <filter-name>filter2</filter-name>
+        <filter-class>main.Filter2</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filter2</filter-name>
+        <url-pattern>*.do</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
 
 
 

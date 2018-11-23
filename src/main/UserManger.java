@@ -55,8 +55,8 @@ public class UserManger {
             } else {
 
                 System.out.println("增加user失败");
-                List<User> users = query(phone);
-                User user1 = users.get(0);
+                User user1 = query(phone);
+
                 responseStr = "你已有信息,密码:&nbsp;&nbsp;" + user1.yzm;
 
             }
@@ -107,9 +107,9 @@ public class UserManger {
     }
 
 
-    public static List<User> query(String phoneNumber) {
+    public static User query(String phoneNumber) {
 
-        List<User> users = new ArrayList<>();
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -117,7 +117,7 @@ public class UserManger {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from user   where tell  = ?";
+            String sql = "select * from user where tell  = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, phoneNumber);
             resultSet = preparedStatement.executeQuery();
@@ -127,10 +127,11 @@ public class UserManger {
                 String yzm = resultSet.getString("yzm");
                 String company = resultSet.getString("company");
                 String post = resultSet.getString("post");
-                User user = new User(name, tell, yzm, company, post);
-                users.add(user);
 
                 System.out.println("+++query+++tell:" + tell);
+
+                return  new User(name, tell, yzm, company, post);
+
             }
 
         } catch (Exception e) {
@@ -138,7 +139,7 @@ public class UserManger {
         } finally {
             JDBC.close(connection, preparedStatement, resultSet);
         }
-        return users;
+        return null;
     }
 
 
@@ -150,8 +151,13 @@ public class UserManger {
         String phone = request.getParameter("phoneQuery1");
         String password = request.getParameter("passwordQuery1");
 
-        List<User> users = query(phone);
-        User user = users.get(0);
+        User user = query(phone);
+        if(user == null){
+            JSONObject jsonObject = new JSONObject("{flag:fales}");
+            QuestionBack.responesToCline(response,jsonObject.toString());
+            return;
+        }
+
 
         System.out.println("user=" + user);
 
@@ -170,8 +176,13 @@ public class UserManger {
                 response.getOutputStream().write(json.toString().getBytes("utf8"));
 
 
+                request.setAttribute("USER_SUCCESS_LOGIN","true");
+
+
             } else {
-                response.getOutputStream().write("fales".getBytes("utf8"));
+                JSONObject jsonObject = new JSONObject("{flag:fales}");
+                QuestionBack.responesToCline(response,jsonObject.toString());
+                return;
             }
         } catch (IOException e) {
             e.printStackTrace();

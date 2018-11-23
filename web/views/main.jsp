@@ -42,24 +42,11 @@
     <div class="t4">电话：<span class="tell1"></span></div>
     <div class="t4">密码：<span class="yzm1"></span></div>
     <div class="tipes"><span class="tipes1">注意事项:</span>你的查询密码是你的验证码，请妥善保管。
-        <br>本次测评一共50题，整个测评时间 为30分，点击开始后即开始计时，30分钟到了 后，系统会自动交卷。
+        <%--<br>本次测评一共50题，整个测评时间 为30分，点击开始后即开始计时，30分钟到了 后，系统会自动交卷。--%>
     </div>
-    <div class="start">开始</div>
-</div>
-
-<div class="page2">
-
-    <div class="clock">29:59</div>
-
-    <div class="question">1、对定位的描述下列哪个选项正确?</div>
-
-
-    <div class="chose">
-        <div class="A">A.是要将品牌留在客户心目中</div>
-        <div class="B">B.客户熟知品牌</div>
-        <div class="C">C.给客户传递的关键信息</div>
-        <div class="D">D.与竞品区隔, 以实现公司的潜在利益最大化</div>
-    </div>
+    <form action="/ask/views/query.jsp">
+        <button class="goLogin">去登录</button>
+    </form>
 
 </div>
 
@@ -73,8 +60,9 @@
     <%--</div>--%>
     <script type="text/javascript">
 
-
-        //获取验证 按钮
+        /**
+         * 获取验证 按钮
+         */
         $(".buttonYzm").click(
             function () {
 
@@ -122,134 +110,66 @@
             });
 
 
-
-        //confirm button
+        /**
+         *  confirm button
+         */
         $(".button").click(
             function () {
-                // var name = $("[name='name']").val();
-                // var tell = $("[name='tell']").val();
-                // var yzm = $("[name='yzm']").val();
-                // var company = $("[name='company']").val();
-                // var post = $("[name='post']").val();
-                //
-                //
-                // console.log(name+"--"+tell+"--"+yzm+"---"+company+"----")
-                //
-                //
-                // if(tell == ''){
-                //     showtips("请输入手机号...");
-                //     return;
-                // }else if(yzm == ''){
-                //     showtips('请输入验证码...');
-                //     return;
-                // }
-                //
-                //
-                //
-                //
-                // $.ajax({
-                //     contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                //     url: "/ask/confirm",
-                //     type: "post",
-                //     data: {
-                //         name: name,
-                //         tell: tell,
-                //         yzm: yzm,
-                //         company: company,
-                //         post: post
-                //     },
-                //     dataType: "text",
-                //     success: function (result) {
-                //         console.log('result='+result);
-                //          if (result == '0') {
-                $(".page1").css({display: 'none'});
-                $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
-                $(".start").animate({top: '70%'}, 500);
-                $(".name1").text($(".name").val());
-                $(".tell1").text($(".tell").val());
-                $(".company1").text($(".company").val());
-                $(".post1").text($(".post").val());
-                $(".yzm1").text($(".yzm").val());
-                //         } else if (result == '2') {
-                //             showtips('手机号或验证码错误.....');
-                //         } else {
-                //             showtips(result);
-                //         }
-                //
-                //
-                //     }
-                // })
+                var name = $("[name='name']").val();
+                var tell = $("[name='tell']").val();
+                var yzm = $("[name='yzm']").val();
+                var company = $("[name='company']").val();
+                var post = $("[name='post']").val();
+
+
+                console.log(name + "--" + tell + "--" + yzm + "---" + company + "----")
+
+
+                if (tell == '') {
+                    showtips("请输入手机号...");
+                    return;
+                } else if (yzm == '') {
+                    showtips('请输入验证码...');
+                    return;
+                }
+
+
+                $.ajax({
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    url: "/ask/confirm",
+                    type: "post",
+                    data: {
+                        name: name,
+                        tell: tell,
+                        yzm: yzm,
+                        company: company,
+                        post: post
+                    },
+                    dataType: "text",
+                    success: function (result) {
+                        console.log('result=' + result);
+                        if (result == '0') {
+                            $(".page1").css({display: 'none'});
+                            $(".success").css({display: 'block'}).animate({top: '0px'}, 500);
+                            $(".start").animate({top: '70%'}, 500);
+                            $(".name1").text($(".name").val());
+                            $(".tell1").text($(".tell").val());
+                            $(".company1").text($(".company").val());
+                            $(".post1").text($(".post").val());
+                            $(".yzm1").text($(".yzm").val());
+                        } else if (result == '2') {
+                            showtips('手机号或验证码错误.....');
+                        } else {
+                            showtips(result);
+                        }
+
+
+                    }
+                })
 
             }
         )
 
-
-
-        //start button
-        $(".start").mousedown(function () {
-            $(".start").animate({}, 250).css({'backgroundColor': 'rgb(240,240,240)'});
-            setTimeout(function () {
-                $(".start").animate({width: '100%', height: '100%', top: '0px'}, 250);
-                setTimeout(function () {
-                    $(".start").animate({'border-radius': '0'}, 50);
-                    setTimeout(function () {
-                        $(".start").css({display: 'none'});
-                        $(".success").css({display: 'none'});
-                        $(".page1").css({display: 'none'});
-                        $(".page2").css({display: 'block'});
-
-                        setTimeout(function () {
-                            $(".A").animate({opacity: '1'}, 100);
-                            setTimeout(function () {
-                                $(".B").animate({opacity: '1'}, 100);
-                                setTimeout(function () {
-                                    $(".C").animate({opacity: '1'}, 100);
-                                    setTimeout(function () {
-                                        $(".D").animate({opacity: '1'}, 100);
-                                        var i = 1800 - 1;
-                                        var clock = setInterval(function () {
-                                            var a = parseInt(i / 60);
-                                            var b = i % 60;
-                                            $(".clock").text(a + ":" + b);
-                                            if(i<=0){
-                                                clearInterval(clock);
-                                                i = 1800-1;
-                                            }
-                                            i--;
-                                        }, 1000);
-
-                                    }, 50);
-                                }, 100);
-                            }, 150);
-                        }, 200);
-
-
-                    }, 250);
-                }, 250);
-            }, 250);
-
-        })
-        $(".start").mousedown();
-
-        $(".chose").click(function (even) {
-
-            var element = $(even.target);
-            var color = $(even.target).css('border-color');
-            var elName = even.target.className;
-
-
-            if (elName == 'A' | elName == 'B' | elName == 'C' | elName == 'D') {
-                //获取背景颜色攫取颜色值
-                if (color.substring(4, 7) == '100') {
-                    element.css({'border': 'white 5px solid'});
-                } else {
-                    element.css({'border': 'rgb(100,100,100) 5px solid'});
-                }
-
-
-                console.log('你选择了' + elName);
-            }
-        })
 
         function showtips(tipsStr) {
             if (tipsStr == '') return;
