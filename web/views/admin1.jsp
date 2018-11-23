@@ -114,6 +114,18 @@
         <div class="table"></div>
         <div class="page6body"></div>
     </div>
+    <div class="release">
+        <div class="lestteleas">
+            <div class="lestteleasTitle">使用中的试卷</div>
+            <div class="lestteleasTtxt">无</div>
+        </div>
+        <div class="nowreleas">
+            <div class="lestteleasTitlea">要发布的试卷</div>
+            <div  name="release"></div>
+            <button class="releasecanal">取消发布</button>
+            <button class="releasecofrim">发布试卷</button>
+        </div>
+    </div>
 </div>
 <div class="page7">
     <button class="page7button">取消删除试卷</button>
@@ -721,6 +733,7 @@
         if (elem.attr("class") != "page6hoverTable") return;
 
         var table = elem.text()
+        $("[name=\"release\"]").text(table);
         console.log(table);
 
         if (page6Select != 0) {
@@ -856,7 +869,59 @@
     })
 
     $(".buttonPage63").click(function () {
+         $(".release").css({ display: 'block'});
 
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/gtreleases',
+            traditional: true,
+            error: function () {// 请求失败处理函数
+                showtips("请求过于频繁.....")
+            },
+            dataType: 'text',
+            success: function (text) {
+                $(".lestteleasTtxt").text(text);
+            }
+        })
+
+
+    })
+    $(".releasecanal").click(function () {
+        $(".release").css({ display: 'none'});
+    })
+    $(".releasecofrim").click(function () {
+
+
+         if($("[name=\"release\"]").text() == "")
+             return showtips("请点击右方的列表选择...");
+        $(".release").css({ display: 'none'});
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/releases',
+            traditional: true,
+            data: {
+                table: $("[name=\"release\"]").text(),
+            },
+            error: function () {// 请求失败处理函数
+                showtips("请求过于频繁.....")
+            },
+            dataType: 'text',
+            success: function (text) {
+                $("[name=\"release\"]").text("");
+
+
+                console.log("发布成功:" + text);
+                showtips("发布成功...");
+            }
+        })
+
+    })
+    $("[name=\"release\"]").click(function () {
+        showtips("请点击右方的列表选择...")
     })
 
 

@@ -107,6 +107,12 @@ public class QuestionBack {
         for (int i = 0; i < array.length(); i++) {
             String table = array.get(i).toString();
             if (deleteTable(table)) {
+
+                if(Objects.equals(querReleaseLast(),table)){
+                    delReleaseLast();
+                }
+
+
                 j++;
             }
         }
@@ -141,6 +147,117 @@ public class QuestionBack {
 
 
     }
+
+    public static void releaseQuestions(HttpServletRequest request, HttpServletResponse respons) {
+
+        String table = (String) request.getParameter("table");
+
+        if(Objects.equals(table,"")){
+            responesToCline(respons, "没有试卷".toString());
+        }else {
+
+            String lastTable = querReleaseLast();
+            if (!(Objects.equals(lastTable, "") | (Objects.equals(lastTable, null)))) {
+                delReleaseLast();
+            }
+            addRelease(table);
+
+            responesToCline(respons, table.toString());
+        }
+    }
+    public static void gtreleasesQuestions(HttpServletRequest request, HttpServletResponse respons) {
+
+
+        String lastTable = querReleaseLast();
+        if(!(Objects.equals(lastTable,"")|(Objects.equals(lastTable,null)))){
+            responesToCline(respons,lastTable.toString());
+        }else {
+            responesToCline(respons,"无".toString());
+        }
+
+
+    }
+
+
+    public  static  boolean  addRelease(String table){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "insert into releases values(null ,?) ";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,table);
+            int row = preparedStatement.executeUpdate();
+            if(row>0){
+                return true;
+            }else {
+                return false;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, preparedStatement);
+        }
+        return false;
+
+    }
+
+    public  static  String  querReleaseLast(){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select tableNam from releases";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                return resultSet.getString("tableNam");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, preparedStatement, resultSet);
+        }
+        return null;
+
+    }
+
+    public  static  boolean  delReleaseLast(){
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            connection = JDBC.GetConnection();
+            String sql = "delete from releases where id > 0";
+            preparedStatement = connection.prepareStatement(sql);
+            int rows = preparedStatement.executeUpdate();
+            if (rows > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            JDBC.close(connection, preparedStatement);
+        }
+
+
+
+    }
+
 
     public static List<String> getQuestionsIdForTableName(String table) {
 

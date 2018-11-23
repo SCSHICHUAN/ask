@@ -127,6 +127,7 @@ h2{
     border-radius: 10px;
     width: 600px;
     height: 200px;
+    overflow: hidden;
 }
 
 .t5 {
@@ -463,6 +464,7 @@ h2{
     padding-left: 10px;
     padding-bottom: 10px;
     padding-right: 50px;
+    font-size: 14px;
 }
 .buttonPage2{
     display: none;
@@ -477,12 +479,74 @@ h2{
 .page6hoverTable2{
     display: none;
 }
+.release{
+    background-color: rgb(50,50,50);
+    width: 300px;
+    height: 400px;
+    position:fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    border: 1px solid rgb(40,40,40);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    display: none;
+}
+.lestteleasTitle,.lestteleasTitlea{
+    font-size: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 20px;
+
+}
+[name="release"]{
+    background-color: rgb(50,50,50);
+    color: white;
+    width: 270px;
+    height: 40px;
+    border: 1px solid rgb(70,70,70);
+    margin: 10px;
+    padding: 5px;
+    outline: none;
+    font-size: 15px;
+    margin-top: 20px;
+    color: rgb(237,29,122);
+    cursor: pointer;
+    font-weight: 400;
+
+}
+.lestteleasTtxt{
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 260px;
+    height: 40px;
+    background-color:  rgb(70,70,70);
+    padding: 10px;
+    color: rgb(237,29,122);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-weight: 400;
+}
+.releasecofrim{
+    position: absolute;
+    bottom: 10px;
+    width: 290px;
+    margin-left: 5px;
+}
+.releasecanal{
+    width: 290px;
+    position: absolute;
+    bottom: 65px;
+    margin-left: 5px;
+}
+.lestteleasTitlea{
+    margin-top: 50px;
+}
 
 
-
-
-
-
-
-
-
+release

@@ -67,11 +67,14 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/deleteTable</url-pattern>
     </servlet-mapping>
-
-
-
-
-
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/releases</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/gtreleases</url-pattern>
+    </servlet-mapping>
 
 
 
@@ -84,6 +87,16 @@
     <filter-mapping>
         <filter-name>filter</filter-name>
         <url-pattern>/views/admin1.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>filter</filter-name>
+        <url-pattern>/deleteTable</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>filter</filter-name>
+        <url-pattern>/delectItem</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
