@@ -75,6 +75,11 @@ public class UserManger {
 
     }
 
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
     public static boolean AddUser(User user) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -106,7 +111,11 @@ public class UserManger {
 
     }
 
-
+    /**
+     * 手机号查询用户
+     * @param phoneNumber
+     * @return
+     */
     public static User query(String phoneNumber) {
 
 
@@ -143,6 +152,11 @@ public class UserManger {
     }
 
 
+    /**
+     * 用户登录
+     * @param request
+     * @param response
+     */
     public  static void querTestResult(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("+++++++querTestResult++++++");

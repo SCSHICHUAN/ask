@@ -13,6 +13,9 @@ public class Filter2 implements Filter {
     public void destroy() {
     }
 
+    /**
+     * 过滤没有登录的用户
+     */
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
         System.out.println("+++++++Filter2+++++++");

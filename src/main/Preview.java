@@ -56,6 +56,11 @@ public class Preview {
    }
 
 
+    /**
+     * 根据id获取题目
+     * @param id
+     * @return
+     */
     public static TestIteam getTestItemForId(String id){
 
         Connection connection = null;

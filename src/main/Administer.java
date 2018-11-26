@@ -10,6 +10,10 @@ public class Administer {
         String user = (String)request.getParameter("adminiNum");
         String psd = (String)request.getParameter("adminiPassword");
 
+
+        /**
+         * 管理人员登录，成功后设置登录成功的标志
+         */
         if (Objects.equals(user,"1") && Objects.equals(psd,"1")){
                request.getSession().setAttribute("dfldfjaldfjalsdfj","true");
                try {

@@ -17,6 +17,9 @@ public class Filter implements javax.servlet.Filter {
         System.out.println("+++++++Filter+++++++");
 
 
+        /**
+         * 过滤没有登录的管理人员
+         */
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)resp;
         String psdKey = (String) request.getSession().getAttribute("dfldfjaldfjalsdfj");

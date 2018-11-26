@@ -14,14 +14,17 @@ import java.sql.PreparedStatement;
 
 public class DeleteItem {
 
+    /**
+     * 从前端获取要删除的题目ID的数组
+     * @param request
+     * @param response
+     */
     public static void DeleteItem(HttpServletRequest request, HttpServletResponse response) {
+
         String ids = (String)request.getParameter("ids");
         JSONArray array = new JSONArray(ids);
 
-        /**
-         * 通过id获取到题目对象，然后转换为JS对象
-         * 传递给前端
-         */
+
         JSONArray jsonArray = new JSONArray();
 
         int j = 0;
@@ -42,6 +45,11 @@ public class DeleteItem {
     }
 
 
+    /**
+     * 删除题目对象
+     * @param id
+     * @return
+     */
     public static boolean delect(String id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

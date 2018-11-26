@@ -19,33 +19,33 @@ public class Servlet extends HttpServlet {
         String path = request.getServletPath();
         System.out.println("path =" + path);
 
-        if (Objects.equals(path, "/confirm")) {
+        if (Objects.equals(path, "/confirm")) {//用户注册
             UserManger.getPar(request, response);
-        } else if (Objects.equals(path, "/query")) {
+        } else if (Objects.equals(path, "/query")) {//用户登录
             UserManger.querTestResult(request, response);
-        }else if(Objects.equals(path,"/adm")){
+        }else if(Objects.equals(path,"/adm")){//管理人员登录
             Administer.landAdmin(request,response);
-        }else if(Objects.equals(path,"/ques")){
+        }else if(Objects.equals(path,"/ques")){//添加题目
             Questions.getPar(request,response);
-        }else if(Objects.equals(path,"/queryItem")){
+        }else if(Objects.equals(path,"/queryItem")){//查询一页的题目
             Questions.querItems(request,response);
-        }else if(Objects.equals(path,"/preview")){
+        }else if(Objects.equals(path,"/preview")){//预览试卷
             Preview.getPar(request,response);
-        }else if(Objects.equals(path,"/delectItem")){
+        }else if(Objects.equals(path,"/delectItem")){//删除题目数组
             DeleteItem.DeleteItem(request,response);
-        }else if(Objects.equals(path,"/QuestionBack")){
+        }else if(Objects.equals(path,"/QuestionBack")){//生层试卷
             QuestionBack.getPar(request,response);
-        }else if(Objects.equals(path,"/showTables")){
-            QuestionBack.getTables(request,response);
-        }else if(Objects.equals(path,"/showQuestions")){
+        }else if(Objects.equals(path,"/showTables")){//试卷的名称目录
+            QuestionBack.getTables(response);
+        }else if(Objects.equals(path,"/showQuestions")){//试卷里的题目
             QuestionBack.getQuestions(request,response);
-        }else if(Objects.equals(path,"/deleteTable")){
+        }else if(Objects.equals(path,"/deleteTable")){//删除试卷数组
             QuestionBack.deleteTableGetPar(request,response);
-        }else if(Objects.equals(path,"/releases")){
+        }else if(Objects.equals(path,"/releases")){//发布试卷
             QuestionBack.releaseQuestions(request,response);
-        }else if(Objects.equals(path,"/gtreleases")){
+        }else if(Objects.equals(path,"/gtreleases")){//获取发布的试卷题目
             QuestionBack.gtreleasesQuestions(request,response);
-        }else if(Objects.equals(path,"/startTest")){
+        }else if(Objects.equals(path,"/startTest.do")){//获取一张试卷
 
         }
 

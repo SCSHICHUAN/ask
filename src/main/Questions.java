@@ -23,6 +23,11 @@ public class Questions {
 
    public static int oldPge;
 
+    /**
+     * 从前端获取题目
+     * @param request
+     * @param response
+     */
     public static void getPar(HttpServletRequest request, HttpServletResponse response) {
 
 
@@ -55,9 +60,12 @@ public class Questions {
 
     }
 
+    /**
+     * 响应给前端一页的题目
+     * @param request
+     * @param response
+     */
     public static void querItems(HttpServletRequest request, HttpServletResponse response) {
-
-
 
 
 
@@ -106,6 +114,11 @@ public class Questions {
 
     }
 
+    /**
+     * 数据库插入题目
+     * @param iteam
+     * @return
+     */
     private static Boolean addTestItem(TestIteam iteam) {
 
 
@@ -144,6 +157,10 @@ public class Questions {
 
     }
 
+    /**
+     * 获取题目的总数
+     * @return
+     */
     private static int TestItemCoun() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -173,6 +190,12 @@ public class Questions {
         return -1;
     }
 
+    /**
+     * 数据库查询一页的题目
+     * @param start
+     * @param end
+     * @return
+     */
     private static List<TestIteam> queryTest(int start, int end) {
 
 

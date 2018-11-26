@@ -18,6 +18,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class QuestionBack {
+    /**
+     * 生层试卷
+     * @param request
+     * @param response
+     */
     public static void getPar(HttpServletRequest request, HttpServletResponse response) {
 
         String flag = "";
@@ -81,7 +86,11 @@ public class QuestionBack {
 
     }
 
-    public static void getTables(HttpServletRequest request, HttpServletResponse response) {
+    /**
+     * 响应给前端，试卷的名称目录
+     * @param response
+     */
+    public static void getTables(HttpServletResponse response) {
         JSONArray jsonArray = new JSONArray();
 
         for (String table : showTables()) {
@@ -98,6 +107,9 @@ public class QuestionBack {
 
     }
 
+    /**
+     * 删除选中的所有试卷
+     */
     public static void deleteTableGetPar(HttpServletRequest request, HttpServletResponse response) {
 
         String ids = (String) request.getParameter("ids");
@@ -121,8 +133,11 @@ public class QuestionBack {
     }
 
 
-
-
+    /**
+     * 获取试卷，响应给前端
+     * @param request
+     * @param respons
+     */
     public static void getQuestions(HttpServletRequest request, HttpServletResponse respons) {
 
         String table = (String) request.getParameter("table");
@@ -148,6 +163,12 @@ public class QuestionBack {
 
     }
 
+
+    /**
+     * 发布试卷，并且删除老的发布，响应给前端
+     * @param request
+     * @param respons
+     */
     public static void releaseQuestions(HttpServletRequest request, HttpServletResponse respons) {
 
         String table = (String) request.getParameter("table");
@@ -165,6 +186,12 @@ public class QuestionBack {
             responesToCline(respons, table.toString());
         }
     }
+
+    /**
+     * 获取发布的试卷，响应给前端
+     * @param request
+     * @param respons
+     */
     public static void gtreleasesQuestions(HttpServletRequest request, HttpServletResponse respons) {
 
 
@@ -179,6 +206,11 @@ public class QuestionBack {
     }
 
 
+    /**
+     * 发布试卷
+     * @param table
+     * @return
+     */
     public  static  boolean  addRelease(String table){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -206,6 +238,10 @@ public class QuestionBack {
 
     }
 
+    /**
+     * 查询已经发布的试卷
+     * @return
+     */
     public  static  String  querReleaseLast(){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -259,6 +295,11 @@ public class QuestionBack {
     }
 
 
+    /**
+     * 获取table中的题目id
+     * @param table
+     * @return
+     */
     public static List<String> getQuestionsIdForTableName(String table) {
 
         List<String> ids = new ArrayList<>();
@@ -331,7 +372,10 @@ public class QuestionBack {
 //
 //    }
 
-
+    /**
+     * 显示试卷
+     * @return
+     */
     public static List<String> showTables() {
 
 
@@ -364,7 +408,7 @@ public class QuestionBack {
     }
 
     /**
-     * 动态的创建table
+     * 动态的创建table，生层试卷
      * @param table
      * @return
      */
@@ -399,7 +443,7 @@ public class QuestionBack {
     }
 
     /**
-     * 把table的名字级联添加到tableNames的表中保存下来
+     * 把table的名字级联添加到tableNames的表中保存下来，tableNames表是保存试卷名称目录
      * @param table
      * @return
      */
@@ -493,8 +537,12 @@ public class QuestionBack {
     }
 
 
-
-
+    /**
+     * 试卷中添加题目的id
+     * @param table
+     * @param id
+     * @return
+     */
     public static boolean addQuertion(String table, String id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

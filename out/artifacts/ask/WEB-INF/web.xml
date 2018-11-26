@@ -88,8 +88,6 @@
 
 
 
-
-
     <filter>
         <filter-name>filter</filter-name>
         <filter-class>main.Filter</filter-class>

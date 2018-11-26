@@ -216,35 +216,6 @@
         }
     })
 
-    /**
-     * 获取试卷
-     */
-    function getTestPaper() {
-
-        $.ajax({
-            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            url: "/ask/testPaper",
-            type: "post",
-            error: function () {
-                console.log("请求失败...")
-            },
-            dataType: "json",
-            success: function (result) {
-
-                console.log("用户登录=" + result.flag);
-
-                if (result.flag == "fales") {
-                    $(".tips").text("登录后才可以测试...");
-                } else {
-
-                }
-
-
-            }
-        })
-    }
-
-
 
 </script>
 </body>
