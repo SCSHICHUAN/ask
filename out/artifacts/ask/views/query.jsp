@@ -58,6 +58,40 @@
 
 <script type="text/javascript">
 
+    function size() {
+        var width = $(window).width();
+        var height = $(window).height();
+
+        if (width > height) {
+            // $("body").css({zoom:'0.5'});
+        }
+        console.log("width:" + width + " ,height:" + height);
+
+
+        var userAgentInfo = navigator.userAgent;
+        console.log(userAgentInfo);
+
+        var mobileAgents = ["Android", "iPhone", "SymbianOS", "Windows Phone"];
+
+        var moblie = false;
+        //根据userAgent判断是否是手机
+        for (var i = 0; i < mobileAgents.length; i++) {
+            if (userAgentInfo.indexOf(mobileAgents[i]) > 0) {
+                moblie = true;
+                break;
+            }
+        }
+        if(moblie){
+            $("body").css({zoom:'1'});
+        }else {
+            $("body").css({zoom:'0.5'});
+        }
+
+    }
+
+    size();
+
+
     $(".button").click(function () {
 
         var phoneQuery = $("[name='phoneQuery']").val();
@@ -418,6 +452,9 @@
                     $(".D").css({'border': 'rgb(100,100,100) 5px solid'});
                 }
 
+                /**
+                 * 删除旧的状态
+                 */
                 answerArray.splice(i, 1);
             }
         }
