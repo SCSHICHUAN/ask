@@ -37,18 +37,19 @@
 </div>
 
 <div class="page2">
-
     <div class="clock">29:59</div>
 
-    <div class="question">1、对定位的描述下列哪个选项正确?</div>
-
-
-    <div class="chose">
-        <div class="A">A.是要将品牌留在客户心目中</div>
-        <div class="B">B.客户熟知品牌</div>
-        <div class="C">C.给客户传递的关键信息</div>
-        <div class="D">D.与竞品区隔, 以实现公司的潜在利益最大化</div>
+    <div class="quesAry">
+        <%--<div class="question">1、对定位的描述下列哪个选项正确?</div>--%>
+        <%--<div class="chose">--%>
+        <%--<div class="A">A.是要将品牌留在客户心目中</div>--%>
+        <%--<div class="B">B.客户熟知品牌</div>--%>
+        <%--<div class="C">C.给客户传递的关键信息</div>--%>
+        <%--<div class="D">D.与竞品区隔, 以实现公司的潜在利益最大化</div>--%>
+        <%--</div>--%>
     </div>
+
+
     <button class="upPage">上一页</button>
     <button class="dnPabe">下一页</button>
 
@@ -153,6 +154,9 @@
      * start button
      */
     $(".start").mousedown(function () {
+
+        getTestPaper();
+
         $(".start").animate({}, 250).css({'backgroundColor': 'rgb(240,240,240)'});
         setTimeout(function () {
             $(".start").animate({width: '100%', height: '100%', top: '0px'}, 250);
@@ -164,30 +168,9 @@
                     $(".page1").css({display: 'none'});
                     $(".page2").css({display: 'block'});
 
-                    setTimeout(function () {
-                        $(".A").animate({opacity: '1'}, 100);
-                        setTimeout(function () {
-                            $(".B").animate({opacity: '1'}, 100);
-                            setTimeout(function () {
-                                $(".C").animate({opacity: '1'}, 100);
-                                setTimeout(function () {
-                                    $(".D").animate({opacity: '1'}, 100);
-                                    var i = 1800 - 1;
-                                    var clock = setInterval(function () {
-                                        var a = parseInt(i / 60);
-                                        var b = i % 60;
-                                        $(".clock").text(a + ":" + b);
-                                        if (i <= 0) {
-                                            clearInterval(clock);
-                                            i = 1800 - 1;
-                                        }
-                                        i--;
-                                    }, 1000);
-
-                                }, 50);
-                            }, 100);
-                        }, 150);
-                    }, 200);
+                    $(".dnPabe").click();
+                    animationABCD();
+                    clock();
 
 
                 }, 250);
@@ -196,7 +179,151 @@
 
     })
 
-    $(".chose").click(function (even) {
+
+    /**
+     * 获取试卷
+     */
+    var testPaper = [];
+
+    function getTestPaper() {
+
+        testPaper = [];
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'post',
+            url: '/ask/startTest.do',
+            traditional: true,
+            error: function () {// 请求失败处理函数
+                // showtips("请求失败.....")
+            },
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+
+
+                /**
+                 * 此处可以直接用 testPaper = json，为了代码的阅读用下面的方法来展示
+                 */
+                for (var i = 0; i < json.length; i++) {
+
+                    var itemQues = new Object();
+                    itemQues.id = json[i].idQus;
+                    itemQues.title = json[i].title;
+                    itemQues.A = json[i].A;
+                    itemQues.B = json[i].B;
+                    itemQues.C = json[i].C;
+                    itemQues.D = json[i].D;
+
+                    testPaper.push(itemQues);
+
+                }
+
+                console.log("testPaper.length: " + testPaper.length);
+                console.log("testPaper[0].title: " + testPaper[0].title);
+
+                for (var i = 0; i < json.length; i++) {
+
+                    console.log("testPaper[x].title: " + testPaper[i].title);
+
+                }
+
+
+            }
+        })
+    }
+
+    function animationABCD() {
+        setTimeout(function () {
+            $(".A").animate({opacity: '1'}, 100);
+            setTimeout(function () {
+                $(".B").animate({opacity: '1'}, 100);
+                setTimeout(function () {
+                    $(".C").animate({opacity: '1'}, 100);
+                    setTimeout(function () {
+                        $(".D").animate({opacity: '1'}, 100);
+                    }, 50);
+                }, 100);
+            }, 150);
+        }, 200);
+    }
+
+    function clock() {
+        var i = 1800 - 1;
+        var clock = setInterval(function () {
+            var a = parseInt(i / 60);
+            var b = i % 60;
+            $(".clock").text(a + ":" + b);
+            if (i <= 0) {
+                clearInterval(clock);
+                i = 1800 - 1;
+            }
+            i--;
+        }, 1000);
+    }
+
+    /**
+     * 上一页
+     */
+    var currentPger = -1;
+    $(".upPage").click(function () {
+        currentPger--;
+        if (currentPger <= 0) {
+            currentPger = 0;
+        }
+        var id = $(".question").attr("id");
+        answer(id);
+        getPage();
+        var NEWid = $(".question").attr("id");
+        answerBackShow(NEWid)
+        animationABCD();
+    })
+    /**
+     * 下一页
+     */
+    $(".dnPabe").click(function () {
+        /**
+         * 点击就加一
+         */
+        ++currentPger;
+        if (currentPger > testPaper.length - 1) {
+            currentPger = testPaper.length - 1;
+        }
+
+        /**
+         * 保存当前的状态，添加到数组中
+         */
+        var id = $(".question").attr("id");
+        answer(id);
+
+
+        /**
+         * 跳到新的状态
+         */
+        getPage();
+
+        /**
+         *回显示答案状态
+         */
+        var NEWid = $(".question").attr("id");
+        answerBackShow(NEWid)
+        animationABCD();
+
+    })
+
+    function getPage() {
+        $(".quesAry").html("");
+        $(".quesAry").html("<div class=\"question\"id=\"" + testPaper[currentPger].id + "\">" + (currentPger + 1) + "&nbsp;." + testPaper[currentPger].title + "</div>\n" +
+            "        <div class=\"chose\">\n" +
+            "            <div class=\"A\">A." + testPaper[currentPger].A + "</div>\n" +
+            "            <div class=\"B\">B." + testPaper[currentPger].B + "</div>\n" +
+            "            <div class=\"C\">C." + testPaper[currentPger].C + "</div>\n" +
+            "            <div class=\"D\">D." + testPaper[currentPger].D + "</div>\n" +
+            "        </div>" +
+            "<div class=\"space\"></div>")
+    }
+
+    $(".quesAry").click(function (even) {
 
         var element = $(even.target);
         var color = $(even.target).css('border-color');
@@ -210,11 +337,91 @@
             } else {
                 element.css({'border': 'rgb(100,100,100) 5px solid'});
             }
-
-
             console.log('你选择了' + elName);
         }
     })
+
+    function answerABCD() {
+        var elems = $(".chose").children();
+        var answer = new Object();
+
+
+        var color = $(elems[0]).css('border-color');
+        if (color == 'rgb(100, 100, 100)') {
+            answer.A = 'A';
+        } else {
+            answer.A = "";
+        }
+        var color1 = $(elems[1]).css('border-color');
+        if (color1 == 'rgb(100, 100, 100)') {
+            answer.B = 'B';
+        } else {
+            answer.B = "";
+        }
+        var color2 = $(elems[2]).css('border-color');
+        if (color2 == 'rgb(100, 100, 100)') {
+            answer.C = 'C';
+        } else {
+            answer.C = "";
+        }
+        var color3 = $(elems[3]).css('border-color');
+        if (color3 == 'rgb(100, 100, 100)') {
+            answer.D = 'D';
+        } else {
+            answer.D = "";
+        }
+
+        console.log(answer);
+        return answer;
+    }
+
+    /**
+     * 用户的答案集合
+     * @type {Array}
+     */
+    var answerArray = [];
+
+    function answer(id) {
+
+        var testItem = new Object();
+        testItem.id = id;
+        testItem.answer = answerABCD();
+        answerArray.push(testItem);
+
+        console.log(answerArray);
+    }
+
+    function answerBackShow(NEWid) {
+
+        for (var i = 0; i < answerArray.length; i++) {
+            var id = answerArray[i].id;
+
+            console.log("id:" + id + ",NEWid:" + NEWid);
+
+            if (id == NEWid) {
+
+                var A = answerArray[i].answer.A;
+                var B = answerArray[i].answer.B;
+                var C = answerArray[i].answer.C;
+                var D = answerArray[i].answer.D;
+
+                if (A == 'A') {
+                    $(".A").css({'border': 'rgb(100,100,100) 5px solid'});
+                }
+                if (B == 'B') {
+                    $(".B").css({'border': 'rgb(100,100,100) 5px solid'});
+                }
+                if (C == 'C') {
+                    $(".C").css({'border': 'rgb(100,100,100) 5px solid'});
+                }
+                if (D == 'D') {
+                    $(".D").css({'border': 'rgb(100,100,100) 5px solid'});
+                }
+
+                answerArray.splice(i, 1);
+            }
+        }
+    }
 
 
 </script>

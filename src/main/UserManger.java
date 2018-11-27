@@ -190,7 +190,7 @@ public class UserManger {
                 response.getOutputStream().write(json.toString().getBytes("utf8"));
 
 
-                request.setAttribute("USER_SUCCESS_LOGIN","true");
+                request.getSession().setAttribute("USER_SUCCESS_LOGIN","true");
 
 
             } else {

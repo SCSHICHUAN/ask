@@ -163,6 +163,36 @@ public class QuestionBack {
 
     }
 
+    /**
+     * 获取试卷，响应给前端,答题
+     * @param request
+     * @param respons
+     */
+    public static void getQuestions(HttpServletRequest request, HttpServletResponse respons,String tableName) {
+
+        String table = tableName;
+
+        System.out.println("table=" + table);
+
+        if (Objects.equals("", table) || table == null) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("flag", "false");
+            responesToCline(respons, jsonObject.toString());
+            return;
+        } else {
+            List<String> tableIDs = getQuestionsIdForTableName(table);
+            List<TestIteam> testIteams = new ArrayList<>();
+            for (String id : tableIDs) {
+                System.out.println("id=" + id);
+                testIteams.add(Preview.getTestItemForId(id));
+            }
+            JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
+            responesToCline(respons, jsonArray.toString());
+        }
+
+
+    }
+
 
     /**
      * 发布试卷，并且删除老的发布，响应给前端
@@ -266,6 +296,10 @@ public class QuestionBack {
 
     }
 
+    /**
+     * 删除已经发布的试卷
+     * @return
+     */
     public  static  boolean  delReleaseLast(){
 
         Connection connection = null;
