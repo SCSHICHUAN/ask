@@ -63,6 +63,10 @@ public class Servlet extends HttpServlet {
         else if(Objects.equals(path,"/startTest.do")){//获取一张试卷
             QuestionBack.getQuestions(request,response,QuestionBack.querReleaseLast());
         }
+        else if(Objects.equals(path,"/wellDowne.do")){//提交试卷
+            Score.getUserAnswer(request,response);
+        }
+
 
 
     }

@@ -25,6 +25,43 @@
 
 <script type="text/javascript">
 
+    function size() {
+        var width = $(window).width();
+        var height = $(window).height();
+
+        if (width > height) {
+            // $("body").css({zoom:'0.5'});
+        }
+        console.log("width:" + width + " ,height:" + height);
+
+        /**
+         *浏览器环境对象 navigator
+         */
+        var userAgentInfo = navigator.userAgent;
+        console.log(userAgentInfo);
+
+        var mobileAgents = ["Android", "iPhone", "SymbianOS", "Windows Phone"];
+
+        var moblie = false;
+        //根据userAgent判断是否是手机
+        for (var i = 0; i < mobileAgents.length; i++) {
+            if (userAgentInfo.indexOf(mobileAgents[i]) > 0) {
+                moblie = true;
+                break;
+            }
+        }
+        if (moblie) {
+            $("body").css({'zoom': '1'});
+            console.log("你的是手机浏览器")
+        } else {
+            $("body").css({'zoom': '0.5'});
+            console.log("你的电脑浏览器")
+        }
+
+    }
+
+    size();
+
     function s() {
 
         if ("${flag}" == "false") {

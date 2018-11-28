@@ -51,6 +51,7 @@
 
 
     <button class="upPage">上一页</button>
+    <button class="wellDowne">交卷</button>
     <button class="dnPabe">下一页</button>
 
 </div>
@@ -84,9 +85,11 @@
             }
         }
         if (moblie) {
-            $("body").css({zoom: '1'});
+            $("body").css({'zoom': '1'});
+            console.log("你的是手机浏览器")
         } else {
-            $("body").css({zoom: '0.5'});
+            $("body").css({'zoom': '0.5'});
+            console.log("你的电脑浏览器")
         }
 
     }
@@ -132,7 +135,7 @@
                     $(".resultQuery").css({'display': 'block'}).animate({top: '0'}, 350);
                     $(".queryPage").animate({top: '10%', left: '10%', width: '80%', height: '80%'}, 350);
                     console.log('result=' + result.name);
-                    $(".uerName").html("姓名:&nbsp;&nbsp;" + result.name);
+                    $(".uerName").html("姓名:&nbsp;&nbsp;" + result.name).attr('userID', result.id);
                     $(".uerCom").html("公司:&nbsp;&nbsp;" + result.conpany);
                     $(".uerPost").html("职务:&nbsp;&nbsp;" + result.post);
                     $(".uerTell").html("电话:&nbsp;&nbsp;" + result.tell);
@@ -204,7 +207,8 @@
                     $(".page1").css({display: 'none'});
                     $(".page2").css({display: 'block'});
 
-                    $(".dnPabe").click();
+                    getPage(0);
+                    // $(".dnPabe").click();
                     animationABCD();
                     clock();
 
@@ -301,7 +305,7 @@
     /**
      * 上一页
      */
-    var currentPger = -1;
+    var currentPger = 0;
     $(".upPage").click(function () {
         currentPger--;
         if (currentPger <= 0) {
@@ -309,22 +313,18 @@
         }
         var id = $(".question").attr("id");
         answer(id);
-        getPage();
+        getPage(currentPger);
         var NEWid = $(".question").attr("id");
-        answerBackShow(NEWid)
+        answerBackShow(NEWid);
         animationABCD();
     })
     /**
      * 下一页
      */
     $(".dnPabe").click(function () {
-        /**
-         * 点击就加一
-         */
-        ++currentPger;
-        if (currentPger > testPaper.length - 1) {
-            currentPger = testPaper.length - 1;
-        }
+
+
+        console.log("answerArray.length:"+answerArray.length);
 
         /**
          * 保存当前的状态，添加到数组中
@@ -332,24 +332,37 @@
         var id = $(".question").attr("id");
         answer(id);
 
+        /**
+         * 点击就加一
+         */
+        ++currentPger;
+        if (currentPger >= testPaper.length) {
+            currentPger = testPaper.length;
+            $(".wellDowne").css({display: 'block'});
+        }
 
+        /**
+         * 已经没有状态了
+         */
+        if (currentPger >= testPaper.length) return;
         /**
          * 跳到新的状态
          */
-        getPage();
+        getPage(currentPger);
 
         /**
          *回显示答案状态
          */
         var NEWid = $(".question").attr("id");
-        answerBackShow(NEWid)
+        answerBackShow(NEWid);
         animationABCD();
+        console.log("answerArray.length2:"+answerArray.length);
 
     })
 
-    function getPage() {
+    function getPage(currentPger) {
         $(".quesAry").html("");
-        $(".quesAry").html("<div class=\"question\"id=\"" + testPaper[currentPger].id + "\">" + (currentPger + 1) + "&nbsp;." + testPaper[currentPger].title + "</div>\n" +
+        $(".quesAry").html("<div class=\"question\"id=\"" + testPaper[currentPger].id + "\">" + (currentPger + 1) + ".&nbsp;" + testPaper[currentPger].title + "</div>\n" +
             "        <div class=\"chose\">\n" +
             "            <div class=\"A\">A." + testPaper[currentPger].A + "</div>\n" +
             "            <div class=\"B\">B." + testPaper[currentPger].B + "</div>\n" +
@@ -429,10 +442,13 @@
 
     function answerBackShow(NEWid) {
 
+
+
+
         for (var i = 0; i < answerArray.length; i++) {
             var id = answerArray[i].id;
 
-            console.log("id:" + id + ",NEWid:" + NEWid);
+             console.log("id:" + id + ",NEWid:" + NEWid);
 
             if (id == NEWid) {
 
@@ -459,8 +475,47 @@
                  */
                 answerArray.splice(i, 1);
             }
+
         }
     }
+
+    function asnserCurrenState(){
+
+
+
+
+
+
+
+    }
+    $(".wellDowne").click(function () {
+
+        asnserCurrenState();
+
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/wellDowne.do",
+            traditional: true,
+            data: {
+                uerID: $(".uerName").attr('userid'),
+                answer: JSON.stringify(answerArray)
+            },
+            error: function () {
+
+            },
+            dataType: "json",
+            success: function (json) {
+
+            }
+
+
+        })
+
+
+
+    })
 
 
 </script>

@@ -23,7 +23,7 @@ public class UserManger {
         String post = (String) request.getParameter("post");
 
 
-        User user = new User(name, tell, yzm, company, post);
+        User user = new User(null,name, tell, yzm, company, post);
 
         System.out.println(user.toString());
 
@@ -131,6 +131,7 @@ public class UserManger {
             preparedStatement.setObject(1, phoneNumber);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                String id = String.valueOf(resultSet.getInt("id"));
                 String name = resultSet.getString("name");
                 String tell = resultSet.getString("tell");
                 String yzm = resultSet.getString("yzm");
@@ -139,8 +140,7 @@ public class UserManger {
 
                 System.out.println("+++query+++tell:" + tell);
 
-                return  new User(name, tell, yzm, company, post);
-
+                return  new User(id,name, tell, yzm, company, post);
             }
 
         } catch (Exception e) {
@@ -180,6 +180,7 @@ public class UserManger {
             if (Objects.equals(phone, user.tell) && Objects.equals(password, user.yzm)) {
 
                 Map<String, String> userMap = new HashMap<>();
+                userMap.put("id", user.id);
                 userMap.put("name", user.name);
                 userMap.put("tell", user.tell);
                 userMap.put("yzm", user.yzm);
