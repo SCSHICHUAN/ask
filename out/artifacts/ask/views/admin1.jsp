@@ -773,6 +773,8 @@
                     var B = json[i].B;
                     var C = json[i].C;
                     var D = json[i].D;
+                    var answer = json[i].answer;
+                    var category = json[i].category;
 
 
                     var color = 'rgb(250,250,250)';
@@ -787,6 +789,8 @@
                         "    <div class=\"B1\">B:" + B + "</div>\n" +
                         "    <div class=\"C1\">C:" + C + "</div>\n" +
                         "    <div class=\"D1\">D:" + D + "</div>\n" +
+                        "    <div class=\"title1\">"+ "答案:&nbsp;"
+                        + answer +"&nbsp;&nbsp;&nbsp;类别:&nbsp;" + category+"</div>\n" +
                         "</div>";
 
                 }

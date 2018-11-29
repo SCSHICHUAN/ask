@@ -57,22 +57,10 @@
 </div>
 
 <div class="removeSelf" style="background-color: rgb(45,45,45);
-border-radius: 5px;
-box-shadow: 0 0 50px rgba(0,0,0,0.2);
-width: 400px;
-height: 200px;
-position: fixed;
-margin: auto;
-top: 0;
-bottom: 0;
-right: 0;
-left: 0;
-color: white;
-text-align: center;
-line-height: 200px;
-z-index: 999;
-">请求失败...
-</div>
+border-radius: 5px;box-shadow: 0 0 50px rgba(0,0,0,0.2);
+width: 400px;height: 200px;position: fixed;margin: auto;top: 0;
+bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;
+z-index: 999;">请求失败...</div>
 
 <script type="text/javascript">
     function hidden() {
@@ -495,6 +483,8 @@ z-index: 999;
     }
 
 
+
+
     $(".wellDowne").click(function () {
 
         var id = $(".question").attr("id");
@@ -514,8 +504,8 @@ z-index: 999;
             },
             dataType: "json",
             success: function (json) {
-
                 console.log(json);
+                showAnswerResult(json);
             }
 
         })
@@ -527,6 +517,45 @@ z-index: 999;
         $(even.target).css({display: 'none'});
         console.log($(this.target));
     })
+
+    /**
+     * {"ok":[{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"},
+     *        {answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}]
+     * }
+     * @param array
+     */
+    function showAnswerResult(array) {
+
+        var categorys = {};
+
+        for (var i = 0;i<array.length;i++){
+            var category = array[i].category;
+
+            var flag = false;
+            for (var it in categorys){
+                if(it == category){
+                    flag = true;
+                }
+            }
+            if(flag == true){
+                categorys[category].push(array[i]);
+
+            }else {
+                categorys[category] = [];
+                categorys[category].push(array[i]);
+            }
+
+        }
+        console.log(categorys)
+
+
+        
+
+    }
+
+
+
+
 
 </script>
 </body>
