@@ -128,7 +128,6 @@ public class Score {
 
     /**
      * 核对用户的答案
-     *
      * @param jsonArray
      * @param userID
      */
@@ -175,8 +174,7 @@ public class Score {
 
     /**
      * 保存用户的答题记录
-     *
-     * @param user
+     * @param answer
      * @return
      */
     public static boolean AddAnswer(Map<String, String> answer) {
@@ -241,7 +239,7 @@ public class Score {
 
     /**
      * 根据用户的id获取答题记录
-     * @param id
+     * @param userID
      * @return
      */
     public static JSONArray getTestRecord(String userID) {
@@ -280,10 +278,6 @@ public class Score {
 
         return jsonArray;
     }
-
-
-
-
 
 
 
