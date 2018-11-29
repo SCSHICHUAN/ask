@@ -143,6 +143,7 @@ public class Score {
                     +jsonObject1.getString("D");
 
             TestIteam testIteam = queryQuesForQrestionID(id);
+            String quID = testIteam.id;
             String category = testIteam.category;
             String correct = testIteam.answer;
 
@@ -150,6 +151,7 @@ public class Score {
 
             Map<String,String> map = new HashMap<>();
             map.put("userID",userID);
+            map.put("quID",quID);
             map.put("category",category);
             map.put("answer",answer);
             map.put("correct",correct);
@@ -179,13 +181,14 @@ public class Score {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "insert answer(id,userID,category,answer,correct,grade) values(null,?,?,?,?,?)";
+            String sql = "insert answer(id,userID,quID,category,answer,correct,grade) values(null,?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, answer.get("userID"));
-            preparedStatement.setObject(2, answer.get("category"));
-            preparedStatement.setObject(3, answer.get("answer"));
-            preparedStatement.setObject(4, answer.get("correct"));
-            preparedStatement.setObject(5, answer.get("grade"));
+            preparedStatement.setObject(2, answer.get("quID"));
+            preparedStatement.setObject(3, answer.get("category"));
+            preparedStatement.setObject(4, answer.get("answer"));
+            preparedStatement.setObject(5, answer.get("correct"));
+            preparedStatement.setObject(6, answer.get("grade"));
 
             int rows = preparedStatement.executeUpdate();
             if (rows > 0) {

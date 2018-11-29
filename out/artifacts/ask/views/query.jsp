@@ -333,29 +333,25 @@
         answer(id);
 
         /**
-         * 点击就加一
+         * 加一跳到新的状态
          */
         ++currentPger;
-        if (currentPger >= testPaper.length) {
-            currentPger = testPaper.length;
+        if (currentPger >= testPaper.length-1) {
+            currentPger = testPaper.length-1;
             $(".wellDowne").css({display: 'block'});
-            /**
-             * 已经没有新的题目状态了，直接回显答案状态
-             */
-            var NEWid = $(".question").attr("id");
-             return;
-        }
 
-        /**
-         * 跳到新的状态
-         */
+
+        }
         getPage(currentPger);
 
         /**
          *回显示答案状态
          */
+        var NEWid = $(".question").attr("id");
         answerBackShow(NEWid);
         animationABCD();
+
+
         console.log("answerArray.length2:" + answerArray.length);
 
     })
@@ -444,9 +440,10 @@
 
 
         for (var i = 0; i < answerArray.length; i++) {
+
             var id = answerArray[i].id;
 
-            console.log("id:" + id + ",NEWid:" + NEWid);
+
 
             if (id == NEWid) {
 
@@ -467,7 +464,6 @@
                 if (D == 'D') {
                     $(".D").css({'border': 'rgb(100,100,100) 5px solid'});
                 }
-
                 /**
                  * 删除旧的状态
                  */
@@ -477,15 +473,12 @@
         }
     }
 
-    function asnserCurrenState() {
 
-
-    }
 
     $(".wellDowne").click(function () {
 
-        asnserCurrenState();
-
+        var id = $(".question").attr("id");
+        answer(id);
 
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
