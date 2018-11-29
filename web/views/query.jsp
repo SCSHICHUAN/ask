@@ -56,8 +56,30 @@
 
 </div>
 
+<div class="removeSelf" style="background-color: rgb(45,45,45);
+border-radius: 5px;
+box-shadow: 0 0 50px rgba(0,0,0,0.2);
+width: 400px;
+height: 200px;
+position: fixed;
+margin: auto;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+color: white;
+text-align: center;
+line-height: 200px;
+z-index: 999;
+">请求失败...
+</div>
 
 <script type="text/javascript">
+    function hidden() {
+        $(".removeSelf").css({display: 'none'})
+    }
+
+    hidden();
 
     function size() {
         var width = $(window).width();
@@ -336,8 +358,8 @@
          * 加一跳到新的状态
          */
         ++currentPger;
-        if (currentPger >= testPaper.length-1) {
-            currentPger = testPaper.length-1;
+        if (currentPger >= testPaper.length - 1) {
+            currentPger = testPaper.length - 1;
             $(".wellDowne").css({display: 'block'});
 
 
@@ -444,7 +466,6 @@
             var id = answerArray[i].id;
 
 
-
             if (id == NEWid) {
 
                 var A = answerArray[i].answer.A;
@@ -474,7 +495,6 @@
     }
 
 
-
     $(".wellDowne").click(function () {
 
         var id = $(".question").attr("id");
@@ -490,19 +510,23 @@
                 answer: JSON.stringify(answerArray)
             },
             error: function () {
-
+                $(".removeSelf").css({display: 'block'});
             },
             dataType: "json",
             success: function (json) {
 
+                console.log(json);
             }
-
 
         })
 
 
     })
 
+    $(".removeSelf").click(function (even) {
+        $(even.target).css({display: 'none'});
+        console.log($(this.target));
+    })
 
 </script>
 </body>
