@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>用户查询</title>
     <link rel="stylesheet" href="/ask/css/query.css">
@@ -17,51 +18,55 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     System.out.println("basePath = " + basePath);%>
 <%String webName = request.getContextPath();%>
-<div class="queryPage">
-    <input type="text" name="phoneQuery" class="phoneQuery" placeholder="电话" type="number" pattern="\d*">
-    <input type="text" name="passwordQuery" class="passwordQuery" placeholder="密码" type="number" pattern="\d*">
-    <div class="tips"></div>
-    <button class="button">登录</button>
-</div>
-<div class="resultQuery">
-    <%--<img src="/ask/img/male203.png" class="img">--%>
-    <div class="uerName"></div>
-    <div class="information">
-        <div class="uerCom"></div>
-        <div class="uerPost"></div>
-        <div class="uerTell"></div>
-        <div class="uerYnzm"></div>
+
+
+<div class="page11">
+    <div class="queryPage">
+        <input type="text" name="phoneQuery" class="phoneQuery" placeholder="电话" type="number" pattern="\d*">
+        <input type="text" name="passwordQuery" class="passwordQuery" placeholder="密码" type="number" pattern="\d*">
+        <div class="tips"></div>
+        <button class="button">登录</button>
     </div>
-    <button class="resultGraph">查询测试结果</button>
-    <div class="start">开始测试</div>
-</div>
-
-<div class="page2">
-    <div class="clock">29:59</div>
-
-    <div class="quesAry">
-        <%--<div class="question">1、对定位的描述下列哪个选项正确?</div>--%>
-        <%--<div class="chose">--%>
-        <%--<div class="A">A.是要将品牌留在客户心目中</div>--%>
-        <%--<div class="B">B.客户熟知品牌</div>--%>
-        <%--<div class="C">C.给客户传递的关键信息</div>--%>
-        <%--<div class="D">D.与竞品区隔, 以实现公司的潜在利益最大化</div>--%>
-        <%--</div>--%>
+    <div class="resultQuery">
+        <%--<img src="/ask/img/male203.png" class="img">--%>
+        <div class="uerName"></div>
+        <div class="information">
+            <div class="uerCom"></div>
+            <div class="uerPost"></div>
+            <div class="uerTell"></div>
+            <div class="uerYnzm"></div>
+        </div>
+        <button class="resultGraph">查询测试结果</button>
+        <div class="start">开始测试</div>
     </div>
 
+    <div class="page2">
+        <div class="clock">29:59</div>
 
-    <button class="upPage">上一页</button>
-    <button class="wellDowne">交卷</button>
-    <button class="dnPabe">下一页</button>
+        <div class="quesAry">
+            <%--<div class="question">1、对定位的描述下列哪个选项正确?</div>--%>
+            <%--<div class="chose">--%>
+            <%--<div class="A">A.是要将品牌留在客户心目中</div>--%>
+            <%--<div class="B">B.客户熟知品牌</div>--%>
+            <%--<div class="C">C.给客户传递的关键信息</div>--%>
+            <%--<div class="D">D.与竞品区隔, 以实现公司的潜在利益最大化</div>--%>
+            <%--</div>--%>
+        </div>
 
+
+        <button class="upPage">上一页</button>
+        <button class="wellDowne">交卷</button>
+        <button class="dnPabe">下一页</button>
+
+    </div>
 </div>
-
 <div class="removeSelf" style="background-color: rgb(45,45,45);
 border-radius: 5px;box-shadow: 0 0 50px rgba(0,0,0,0.2);
 width: 400px;height: 200px;position: fixed;margin: auto;top: 0;
 bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;
-z-index: 999;">请求失败...</div>
-
+z-index: 999;">请求失败...
+</div>
+<canvas id="canvas" width="500px" height="500px"></canvas>
 <script type="text/javascript">
     function hidden() {
         $(".removeSelf").css({display: 'none'})
@@ -483,8 +488,6 @@ z-index: 999;">请求失败...</div>
     }
 
 
-
-
     $(".wellDowne").click(function () {
 
         var id = $(".question").attr("id");
@@ -506,6 +509,8 @@ z-index: 999;">请求失败...</div>
             success: function (json) {
                 console.log(json);
                 showAnswerResult(json);
+                $("#canvas").css({display: 'block'});
+                $(".page11").css({display: 'none'});
             }
 
         })
@@ -519,43 +524,152 @@ z-index: 999;">请求失败...</div>
     })
 
     /**
-     * {"ok":[{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"},
-     *        {answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}]
-     * }
+     * {"ok":{score:6,allScore:10,answerArray:[{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}
+     *                             ,{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}]
+     * }}
+     * 注意js中arry是字典的父类，如果要跟新一个key的值,不能用push().
+     * 跟新到方式 a[key] = 5,a[key] = 6。
      * @param array
      */
     function showAnswerResult(array) {
 
         var categorys = {};
 
-        for (var i = 0;i<array.length;i++){
+        for (var i = 0; i < array.length; i++) {
+
             var category = array[i].category;
 
             var flag = false;
-            for (var it in categorys){
-                if(it == category){
+            for (var it in categorys) {
+                if (it == category) {
                     flag = true;
                 }
             }
-            if(flag == true){
-                categorys[category].push(array[i]);
 
-            }else {
-                categorys[category] = [];
-                categorys[category].push(array[i]);
+            /**
+             *如果这个类已经添加到复合字典中
+             */
+            if (flag == true) {
+
+                if (array[i].grade == '1') {
+                    categorys[category].answerArray.push(array[i]);
+                    categorys[category].score = categorys[category].score + 1;
+                } else {
+                    categorys[category].answerArray.push(array[i]);
+                }
+
+                categorys[category].allScore = categorys[category].allScore + 1;
+
+            }
+            /**
+             *如果这个类没有添加到复合字典中
+             */
+            else {
+                categorys[category] = [];//js字典的写法
+
+                if (array[i].grade == '1') {
+                    categorys[category] = ({score: 1, allScore: 1, answerArray: [array[i]]});
+                } else {
+                    categorys[category] = ({score: 0, allScore: 1, answerArray: [array[i]]});
+                }
+
             }
 
         }
-        console.log(categorys)
+        console.log("+++++++++++++");
+        console.log(categorys);
+        console.log("+++++++++++++");
 
 
+        drawSpider(categorys);
 
+    }
+
+    function drawSpider(categorys) {
+
+        var categorysCount = Object.keys(categorys).length;
+
+
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext('2d');
+        /**
+         解决JS画图模糊的问题
+         */
+        var width = canvas.width, height = canvas.height;
+        if (window.devicePixelRatio) {
+
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
+            canvas.height = height * window.devicePixelRatio;
+            canvas.width = width * window.devicePixelRatio;
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+
+        drawPolygon(240, categorysCount, context);
+        drawPolygon(192, categorysCount, context);
+        drawPolygon(144, categorysCount, context);
+        drawPolygon(96, categorysCount, context);
+        drawPolygon(48, categorysCount, context);
 
 
     }
 
+    function drawPolygon(r, n, context) {
 
 
+        var angle = Math.PI / (n / 2);
+        console.log("angle:" + angle);
+        var o1 = $("#canvas").width() / 2;
+        var o2 = $("#canvas").height() / 2;
+        // console.log("o1:"+o1);
+
+
+        // 创建渐变
+        var gradient = context.createLinearGradient(0, 0, 500, 0);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.5", "blue");
+        gradient.addColorStop("1.0", "red");
+
+        context.strokeStyle = gradient;
+
+        // context.strokeStyle = "rgb(70,80,100)";
+
+
+        context.lineWidth = 1;
+
+        context.moveTo((r * Math.sin(angle * 1)) + o1, (r * Math.cos(angle * 1)) + o2);
+
+
+        var pointArray = [];
+
+        for (var i = 0; i <= n; i++) {
+
+            x = (r * Math.sin(angle * i)) + o1;
+            y = (r * Math.cos(angle * i)) + o2;
+
+            context.lineTo(x, y);
+            context.moveTo(o1, o2);
+            context.lineTo((r * Math.sin(angle * i)) + o1, (r * Math.cos(angle * i)) + o2);
+            if (r == 240) {
+                pointArray.push({"x": (r * Math.sin(angle * i)) + o1, "y": (r * Math.cos(angle * i)) + o2});
+
+            }
+            console.log(x + ',' + y);
+        }
+        if (r == 240) {
+            for (var o in pointArray) {
+                // console.log("(x,y)="+'('+o.x+','+o.y+')');
+                // console.log("x:"+pointArray[o].x+",y:"+pointArray[o].y);
+            }
+
+        }
+
+
+        context.stroke();
+        // context.fill();
+        context.closePath();
+    }
 
 
 </script>
