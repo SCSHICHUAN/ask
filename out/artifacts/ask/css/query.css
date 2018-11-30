@@ -239,7 +239,8 @@ body {
     height: 200px;
 }
 
-#canvas{
+#canvas,#canvas2 {
+    position: relative;
     display: block;
     margin: 0 auto;
     margin-top: 500px;

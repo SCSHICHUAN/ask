@@ -556,8 +556,12 @@ z-index: 999;">请求失败...
                     categorys[category].score = categorys[category].score + 1;
                 } else {
                     categorys[category].answerArray.push(array[i]);
+
                 }
 
+                /**
+                 * 通一个key的值跟新，不能用push();
+                 */
                 categorys[category].allScore = categorys[category].allScore + 1;
 
             }
@@ -580,14 +584,11 @@ z-index: 999;">请求失败...
         console.log(categorys);
         console.log("+++++++++++++");
 
-
         drawSpider(categorys);
 
     }
 
     function drawSpider(categorys) {
-
-        var categorysCount = Object.keys(categorys).length;
 
 
         var canvas = document.getElementById("canvas");
@@ -605,12 +606,67 @@ z-index: 999;">请求失败...
             context.scale(window.devicePixelRatio, window.devicePixelRatio);
         }
 
+        var categorysCount = Object.keys(categorys).length;
 
-        drawPolygon(240, categorysCount, context);
         drawPolygon(192, categorysCount, context);
         drawPolygon(144, categorysCount, context);
         drawPolygon(96, categorysCount, context);
         drawPolygon(48, categorysCount, context);
+
+        var pointArray = drawPolygon(240, categorysCount, context);
+
+
+        context.fillStyle = "rgba(250,250,90,0.8)";
+
+
+
+        console.log(pointArray);
+        var j = 0;
+        var p1 = 0;
+        var p2 = 0;
+
+
+        // context.moveTo(0,0);
+
+        var firstPointFlag = 0;
+        var firstPoint = [];
+        var o1 = $("#canvas").width() / 2;
+        var o2 = $("#canvas").height() / 2;
+
+        for (var key in categorys) {
+
+
+            var K = categorys[key].score/categorys[key].allScore
+
+            console.log(key);
+
+            var point = pointArray[j];
+
+            var x =  point.x*K+o1;
+            var y =  point.y*K+o2;
+
+
+
+
+            if(firstPointFlag == 0){}
+
+            context.lineTo(x,y);
+
+            if(firstPointFlag == 0){
+                firstPointFlag = 1;
+                firstPoint.push(x);
+                firstPoint.push(y);
+            }
+            if(j == Object.keys(categorys).length-1){
+                context.lineTo(firstPoint[0],firstPoint[1]);
+            }
+
+
+
+
+            j++;
+        }
+         context.stroke();
 
 
     }
@@ -638,7 +694,7 @@ z-index: 999;">请求失败...
 
         context.lineWidth = 1;
 
-        context.moveTo((r * Math.sin(angle * 1)) + o1, (r * Math.cos(angle * 1)) + o2);
+        //context.moveTo((r * Math.sin(angle * 1)) + o1, (r * Math.cos(angle * 1)) + o2);
 
 
         var pointArray = [];
@@ -648,27 +704,21 @@ z-index: 999;">请求失败...
             x = (r * Math.sin(angle * i)) + o1;
             y = (r * Math.cos(angle * i)) + o2;
 
-            context.lineTo(x, y);
-            context.moveTo(o1, o2);
-            context.lineTo((r * Math.sin(angle * i)) + o1, (r * Math.cos(angle * i)) + o2);
-            if (r == 240) {
-                pointArray.push({"x": (r * Math.sin(angle * i)) + o1, "y": (r * Math.cos(angle * i)) + o2});
-
-            }
-            console.log(x + ',' + y);
-        }
-        if (r == 240) {
-            for (var o in pointArray) {
-                // console.log("(x,y)="+'('+o.x+','+o.y+')');
-                // console.log("x:"+pointArray[o].x+",y:"+pointArray[o].y);
-            }
+            // context.lineTo(x, y);
+            // context.moveTo(o1, o2);
+            // context.lineTo((r * Math.sin(angle * i)) + o1, (r * Math.cos(angle * i)) + o2);
+             if (r == 240) {
+                 pointArray.push({"x": (r * Math.sin(angle * i)), "y": (r * Math.cos(angle * i))});
+             }
 
         }
 
-
+        context.fillStyle = "rgba(250,250,90,0.4)";
         context.stroke();
-        // context.fill();
         context.closePath();
+
+
+        return pointArray;
     }
 
 
