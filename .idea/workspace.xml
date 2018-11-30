@@ -41,7 +41,7 @@
           <entry key="iml" value="1" />
           <entry key="java" value="96" />
           <entry key="js" value="2" />
-          <entry key="jsp" value="70" />
+          <entry key="jsp" value="71" />
           <entry key="png" value="2" />
           <entry key="ts" value="5" />
           <entry key="xhtml" value="1" />
@@ -55,7 +55,7 @@
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="2" />
           <entry key="JAVA" value="96" />
-          <entry key="JSP" value="70" />
+          <entry key="JSP" value="71" />
           <entry key="JavaScript" value="2" />
           <entry key="TypeScript" value="5" />
           <entry key="XHTML" value="1" />
@@ -65,11 +65,11 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="7135" />
-          <entry key="EL" value="105" />
+          <entry key="CSS" value="7178" />
+          <entry key="EL" value="106" />
           <entry key="HTML" value="7" />
           <entry key="JAVA" value="12498" />
-          <entry key="JSP" value="20745" />
+          <entry key="JSP" value="21218" />
           <entry key="XML" value="483" />
         </counts>
       </usages-collector>
@@ -78,9 +78,9 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="7135" />
+          <entry key="css" value="7178" />
           <entry key="java" value="12498" />
-          <entry key="jsp" value="20857" />
+          <entry key="jsp" value="21331" />
           <entry key="xml" value="483" />
         </counts>
       </usages-collector>
@@ -91,10 +91,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/query.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="558" selection-start-line="558" selection-end-line="558" />
+            <state relative-caret-position="828">
+              <caret line="577" column="52" selection-start-line="577" selection-start-column="52" selection-end-line="577" selection-end-column="52" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#32#38#0" expanded="true" />
               </folding>
             </state>
@@ -104,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/query.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="910">
-              <caret line="250" selection-start-line="250" selection-end-line="250" />
+            <state relative-caret-position="820">
+              <caret line="250" column="9" lean-forward="true" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -123,8 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>result</find>
-      <find>query</find>
       <find>startTest</find>
       <find>start</find>
       <find>showQuestions</find>
@@ -153,6 +150,8 @@
       <find>console.log</find>
       <find>drawSpider</find>
       <find>drawPolygon</find>
+      <find>canvas1</find>
+      <find>canvas</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -212,10 +211,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="339" />
-    <option name="y" value="35" />
+    <option name="x" value="559" />
+    <option name="y" value="23" />
     <option name="width" value="1954" />
-    <option name="height" value="1296" />
+    <option name="height" value="1111" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -418,15 +417,15 @@
       <workItem from="1542354802066" duration="89878000" />
       <workItem from="1542941528075" duration="62125000" />
       <workItem from="1543389159911" duration="10364000" />
-      <workItem from="1543459062171" duration="45168000" />
+      <workItem from="1543459062171" duration="50739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="419245000" />
+    <option name="totallyTimeSpent" value="424816000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="339" y="35" width="1954" height="1296" extended-state="0" />
+    <frame x="559" y="23" width="1954" height="1111" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
@@ -442,7 +441,7 @@
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49876338" visible="true" weight="0.1322449" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49876338" visible="true" weight="0.033653848" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.18367347" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -816,17 +815,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/query.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="250" selection-start-line="250" selection-end-line="250" />
+        <state relative-caret-position="820">
+          <caret line="250" column="9" lean-forward="true" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/query.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="558" selection-start-line="558" selection-end-line="558" />
+        <state relative-caret-position="828">
+          <caret line="577" column="52" selection-start-line="577" selection-start-column="52" selection-end-line="577" selection-end-column="52" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#32#38#0" expanded="true" />
           </folding>
         </state>

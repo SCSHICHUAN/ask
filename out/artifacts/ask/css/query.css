@@ -239,7 +239,7 @@ body {
     height: 200px;
 }
 
-#canvas,#canvas2 {
+#canvas,#canvas1{
     position: relative;
     display: block;
     margin: 0 auto;
@@ -247,4 +247,12 @@ body {
     border: 1px solid black;
     zoom: 1.5;
     display: none;
+}
+#canvas1{
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
 }

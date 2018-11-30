@@ -557,6 +557,7 @@ z-index: 999;">请求失败...
                 } else {
                     categorys[category].answerArray.push(array[i]);
 
+
                 }
 
                 /**
@@ -608,25 +609,39 @@ z-index: 999;">请求失败...
 
         var categorysCount = Object.keys(categorys).length;
 
+
+
+
+
+        context.beginPath();
+        context.fillStyle = "rgb(50,50,50)";
+        drawPolygon(240, categorysCount, context);
+        context.fill();
+        context.closePath();
+
+
+        context.beginPath();
+        context.strokeStyle = "rgb(70,80,100)";
+
+        context.lineWidth = 1;
+
+
         drawPolygon(192, categorysCount, context);
         drawPolygon(144, categorysCount, context);
         drawPolygon(96, categorysCount, context);
         drawPolygon(48, categorysCount, context);
 
         var pointArray = drawPolygon(240, categorysCount, context);
+        context.stroke();
+        context.closePath();
 
 
-        context.fillStyle = "rgba(250,250,90,0.8)";
 
-
+        context.beginPath();
 
         console.log(pointArray);
         var j = 0;
-        var p1 = 0;
-        var p2 = 0;
 
-
-        // context.moveTo(0,0);
 
         var firstPointFlag = 0;
         var firstPoint = [];
@@ -660,13 +675,13 @@ z-index: 999;">请求失败...
             if(j == Object.keys(categorys).length-1){
                 context.lineTo(firstPoint[0],firstPoint[1]);
             }
-
-
-
-
             j++;
         }
-         context.stroke();
+
+        context.fillStyle = "rgba(230,200,30,0.5)";
+        context.fill();
+        context.closePath();
+
 
 
     }
@@ -687,14 +702,11 @@ z-index: 999;">请求失败...
         gradient.addColorStop("0.5", "blue");
         gradient.addColorStop("1.0", "red");
 
-        context.strokeStyle = gradient;
-
-        // context.strokeStyle = "rgb(70,80,100)";
+        //context.strokeStyle = gradient;
 
 
-        context.lineWidth = 1;
 
-        //context.moveTo((r * Math.sin(angle * 1)) + o1, (r * Math.cos(angle * 1)) + o2);
+        context.moveTo((r * Math.sin(angle * 1)) + o1, (r * Math.cos(angle * 1)) + o2);
 
 
         var pointArray = [];
@@ -704,19 +716,14 @@ z-index: 999;">请求失败...
             x = (r * Math.sin(angle * i)) + o1;
             y = (r * Math.cos(angle * i)) + o2;
 
-            // context.lineTo(x, y);
-            // context.moveTo(o1, o2);
-            // context.lineTo((r * Math.sin(angle * i)) + o1, (r * Math.cos(angle * i)) + o2);
+            context.lineTo(x, y);
+            context.moveTo(o1, o2);
+            context.lineTo((r * Math.sin(angle * i)) + o1, (r * Math.cos(angle * i)) + o2);
              if (r == 240) {
                  pointArray.push({"x": (r * Math.sin(angle * i)), "y": (r * Math.cos(angle * i))});
              }
 
         }
-
-        context.fillStyle = "rgba(250,250,90,0.4)";
-        context.stroke();
-        context.closePath();
-
 
         return pointArray;
     }
