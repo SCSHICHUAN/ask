@@ -66,7 +66,21 @@ width: 400px;height: 200px;position: fixed;margin: auto;top: 0;
 bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;
 z-index: 999;">请求失败...
 </div>
-
+<div class="resultScore">
+    <div class="mark">D<sup>-</sup></div>
+    <div class="scoreName">石川&nbsp;60分</div>
+    <table>
+        <tr class="tr1">
+            <th>类别</th>
+        </tr>
+        <tr class="tr2">
+            <th>3</th>
+        </tr>
+        <tr class="tr3">
+            <th>10</th>
+        </tr>
+    </table>
+</div>
 <canvas id="canvas" width="500px" height="500px"></canvas>
 <div class="canvas">
     <%--<div class="score" style="top:10px;right: 10px">95.55</div>--%>
@@ -117,8 +131,9 @@ z-index: 999;">请求失败...
 
     size();
 
-
+    var usernamearr = [];
     $(".button").click(function () {
+        usernamearr = [];
 
         var phoneQuery = $("[name='phoneQuery']").val();
         var passwordQuery = $("[name='passwordQuery']").val();
@@ -161,6 +176,9 @@ z-index: 999;">请求失败...
                     $(".uerPost").html("职务:&nbsp;&nbsp;" + result.post);
                     $(".uerTell").html("电话:&nbsp;&nbsp;" + result.tell);
                     $(".uerYnzm").html("密码:&nbsp;&nbsp;" + result.yzm);
+
+                    usernamearr.push(result.name);
+
                 }
 
 
@@ -168,6 +186,7 @@ z-index: 999;">请求失败...
         })
 
     })
+
 
     $(".startTest").click(function () {
 
@@ -202,12 +221,15 @@ z-index: 999;">请求失败...
                     $(".uerPost").html("职务:&nbsp;&nbsp;" + result.post);
                     $(".uerTell").html("电话:&nbsp;&nbsp;" + result.tell);
                     $(".uerYnzm").html("密码:&nbsp;&nbsp;" + result.yzm);
+
                 }
 
 
             }
         })
     })
+
+
 
 
     /**
@@ -518,7 +540,8 @@ z-index: 999;">请求失败...
                 $("#canvas").css({display: 'block'});
                 $(".canvas").css({display: 'block'});
                 $(".page11").css({display: 'none'});
-                $('body').css({'background-color':'rgb(70,70,70)'});
+                $(".resultScore").css({display: 'block'});
+                $('body').css({'background-color': 'rgb(70,70,70)'});
             }
 
         })
@@ -659,8 +682,13 @@ z-index: 999;">请求失败...
 
 
         var html = "";
+        var htmlTr1 = "";
+        var htmlTr2 = "";
+        var htmlTr3 = "";
 
-
+        var allScore = 0;
+        var allScore1 = 0;
+        var allScore2 = 0;
         for (var key in categorys) {
 
 
@@ -668,7 +696,11 @@ z-index: 999;">请求失败...
              * 计算答题对的比例
              */
             var K = categorys[key].score / categorys[key].allScore;
-            var score = (K * 100).toFixed(2)
+
+            allScore1 += categorys[key].score;
+            allScore2 += categorys[key].allScore;
+
+            var score = (K * 100).toFixed(0);
             console.log("类别:" + key + "  分数:" + score);
             var point = pointArray[j];
 
@@ -718,6 +750,11 @@ z-index: 999;">请求失败...
                 "</div>"
 
 
+            htmlTr1 += "<th>" + key + "</th>";
+            htmlTr2 += "<th>" + categorys[key].score + "</th>";
+            htmlTr3 += "<th>" + categorys[key].allScore + "</th>";
+
+
             console.log("x:" + (500 - x1 - 5) + ",y:" + (y1 + 20 + 8));
 
 
@@ -742,8 +779,46 @@ z-index: 999;">请求失败...
             j++;
         }
         $(".canvas").html(html);
+        $(".tr1").html(htmlTr1);
+        $(".tr2").html(htmlTr2);
+        $(".tr3").html(htmlTr3);
 
 
+        allScore = (allScore1/allScore2)*100;
+        /**
+         * 分数评级
+         */
+        if (allScore == 100) {
+            $(".mark").html("A<sup>+</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        } else if (allScore < 100 && allScore >= 95) {
+            $(".mark").html("A<sup>-</sup>");
+            $(".scoreName").html(usernamearr[0]+ "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 95 && allScore >= 90) {
+            $(".mark").html("B<sup>+</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 90 && allScore >= 85) {
+            $(".mark").html("B<sup>-</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 85 && allScore >= 80) {
+            $(".mark").html("C<sup>+</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 80 && allScore >= 75) {
+            $(".mark").html("C<sup>-</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 75 && allScore >= 70) {
+            $(".mark").html("D<sup>+</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 70 && allScore >= 65) {
+            $(".mark").html("D<sup>-</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else if (allScore < 65 && allScore >= 60) {
+            $(".mark").html("E<sup>+</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }else {
+            $(".mark").html("E<sup>-</sup>");
+            $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");
+        }
 
 
         context.lineWidth = 2;
@@ -752,10 +827,10 @@ z-index: 999;">请求失败...
         context.strokeStyle = 'rgb(255,200,90)';
 
 
-        context.shadowBlur=6;
-        context.shadowColor="black";
-        context.shadowOffsetX=0;
-        context.shadowOffsetY=0;
+        context.shadowBlur = 6;
+        context.shadowColor = "black";
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
 
 
         context.fill();
