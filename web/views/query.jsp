@@ -66,7 +66,14 @@ width: 400px;height: 200px;position: fixed;margin: auto;top: 0;
 bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;
 z-index: 999;">请求失败...
 </div>
+
 <canvas id="canvas" width="500px" height="500px"></canvas>
+<div class="canvas">
+    <%--<div class="title" style="top:10px;right: 10px">智理</div>--%>
+    <%--<div class="score" style="top:10px;right: 10px">95.55</div>--%>
+</div>
+
+
 <script type="text/javascript">
     function hidden() {
         $(".removeSelf").css({display: 'none'})
@@ -510,6 +517,7 @@ z-index: 999;">请求失败...
                 console.log(json);
                 showAnswerResult(json);
                 $("#canvas").css({display: 'block'});
+                $(".canvas").css({display: 'block'});
                 $(".page11").css({display: 'none'});
             }
 
@@ -610,22 +618,23 @@ z-index: 999;">请求失败...
         var categorysCount = Object.keys(categorys).length;
 
 
-
-
-
         context.beginPath();
         context.fillStyle = "rgb(50,50,50)";
         drawPolygon(240, categorysCount, context);
         context.fill();
+        /**
+         * 底图画完
+         */
         context.closePath();
 
 
         context.beginPath();
         context.strokeStyle = "rgb(70,80,100)";
-
         context.lineWidth = 1;
 
-
+        /**
+         * 画多边型
+         */
         drawPolygon(192, categorysCount, context);
         drawPolygon(144, categorysCount, context);
         drawPolygon(96, categorysCount, context);
@@ -636,52 +645,112 @@ z-index: 999;">请求失败...
         context.closePath();
 
 
-
         context.beginPath();
-
+        context.lineCap = "round";
         console.log(pointArray);
-        var j = 0;
 
+        var j = 0;
 
         var firstPointFlag = 0;
         var firstPoint = [];
         var o1 = $("#canvas").width() / 2;
         var o2 = $("#canvas").height() / 2;
 
+        // context.moveTo(o1,o2);
+
+
+        var html = "";
+
+
         for (var key in categorys) {
 
 
-            var K = categorys[key].score/categorys[key].allScore
-
-            console.log(key);
-
+            /**
+             * 计算答题对的比例
+             */
+            var K = categorys[key].score / categorys[key].allScore;
+            var score = (K * 100).toFixed(2)
+            console.log("类别:" + key + "  分数:" + score);
             var point = pointArray[j];
 
-            var x =  point.x*K+o1;
-            var y =  point.y*K+o2;
+            /**
+             * 一个类的成绩点
+             */
+            var x = point.x * K + o1;
+            var y = point.y * K + o2;
 
 
+            var x1 = point.x + o1;
+            var y1 = point.y + o2
 
 
-            if(firstPointFlag == 0){}
+            /**
+             * 第一象限
+             */
+            if ((500 - x1 - 5 <= 245.5) && ((y1 + 8) <= 277.5)) {
+                x1 = x1 + 40;
+                y1 = y1 - 40;
+            }
+            /**
+             * 第二象限
+             */
+            else if ((500 - x1 - 5 <= 245.5) && ((y1 + 8) > 277.5)) {
+                x1 = x1 + 40;
+                y1 = y1 - 10;
+            }
 
-            context.lineTo(x,y);
+            /**
+             * 第三象限
+             */
+            else if ((500 - x1 - 5 > 245.5) && ((y1 + 8) > 277.5)) {
+                x1 = x1 + 0;
+                y1 = y1 - 20;
+            }
+            /**
+             * 第四象限
+             */
+            else if ((500 - x1 - 5 > 245.5) && ((y1 + 8) < 277.5)) {
+                x1 = x1 - 5;
+                y1 = y1 - 30;
+            }
 
-            if(firstPointFlag == 0){
+
+            html += "<div class='scoreResule'><div class=\"title\" style=\"top:" + (y1 + 8) + "px;right: " + (500 - x1 - 5) + "px\">" + key + "</div>\n" +
+                "<div class=\"score\" style=\"top:" + (y1 + 20 + 8) + "px;right: " + (500 - x1 - 5) + "px\">" + score + "</div></div>"
+
+
+            console.log("x:" + (500 - x1 - 5) + ",y:" + (y1 + 20 + 8));
+
+
+            context.lineTo(x, y);
+            context.arc(x, y, 3, 0, 2 * Math.PI);
+
+
+            /**
+             * 保存第一个点，画封口线
+             */
+            if (firstPointFlag == 0) {
                 firstPointFlag = 1;
                 firstPoint.push(x);
                 firstPoint.push(y);
             }
-            if(j == Object.keys(categorys).length-1){
-                context.lineTo(firstPoint[0],firstPoint[1]);
+            /**
+             * 画封口线
+             */
+            if (j == Object.keys(categorys).length - 1) {
+                context.lineTo(firstPoint[0], firstPoint[1]);
             }
             j++;
         }
+        $(".canvas").html(html);
 
-        context.fillStyle = "rgba(230,200,30,0.5)";
+
+        context.fillStyle = "rgba(230,200,30,0.3)";
         context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = 'rgb(255,200,90)';
+        context.stroke();
         context.closePath();
-
 
 
     }
@@ -693,7 +762,6 @@ z-index: 999;">请求失败...
         console.log("angle:" + angle);
         var o1 = $("#canvas").width() / 2;
         var o2 = $("#canvas").height() / 2;
-        // console.log("o1:"+o1);
 
 
         // 创建渐变
@@ -701,9 +769,8 @@ z-index: 999;">请求失败...
         gradient.addColorStop("0", "magenta");
         gradient.addColorStop("0.5", "blue");
         gradient.addColorStop("1.0", "red");
-
         //context.strokeStyle = gradient;
-
+        context.lineCap = "round";
 
 
         context.moveTo((r * Math.sin(angle * 1)) + o1, (r * Math.cos(angle * 1)) + o2);
@@ -719,12 +786,14 @@ z-index: 999;">请求失败...
             context.lineTo(x, y);
             context.moveTo(o1, o2);
             context.lineTo((r * Math.sin(angle * i)) + o1, (r * Math.cos(angle * i)) + o2);
-             if (r == 240) {
-                 pointArray.push({"x": (r * Math.sin(angle * i)), "y": (r * Math.cos(angle * i))});
-             }
+            if (r == 240) {
+                /**
+                 * 保存最外部多边形的点
+                 */
+                pointArray.push({"x": (r * Math.sin(angle * i)), "y": (r * Math.cos(angle * i))});
+            }
 
         }
-
         return pointArray;
     }
 
