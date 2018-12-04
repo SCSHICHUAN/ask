@@ -785,6 +785,9 @@ z-index: 999;">请求失败...
 
 
         allScore = (allScore1/allScore2)*100;
+        /**
+         * 分数评级
+         */
         if (allScore == 100) {
             $(".mark").html("A<sup>+</sup>");
             $(".scoreName").html(usernamearr[0] + "&nbsp;" + allScore.toFixed(1)+"分");

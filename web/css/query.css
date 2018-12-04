@@ -245,7 +245,7 @@ canvas {
     margin: auto;
     right: 0;
     left: 0;
-    bottom: 70px;
+    top: 600px;
     /*border: 1px solid black;*/
     zoom: 1.5;
     display: none;
@@ -256,7 +256,7 @@ canvas {
     margin: auto;
     right: 0;
     left: 0;
-    bottom: 70px;
+    top: 600px;
     width: 500px;
     height: 500px;
     font-size: 50px;
