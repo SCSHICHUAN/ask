@@ -91,9 +91,7 @@ z-index: 999;">请求失败...
     function hidden() {
         $(".removeSelf").css({display: 'none'})
     }
-
     hidden();
-
     function size() {
         var width = $(window).width();
         var height = $(window).height();

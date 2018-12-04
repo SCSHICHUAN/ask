@@ -292,7 +292,7 @@ canvas {
     font-size: 200px;
 }
 table{
-   min-width: 900px;
+    min-width: 600px;
 }
 table, tr, th {
     font-size: 18px;

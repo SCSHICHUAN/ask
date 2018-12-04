@@ -1,6 +1,7 @@
 package main;
 
 import Models.TestIteam;
+import Models.User;
 import jdbc.JDBC;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -108,7 +109,6 @@ public class Questions {
 
 
         oldPge = currentPage;
-
         System.out.println("pages = " + pages + "  currentPage = " + currentPage);
 
 
@@ -210,7 +210,7 @@ public class Questions {
             String sql = "select * from questions order by id desc limit ?,?  ";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, start);
-            preparedStatement.setObject(2, end);
+            preparedStatement.setObject(2, end-start);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

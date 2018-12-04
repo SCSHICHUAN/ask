@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ask">
+  <artifact type="war" name="ask">
     <output-path>$PROJECT_DIR$/out/artifacts/ask</output-path>
-    <root id="root">
+    <root id="archive" name="ask.war">
       <element id="javaee-facet-resources" facet="ask/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -13,6 +13,7 @@
           <element id="library" level="project" name="json" />
           <element id="library" level="project" name="mysql-connector-java-5.1.7-bin" />
           <element id="library" level="project" name="c3p0-0.9.1.2" />
+          <element id="library" level="project" name="jstl-1.2" />
         </element>
       </element>
     </root>

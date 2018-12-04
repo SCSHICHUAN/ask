@@ -24,9 +24,10 @@ public class Filter2 implements Filter {
         HttpServletResponse response = (HttpServletResponse)resp;
 
         String userLogin = (String)request.getSession().getAttribute("USER_SUCCESS_LOGIN");
+        String admin = (String)request.getSession().getAttribute("dfldfjaldfjalsdfj");
         System.out.println("++userLogin+++==="+userLogin);
 
-        if(Objects.equals(userLogin,"true")){
+        if(Objects.equals(userLogin,"true") || Objects.equals(admin,"true")){
             chain.doFilter(req, resp);
         }else {
             request.getRequestDispatcher("/views/query.jsp").forward(request,response);

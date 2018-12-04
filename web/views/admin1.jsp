@@ -17,7 +17,9 @@
     <div class="header">
         <img src="/ask/img/logo.png" class="img3">
         <div class="headerT">上海壹萌商务咨询有限公司管理系统</div>
-        <button class="button1">查看成绩</button>
+        <form action="/ask/queryScore">
+            <button class="button1">查看成绩</button>
+        </form>
         <button class="button3">问卷卷库</button>
         <button class="button5">问卷题库</button>
     </div>
