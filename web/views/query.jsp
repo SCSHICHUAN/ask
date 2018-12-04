@@ -555,6 +555,7 @@ z-index: 999;">请求失败...
     })
 
     /**
+     * 显示用户的成绩图表
      * {"ok":{score:6,allScore:10,answerArray:[{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}
      *                             ,{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}]
      * }}
@@ -881,6 +882,34 @@ z-index: 999;">请求失败...
         }
         return pointArray;
     }
+
+
+
+    $(".resultGraph").click(function () {
+        $.ajax({
+            contentType:"application/x-www-form-urlencoded; charset=utf-8",
+            type:'post',
+            url:"/ask/queryScore.do",
+            data:{
+                uerID: $(".uerName").attr('userid'),
+            },
+            error:(function () {
+                $(".removeSelf").css({display:'block'});
+            }),
+            dataType:'json',
+            success:(function (json) {
+                console.log(json);
+                showAnswerResult(json);
+                $("#canvas").css({display: 'block'});
+                $(".canvas").css({display: 'block'});
+                $(".page11").css({display: 'none'});
+                $(".resultScore").css({display: 'block'});
+                $('body').css({'background-color': 'rgb(70,70,70)'});
+            })
+
+        })
+    })
+
 
 
 </script>

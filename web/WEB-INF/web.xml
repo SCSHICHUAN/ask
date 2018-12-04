@@ -87,6 +87,10 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/wellDowne.do</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/queryScore.do</url-pattern>
+    </servlet-mapping>
 
 
 

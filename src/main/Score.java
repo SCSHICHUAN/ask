@@ -24,6 +24,7 @@ public class Score {
 
         String userID = (String) request.getParameter("uerID");
         String answerArray = (String) request.getParameter("answer");
+
         JSONArray jsonArray = new JSONArray(answerArray);
         System.out.println("userID: " + userID);
         System.out.println("jsonArray:" + jsonArray);
@@ -37,6 +38,8 @@ public class Score {
 
         QuestionBack.responesToCline(respons,  getTestRecord(userID).toString());
     }
+
+
 
     /**
      * 将答题记录按类分成数组

@@ -2,6 +2,8 @@ package main;
 
 
 
+import org.json.JSONArray;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,6 +67,9 @@ public class Servlet extends HttpServlet {
         }
         else if(Objects.equals(path,"/wellDowne.do")){//提交试卷
             Score.getUserAnswer(request,response);
+        }else if(Objects.equals(path,"/queryScore.do")){//查询成绩
+            JSONArray jsonArray =  Score.getTestRecord((String) request.getParameter("uerID"));
+            QuestionBack.responesToCline(response,jsonArray.toString());
         }
 
 

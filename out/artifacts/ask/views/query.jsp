@@ -883,6 +883,34 @@ z-index: 999;">请求失败...
     }
 
 
+
+    $(".resultGraph").click(function () {
+        $.ajax({
+            contentType:"application/x-www-form-urlencoded; charset=utf-8",
+            type:'post',
+            url:"/ask/queryScore.do",
+            data:{
+                uerID: $(".uerName").attr('userid'),
+            },
+            error:(function () {
+                $(".removeSelf").css({display:'block'});
+            }),
+            dataType:'json',
+            success:(function (json) {
+                console.log(json);
+                showAnswerResult(json);
+                $("#canvas").css({display: 'block'});
+                $(".canvas").css({display: 'block'});
+                $(".page11").css({display: 'none'});
+                $(".resultScore").css({display: 'block'});
+                $('body').css({'background-color': 'rgb(70,70,70)'});
+            })
+
+        })
+    })
+
+
+
 </script>
 </body>
 </html>
