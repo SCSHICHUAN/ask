@@ -268,12 +268,12 @@ canvas {
 .canvas .score {
     position: absolute;
     color: rgb(245, 150, 40);
-    font-size: 15px;
+    font-size: 18px;
     width: 50px;
     border-radius: 2px;
     /*background-color: rgb(50,50,50);*/
-    /*box-shadow: 0 0 50px rgba(255,255,255,0.2);*/
-    text-shadow: 0 0 3px rgba(0, 0, 0, 1);
+    /*box-shadow: 0 0 3px rgba(255,255,255,0.2);*/
+    text-shadow: 0 0 3px rgba(255, 255, 255, 1);
     text-align: center;
 }
 
@@ -291,8 +291,11 @@ canvas {
 .resultScore .mark {
     font-size: 200px;
 }
-
+table{
+   min-width: 900px;
+}
 table, tr, th {
+    font-size: 18px;
     margin: 0 auto;
     margin-top: 70px;
     border-collapse: collapse;
@@ -302,6 +305,6 @@ table, tr, th {
     text-shadow: 0 0 3px rgba(0, 0, 0, 1);
 }
 th{
-    width: 90px;
+    width: 100px;
     height: 60px;
 }
