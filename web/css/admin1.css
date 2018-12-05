@@ -350,9 +350,6 @@ h2{
 .page6title{
     margin: 0 auto;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: scroll;
-
 }
 .page6body{
     width: 100%;
@@ -401,8 +398,10 @@ h2{
     margin-left: 60px;
     width: 300px;
     height: 90%;
+    overflow-x: auto;
+    overflow-y: scroll;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 .page6Right{
     position: absolute;
@@ -547,10 +546,10 @@ h2{
 .lestteleasTitlea{
     margin-top: 50px;
 }
-.page6title::-webkit-scrollbar {
+.page6Left::-webkit-scrollbar {
     width: 8px;
 }
-.page6title::-webkit-scrollbar-thumb {
+.page6Left::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: grey;
 }
@@ -561,3 +560,4 @@ h2{
     border-radius: 10px;
     background-color: grey;
 }
+
