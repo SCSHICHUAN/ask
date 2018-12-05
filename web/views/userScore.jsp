@@ -17,8 +17,9 @@
 <div class="left">
     <c:forEach items="${userArray}" var="user">
         <div class="user" data="${user.id}" name="${user.name}">
-            <span class="name">${user.name}</span> <span class="details2">电话:&nbsp;${user.tell}&nbsp;&nbsp;</span><br>
-            <span class="details">公司:&nbsp;${user.company}&nbsp;&nbsp;职务:&nbsp;${user.post}</span>
+            <div class="name">${user.name}</div>
+            <div class="details">电话:&nbsp;${user.tell}&nbsp;&nbsp;</div>
+            <div class="details">公司:&nbsp;${user.company}&nbsp;&nbsp;职务:&nbsp;${user.post}</div>
         </div>
     </c:forEach>
 </div>
@@ -28,7 +29,7 @@
 border-radius: 5px;box-shadow: 0 0 50px rgba(0,0,0,0.2);
 width: 400px;height: 200px;position: fixed;margin: auto;top: 0;
 bottom: 0;right: 0;left: 0;color: white;text-align: center;line-height: 200px;
-z-index: 999;">请求失败...
+z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
 </div>
 <div class="resultScore">
     <div class="mark">D<sup>-</sup></div>
@@ -85,9 +86,21 @@ z-index: 999;">请求失败...
             success: (function (json) {
                 console.log(json);
                 showAnswerResult(json);
-                $("#canvas").css({display: 'block'});
-                $(".canvas").css({display: 'block'});
-                $(".resultScore").css({display: 'block'});
+                /**
+                 * 透明
+                 */
+                $("#canvas").css({display: 'block'}).css({opacity: '0.0'});
+                $(".canvas").css({display: 'block'}).css({opacity: '0.0'})
+                $(".resultScore").css({display: 'block'}).css({opacity: '0.0'});
+
+                /**
+                 * 不透明
+                 */
+                $("#canvas").animate({opacity: '1.0'});
+                $(".canvas").animate({opacity: '1.0'});
+                $(".resultScore").animate({opacity: '1.0'});
+
+
             })
 
         })
@@ -367,7 +380,7 @@ z-index: 999;">请求失败...
         } else if (isNaN(allScore)) {
             $(".mark").html("没有成绩");
             $(".scoreName").html("");
-        }else {
+        } else {
             $(".mark").html("E<sup>-</sup>");
             $(".scoreName").html(useName + "&nbsp;" + allScore.toFixed(1) + "分");
         }
