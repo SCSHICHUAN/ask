@@ -30,6 +30,7 @@
             <button class="button7">选择</button>
             <button class="button2">添加</button>
             <button class="button14">删除</button>
+            <button class="excleF">导入</button>
         </div>
         <div class="buttonPage2">
             <button class="buttonPage61">选择</button>
@@ -123,7 +124,7 @@
         </div>
         <div class="nowreleas">
             <div class="lestteleasTitlea">要发布的试卷</div>
-            <div  name="release"></div>
+            <div name="release"></div>
             <button class="releasecanal">取消发布</button>
             <button class="releasecofrim">发布试卷</button>
         </div>
@@ -132,6 +133,17 @@
 <div class="page7">
     <button class="page7button">取消删除试卷</button>
     <button class="page7button1">确定删除试卷</button>
+</div>
+<div class="excleFF">
+    <div class="ee">请选择要上传的excle文件</div>
+    <form>
+        <div class="file-box">
+            <input type="file" class="file-btn" id="file" value="未选择任何文件"/>
+            <div class="fileName">上传文件</div>
+        </div>
+        <button type="submit" class="fileUp">上传</button>
+    </form>
+    <button class="fileUp2">取消</button>
 </div>
 <script type="text/javascript">
 
@@ -791,8 +803,8 @@
                         "    <div class=\"B1\">B:" + B + "</div>\n" +
                         "    <div class=\"C1\">C:" + C + "</div>\n" +
                         "    <div class=\"D1\">D:" + D + "</div>\n" +
-                        "    <div class=\"title1\">"+ "答案:&nbsp;"
-                        + answer +"&nbsp;&nbsp;&nbsp;类别:&nbsp;" + category+"</div>\n" +
+                        "    <div class=\"title1\">" + "答案:&nbsp;"
+                        + answer + "&nbsp;&nbsp;&nbsp;类别:&nbsp;" + category + "</div>\n" +
                         "</div>";
 
                 }
@@ -833,12 +845,9 @@
             }
 
         })
-        if(deleteTables.length==0)
+        if (deleteTables.length == 0)
             return showtips("请选择要删除的问卷....");
         $(".page7").css({display: 'block'});
-
-
-
 
 
     })
@@ -874,7 +883,7 @@
     })
 
     $(".buttonPage63").click(function () {
-         $(".release").css({ display: 'block'});
+        $(".release").css({display: 'block'});
 
 
         $.ajax({
@@ -894,14 +903,14 @@
 
     })
     $(".releasecanal").click(function () {
-        $(".release").css({ display: 'none'});
+        $(".release").css({display: 'none'});
     })
     $(".releasecofrim").click(function () {
 
 
-         if($("[name=\"release\"]").text() == "")
-             return showtips("请点击右方的列表选择...");
-        $(".release").css({ display: 'none'});
+        if ($("[name=\"release\"]").text() == "")
+            return showtips("请点击右方的列表选择...");
+        $(".release").css({display: 'none'});
 
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -928,9 +937,17 @@
     $("[name=\"release\"]").click(function () {
         showtips("请点击右方的列表选择...")
     })
-
-
-
+    $(".excleF").click(function () {
+        $(".excleFF").css({display: 'block'});
+        // $(".fileName").text($(".file-btn").text());
+    })
+    /**
+     * 如果元素发生改变，执行函数
+     */
+    $(".file-btn").change(function () {
+        var emel = document.getElementById("file");
+        $(".fileName").text(emel.value.slice(12));
+    })
 
 
 </script>

@@ -171,8 +171,8 @@ h2{
     width: 100px;
     height: 40px;
     margin-left: 10px;
-    background-color: rgba(37,42,48,1);
     color: white;
+    background-color: rgb(50,50,50);
 }
 .shousuo{
     width: 50px;
@@ -282,7 +282,7 @@ h2{
 .button8{
     margin-top: 100px;
 }
-.button8,.button9,.button7,.button2,.button14{
+.button8,.button9,.button7,.button2,.button14,.excleF{
     border-bottom: rgb(55,55,55) 1px solid;
 }
 .page4{
@@ -389,7 +389,6 @@ h2{
 }
 .button1QuesTitle:hover{
     background-color: rgb(37,42,48);
-    color: red;
 }
 .button1QuesTitle:active{
     color: rgb(37,42,48);
@@ -473,7 +472,6 @@ h2{
 }
 .buttonPage61,.buttonPage62,.buttonPage63{
     border-bottom: 1px solid rgb(50,50,50);
-
 }
 .page6hoverTable2{
     display: none;
@@ -560,4 +558,69 @@ h2{
     border-radius: 10px;
     background-color: grey;
 }
+.excleFF{
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 180px;
+    background-color: rgb(50,50,50);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    z-index: 999;
+    border-radius: 5px;
+    display: none;
+}
+.ee{
+    margin: 0 auto;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    color: rgb(200,200,200);
+}
+.file-box{
+    width: 380px;
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    color: white;
+    background: rgb(100,100,100);
 
+}
+.file-btn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    outline: none;
+    background-color: transparent;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity: 0;
+    opacity: 0;
+}
+.fileUp,.fileUp2{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    bottom: 25px;
+    background-color: rgb(60,60,60);
+    font-size: 18px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    border: 1px solid  rgb(20,125,237);
+    border-radius: 2px;
+    color: rgb(200,200,200);
+}
+.fileUp{
+    right: 25px;
+    border: 1px solid  rgb(20,125,237);
+
+}
+.fileUp2 {
+    left: 25px;
+    border: 1px solid  red;
+}
