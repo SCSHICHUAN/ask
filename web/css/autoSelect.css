@@ -8,7 +8,6 @@ body {
 .categorys {
     width: 700px;
     margin: 0 auto;
-    margin-top: 70px;
 }
 
 .category {
@@ -40,4 +39,21 @@ select {
     font-size: 20px;
     top: 35px;
     right: 150px;
+}
+button{
+    display: block;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(50,50,50);
+    outline: none;
+    color: white;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+h2{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
 }

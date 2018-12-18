@@ -20,6 +20,7 @@ import java.util.*;
 public class QuestionBack {
 
 
+
     /**
      * 生层试卷
      *
@@ -387,18 +388,113 @@ public class QuestionBack {
     public static void getCategorys(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("----------------getCategorys-----------");
         Map<String, List<String>> map = getAllltest();
-        Map<String,String> map1 = new HashMap<>();
+        Map<String, String> map1 = new HashMap<>();
 
-        for (String key : map.keySet()){
-            map1.put(key,String.valueOf(map.get(key).size()));
+        for (String key : map.keySet()) {
+            map1.put(key, String.valueOf(map.get(key).size()));
             System.out.println(key);
         }
 
-        request.setAttribute("keys",map1);
+        request.setAttribute("keys", map1);
 
         try {
             try {
-                request.getRequestDispatcher("/views/autoSelect.jsp").forward(request,response);
+                request.getRequestDispatcher("/views/autoSelect.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void autoCategorys(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("----------------autoCategorys-----------");
+
+
+        Map<String, List<String>> staticMap = new HashMap<>();
+        Map<String, List<String>> staticMap2 = new HashMap<>();
+        staticMap = getAllltest();
+
+        List<String> resultIDs = new ArrayList<>();
+
+
+        /**
+         * 选择0到题目
+         */
+        for (String key : staticMap.keySet()) {
+            String number = (String) request.getParameter(key);
+            if (Integer.valueOf(number) !=0){
+                staticMap2.put(key,staticMap.get(key));
+            }
+        }
+
+
+        /**
+         * 随机的抽取题目
+         */
+        for (String key : staticMap2.keySet()) {
+
+            String number = (String) request.getParameter(key);
+
+            List<String> localIDs = staticMap.get(key);
+            List<String> localIDs2 = new ArrayList<>();
+
+            if (localIDs.size() == 0){
+                staticMap.remove(key,staticMap.get(key));
+                continue;
+            }
+
+            Random random = new Random();
+            Integer item = Integer.valueOf(number);
+
+
+            /**
+             * 1.循环抽取题目，
+             */
+            while (true) {
+
+                /**
+                 * 2.从一个集合随机抽取元素
+                 */
+                String quesID = localIDs.get(random.nextInt(localIDs.size()));
+                /**
+                 * 3.题目抽取出来，就从集合中删除
+                 */
+                localIDs.remove(quesID);
+                localIDs2.add(quesID);
+
+                System.out.println(quesID);
+
+                /**
+                 * 4.当抽取到指定数量break、
+                 */
+                if (localIDs2.size() == item) {
+                    resultIDs.addAll(localIDs2);
+                    System.out.println(key);
+                    System.out.println("---------");
+                    break;
+
+                }
+            }
+
+
+        }
+
+        /**
+         * 添加到数据库中
+         */
+        deleteTable("随机试卷");
+        createTableForQuestios("随机试卷");
+        for (int i = 0; i < resultIDs.size(); i++) {
+            addQuertion("随机试卷", resultIDs.get(i));
+        }
+
+
+        try {
+            try {
+                request.getRequestDispatcher("/views/admin1.jsp?auto=auto").forward(request, response);
             } catch (ServletException e) {
                 e.printStackTrace();
             }
@@ -407,8 +503,8 @@ public class QuestionBack {
         }
 
 
-
     }
+
 
     public static Map<String, List<String>> getAllltest() {
         Map<String, List<String>> map = new HashMap<>();

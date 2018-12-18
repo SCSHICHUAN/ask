@@ -941,7 +941,7 @@
     })
     $(".excleF").click(function () {
         $(".excleFF").css({display: 'block'});
-        $(".excleFF").animate({opacity:'1'});
+        $(".excleFF").animate({opacity: '1'});
     })
     /**
      * 如果元素发生改变，执行函数
@@ -951,12 +951,22 @@
         $(".fileName").text(emel.value.slice(12));
     })
     $(".fileUp2").click(function () {
-        $(".excleFF").animate({opacity:'0'});
+        $(".excleFF").animate({opacity: '0'});
         setTimeout(function () {
             $(".excleFF").css({display: 'none'});
-        },2500)
+        }, 2500)
 
     })
+    <%  String auto = request.getParameter("auto");%>
+
+    var auto = "<%=auto%>";
+
+
+    if (auto == "auto") {
+
+        $(".button3").click();
+
+    }
 
 
 </script>

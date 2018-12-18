@@ -63,23 +63,7 @@ public class Servlet extends HttpServlet {
         }else if (Objects.equals(path, "/getCategory")) {//获取题目的类别
             QuestionBack.getCategorys(request,response);
         }else if (Objects.equals(path, "/autoCategory")) {//自动试卷
-
-            Map<String, List<String>> map =   QuestionBack.getAllltest();
-
-            for (String key : map.keySet()){
-
-
-             String s = (String)request.getParameter(key);
-                System.out.println(s);
-
-
-
-            }
-
-
-
-
-
+            QuestionBack.autoCategorys(request,response);
         }
 
 

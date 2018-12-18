@@ -15,6 +15,7 @@
     <script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
 </head>
 <body>
+    <h2>自动生成试卷设置</h2>
 <form action="/ask/autoCategory">
     <div class="categorys">
 
@@ -32,7 +33,7 @@
             </div>
         </c:forEach>
     </div>
-    <input type="submit" value="提交">
+    <button>设置</button>
 </form>
 
 <script>
