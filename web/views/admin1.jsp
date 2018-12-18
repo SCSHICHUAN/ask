@@ -35,6 +35,9 @@
         <div class="buttonPage2">
             <button class="buttonPage61">选择</button>
             <button class="buttonPage63">发布</button>
+            <form action="/ask/getCategory">
+                <button class="buttonPage64">自动</button>
+            </form>
             <button class="buttonPage62">删除</button>
         </div>
 
@@ -89,7 +92,6 @@
         </div>
     </div>
 </div>
-
 <div class="page3">
     <div class="backView">
         <div class="t5"></div>
@@ -136,9 +138,9 @@
 </div>
 <div class="excleFF">
     <div class="ee">请选择要上传的excle文件</div>
-    <form>
+    <form action="/ask/uplodExcleFile" method="post" enctype="multipart/form-data">
         <div class="file-box">
-            <input type="file" class="file-btn" id="file" value="未选择任何文件"/>
+            <input type="file" name="excle" class="file-btn" id="file"/>
             <div class="fileName">上传文件</div>
         </div>
         <button type="submit" class="fileUp">上传</button>
@@ -366,10 +368,10 @@
                     html += "<div class=\"ques\" style=\"position: relative; background-color:" + color + "\">\n" +
                         "    <div class=\"category\">类别:" + category + "</div>\n" +
                         "    <div class=\"title\">标题:" + title + "</div>\n" +
-                        "    <div class=\"A\">A:" + A + "</div>\n" +
-                        "    <div class=\"B\">B:" + B + "</div>\n" +
-                        "    <div class=\"C\">C:" + C + "</div>\n" +
-                        "    <div class=\"D\">D:" + D + "</div>\n" +
+                        "    <div class=\"A\">" + A + "</div>\n" +
+                        "    <div class=\"B\">" + B + "</div>\n" +
+                        "    <div class=\"C\">" + C + "</div>\n" +
+                        "    <div class=\"D\">" + D + "</div>\n" +
                         "    <div class=\"answer\">答案:" + answer + "</div>\n" +
                         "    <div class=\"shouse\" id = \'" + id + "\'>选择</div>" +
                         "</div>";
@@ -614,10 +616,10 @@
 
                     html += "<div class=\"ques\" style=\"position: relative\">\n" +
                         "    <div class=\"title\">" + (i + 1) + ".&nbsp;&nbsp;" + title + "</div>\n" +
-                        "    <div class=\"A\">A:" + A + "</div>\n" +
-                        "    <div class=\"B\">B:" + B + "</div>\n" +
-                        "    <div class=\"C\">C:" + C + "</div>\n" +
-                        "    <div class=\"D\">D:" + D + "</div>\n" +
+                        "    <div class=\"A\">" + A + "</div>\n" +
+                        "    <div class=\"B\">" + B + "</div>\n" +
+                        "    <div class=\"C\">" + C + "</div>\n" +
+                        "    <div class=\"D\">" + D + "</div>\n" +
                         "</div>";
 
                 }
@@ -799,10 +801,10 @@
 
                     html += "<div class=\"ques1\">" +
                         "    <div class=\"title1\">" + (i + 1) + ".&nbsp;&nbsp;" + title + "</div>\n" +
-                        "    <div class=\"A1\">A:" + A + "</div>\n" +
-                        "    <div class=\"B1\">B:" + B + "</div>\n" +
-                        "    <div class=\"C1\">C:" + C + "</div>\n" +
-                        "    <div class=\"D1\">D:" + D + "</div>\n" +
+                        "    <div class=\"A1\">" + A + "</div>\n" +
+                        "    <div class=\"B1\">" + B + "</div>\n" +
+                        "    <div class=\"C1\">" + C + "</div>\n" +
+                        "    <div class=\"D1\">" + D + "</div>\n" +
                         "    <div class=\"title1\">" + "答案:&nbsp;"
                         + answer + "&nbsp;&nbsp;&nbsp;类别:&nbsp;" + category + "</div>\n" +
                         "</div>";
@@ -939,7 +941,7 @@
     })
     $(".excleF").click(function () {
         $(".excleFF").css({display: 'block'});
-        // $(".fileName").text($(".file-btn").text());
+        $(".excleFF").animate({opacity:'1'});
     })
     /**
      * 如果元素发生改变，执行函数
@@ -947,6 +949,13 @@
     $(".file-btn").change(function () {
         var emel = document.getElementById("file");
         $(".fileName").text(emel.value.slice(12));
+    })
+    $(".fileUp2").click(function () {
+        $(".excleFF").animate({opacity:'0'});
+        setTimeout(function () {
+            $(".excleFF").css({display: 'none'});
+        },2500)
+
     })
 
 

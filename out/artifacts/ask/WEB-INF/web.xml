@@ -95,6 +95,18 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/queryScore</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/uplodExcleFile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/getCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/autoCategory</url-pattern>
+    </servlet-mapping>
 
 
 
@@ -126,6 +138,12 @@
         <url-pattern>/queryScore</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>filter</filter-name>
+        <url-pattern>/uplodExcleFile</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
 
 
 

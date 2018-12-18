@@ -14,6 +14,9 @@
           <element id="library" level="project" name="mysql-connector-java-5.1.7-bin" />
           <element id="library" level="project" name="c3p0-0.9.1.2" />
           <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="poi" />
+          <element id="library" level="project" name="commons-fileupload-1.3.3" />
+          <element id="library" level="project" name="commons-io-2.5" />
         </element>
       </element>
     </root>

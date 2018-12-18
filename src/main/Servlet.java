@@ -58,7 +58,30 @@ public class Servlet extends HttpServlet {
             QuestionBack.responesToCline(response, jsonArray.toString());
         } else if (Objects.equals(path, "/queryScore")) {//查询用户的成绩
             UserManger.allUsers(request,response);
+        } else if (Objects.equals(path, "/uplodExcleFile")) {//上传excle
+            Questions.uplodExcleFile(request,response);
+        }else if (Objects.equals(path, "/getCategory")) {//获取题目的类别
+            QuestionBack.getCategorys(request,response);
+        }else if (Objects.equals(path, "/autoCategory")) {//自动试卷
+
+            Map<String, List<String>> map =   QuestionBack.getAllltest();
+
+            for (String key : map.keySet()){
+
+
+             String s = (String)request.getParameter(key);
+                System.out.println(s);
+
+
+
+            }
+
+
+
+
+
         }
+
 
 
     }

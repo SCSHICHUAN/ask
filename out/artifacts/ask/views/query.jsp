@@ -401,10 +401,10 @@ z-index: 999;">请求失败...
         $(".quesAry").html("");
         $(".quesAry").html("<div class=\"question\"id=\"" + testPaper[currentPger].id + "\">" + (currentPger + 1) + ".&nbsp;" + testPaper[currentPger].title + "</div>\n" +
             "        <div class=\"chose\">\n" +
-            "            <div class=\"A\">A." + testPaper[currentPger].A + "</div>\n" +
-            "            <div class=\"B\">B." + testPaper[currentPger].B + "</div>\n" +
-            "            <div class=\"C\">C." + testPaper[currentPger].C + "</div>\n" +
-            "            <div class=\"D\">D." + testPaper[currentPger].D + "</div>\n" +
+            "            <div class=\"A\">" + testPaper[currentPger].A + "</div>\n" +
+            "            <div class=\"B\">" + testPaper[currentPger].B + "</div>\n" +
+            "            <div class=\"C\">" + testPaper[currentPger].C + "</div>\n" +
+            "            <div class=\"D\">" + testPaper[currentPger].D + "</div>\n" +
             "        </div>" +
             "<div class=\"space\"></div>")
     }

@@ -3,6 +3,14 @@ package main;
 import Models.TestIteam;
 import Models.User;
 import jdbc.JDBC;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -60,6 +68,18 @@ public class Questions {
 
 
     }
+
+
+    /**管理员导入excle文件
+     * @param request
+     * @param response
+     */
+    public static  void uplodExcleFile(HttpServletRequest request, HttpServletResponse response){
+        System.out.println("+++++++++++uplodExcleFile++++++++");
+        showExcleFile(request,response);
+    }
+
+
 
     /**
      * 响应给前端一页的题目
@@ -264,6 +284,95 @@ public class Questions {
 
 
         return jsonArray;
+    }
+
+
+    /**
+     * 解析excle文件
+     * @param request
+     */
+    public static void showExcleFile(HttpServletRequest request,HttpServletResponse response){
+
+        System.out.println("+++++++++++showExcleFile++++++++");
+        ServletFileUpload fileUpload = new ServletFileUpload(new DiskFileItemFactory());
+        fileUpload.setHeaderEncoding("utf-8");
+
+        try {
+            List<FileItem> fileItemList = fileUpload.parseRequest(request);
+            for (FileItem fileItem : fileItemList) {
+
+                if (!fileItem.isFormField()) {
+                    System.out.println(fileItem.getFieldName());
+                    /**
+                     * Excle解析开始导入POI相关的jar
+                     */
+                    Workbook workbook = null;
+                    try {
+                        workbook = WorkbookFactory.create(fileItem.getInputStream());
+                        Sheet sheet = workbook.getSheetAt(0);
+                        /**
+                         * 获取sheet总行数
+                         */
+                        int alloRow = sheet.getLastRowNum();
+
+                        for (int i = 1; i <= alloRow; i++) {
+                            /**
+                             * 获一行中的cell数
+                             */
+                            Row row = sheet.getRow(i);
+
+                            int coloumNum = row.getPhysicalNumberOfCells();
+
+                            for (int j = 0; j < coloumNum; j++) {
+                                String cellValue = row.getCell(j).getStringCellValue();
+                                System.out.println(cellValue);
+                            }
+
+
+                            String category = row.getCell(0).getStringCellValue();
+                            String title = row.getCell(3).getStringCellValue();
+                            String A = row.getCell(4).getStringCellValue();
+                            String B = row.getCell(5).getStringCellValue();
+                            String C = row.getCell(6).getStringCellValue();
+                            String D = row.getCell(7).getStringCellValue();
+                            String answer = row.getCell(8).getStringCellValue();
+
+
+                            TestIteam testIteam = new TestIteam(null,category,title,A,B,C,D,answer);
+
+                            addTestItem(testIteam);
+
+
+                        }
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println("解析Excel失败！");
+                    } finally {
+                        if (workbook != null) {
+                            try {
+                                workbook.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+            request.getRequestDispatcher("/views/admin1.jsp").forward(request,response);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
     }
 
 

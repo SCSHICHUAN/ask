@@ -6,6 +6,7 @@ import jdbc.JDBC;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -13,13 +14,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
 
 public class QuestionBack {
+
+
     /**
      * 生层试卷
+     *
      * @param request
      * @param response
      */
@@ -88,6 +91,7 @@ public class QuestionBack {
 
     /**
      * 响应给前端，试卷的名称目录
+     *
      * @param response
      */
     public static void getTables(HttpServletResponse response) {
@@ -95,7 +99,7 @@ public class QuestionBack {
 
         for (String table : showTables()) {
 
-            if (! (Objects.equals("questions", table) || Objects.equals("user", table))) {
+            if (!(Objects.equals("questions", table) || Objects.equals("user", table))) {
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("table", table);
@@ -120,7 +124,7 @@ public class QuestionBack {
             String table = array.get(i).toString();
             if (deleteTable(table)) {
 
-                if(Objects.equals(querReleaseLast(),table)){
+                if (Objects.equals(querReleaseLast(), table)) {
                     delReleaseLast();
                 }
 
@@ -135,6 +139,7 @@ public class QuestionBack {
 
     /**
      * 获取试卷，响应给前端
+     *
      * @param request
      * @param respons
      */
@@ -165,10 +170,11 @@ public class QuestionBack {
 
     /**
      * 获取试卷，响应给前端,答题
+     *
      * @param request
      * @param respons
      */
-    public static void getQuestions(HttpServletRequest request, HttpServletResponse respons,String tableName) {
+    public static void getQuestions(HttpServletRequest request, HttpServletResponse respons, String tableName) {
 
         String table = tableName;
 
@@ -196,6 +202,7 @@ public class QuestionBack {
 
     /**
      * 发布试卷，并且删除老的发布，响应给前端
+     *
      * @param request
      * @param respons
      */
@@ -203,9 +210,9 @@ public class QuestionBack {
 
         String table = (String) request.getParameter("table");
 
-        if(Objects.equals(table,"")){
+        if (Objects.equals(table, "")) {
             responesToCline(respons, "没有试卷".toString());
-        }else {
+        } else {
 
             String lastTable = querReleaseLast();
             if (!(Objects.equals(lastTable, "") | (Objects.equals(lastTable, null)))) {
@@ -219,6 +226,7 @@ public class QuestionBack {
 
     /**
      * 获取发布的试卷，响应给前端
+     *
      * @param request
      * @param respons
      */
@@ -226,10 +234,10 @@ public class QuestionBack {
 
 
         String lastTable = querReleaseLast();
-        if(!(Objects.equals(lastTable,"")|(Objects.equals(lastTable,null)))){
-            responesToCline(respons,lastTable.toString());
-        }else {
-            responesToCline(respons,"无".toString());
+        if (!(Objects.equals(lastTable, "") | (Objects.equals(lastTable, null)))) {
+            responesToCline(respons, lastTable.toString());
+        } else {
+            responesToCline(respons, "无".toString());
         }
 
 
@@ -238,10 +246,11 @@ public class QuestionBack {
 
     /**
      * 发布试卷
+     *
      * @param table
      * @return
      */
-    public  static  boolean  addRelease(String table){
+    public static boolean addRelease(String table) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -250,11 +259,11 @@ public class QuestionBack {
             connection = JDBC.GetConnection();
             String sql = "insert into releases values(null ,?) ";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,table);
+            preparedStatement.setObject(1, table);
             int row = preparedStatement.executeUpdate();
-            if(row>0){
+            if (row > 0) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
 
@@ -270,9 +279,10 @@ public class QuestionBack {
 
     /**
      * 查询已经发布的试卷
+     *
      * @return
      */
-    public  static  String  querReleaseLast(){
+    public static String querReleaseLast() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -298,9 +308,10 @@ public class QuestionBack {
 
     /**
      * 删除已经发布的试卷
+     *
      * @return
      */
-    public  static  boolean  delReleaseLast(){
+    public static boolean delReleaseLast() {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -325,12 +336,12 @@ public class QuestionBack {
         }
 
 
-
     }
 
 
     /**
      * 获取table中的题目id
+     *
      * @param table
      * @return
      */
@@ -373,6 +384,74 @@ public class QuestionBack {
     }
 
 
+    public static void getCategorys(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("----------------getCategorys-----------");
+        Map<String, List<String>> map = getAllltest();
+        Map<String,String> map1 = new HashMap<>();
+
+        for (String key : map.keySet()){
+            map1.put(key,String.valueOf(map.get(key).size()));
+            System.out.println(key);
+        }
+
+        request.setAttribute("keys",map1);
+
+        try {
+            try {
+                request.getRequestDispatcher("/views/autoSelect.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    public static Map<String, List<String>> getAllltest() {
+        Map<String, List<String>> map = new HashMap<>();
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            statement = connection.createStatement();
+            String sql = "select * from questions";
+            resultSet = statement.executeQuery(sql);
+
+
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String category = resultSet.getString("category");
+
+                boolean flag = false;
+                for (String key : map.keySet()) {
+                    if (Objects.equals(key, category)) {
+                        map.get(key).add(String.valueOf(id));
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    List<String> list = new ArrayList<>();
+                    list.add(String.valueOf(id));
+                    map.put(category, list);
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, statement, resultSet);
+        }
+        return map;
+    }
+
 //    public static List<String> showTables() {
 //
 //
@@ -408,6 +487,7 @@ public class QuestionBack {
 
     /**
      * 显示试卷
+     *
      * @return
      */
     public static List<String> showTables() {
@@ -443,6 +523,7 @@ public class QuestionBack {
 
     /**
      * 动态的创建table，生层试卷
+     *
      * @param table
      * @return
      */
@@ -478,10 +559,11 @@ public class QuestionBack {
 
     /**
      * 把table的名字级联添加到tableNames的表中保存下来，tableNames表是保存试卷名称目录
+     *
      * @param table
      * @return
      */
-    public  static  boolean addTableName(String table){
+    public static boolean addTableName(String table) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -506,8 +588,10 @@ public class QuestionBack {
             JDBC.close(connection, preparedStatement);
         }
     }
+
     /**
      * 动态的删除table
+     *
      * @param table
      * @return
      */
@@ -537,35 +621,37 @@ public class QuestionBack {
         }
         return flag;
     }
+
     /**
      * 级联把table的名字重tableNames的表中删除
+     *
      * @param table
      * @return
      */
-    public  static  boolean deleteTableName(String table){
+    public static boolean deleteTableName(String table) {
 
-            Connection connection = null;
-            PreparedStatement preparedStatement = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-            try {
+        try {
 
-                connection = JDBC.GetConnection();
-                String sql = "delete from tableNames where tableNam = ?";
-                preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setObject(1, table);
-                int rows = preparedStatement.executeUpdate();
-                if (rows > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
+            connection = JDBC.GetConnection();
+            String sql = "delete from tableNames where tableNam = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, table);
+            int rows = preparedStatement.executeUpdate();
+            if (rows > 0) {
+                return true;
+            } else {
                 return false;
-            } finally {
-                JDBC.close(connection, preparedStatement);
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            JDBC.close(connection, preparedStatement);
+        }
 
 
     }
@@ -573,6 +659,7 @@ public class QuestionBack {
 
     /**
      * 试卷中添加题目的id
+     *
      * @param table
      * @param id
      * @return
