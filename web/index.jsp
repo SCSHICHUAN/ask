@@ -20,13 +20,10 @@
 
 <div class="all">
     <form action="/ask/views/main.jsp">
-        <button class="start1">填写信息开始测试</button>
+        <button class="start1">开始测试</button>
     </form>
     <form action="/ask/views/query.jsp">
         <button class="start2">用户登录</button>
-    </form>
-    <form action="/ask/views/administer.jsp">
-        <button class="administrator">管理人员登录</button>
     </form>
 </div>
 

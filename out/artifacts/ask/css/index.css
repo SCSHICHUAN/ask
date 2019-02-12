@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    font-family: 微软雅黑;
+}
+.img1{
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+.head{
+    position: relative;
+    top: -307px;
+    width: 100%;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+.img2{
+    display: block;
+    position: relative;
+
+   margin: 0 auto;
+    top: -331px;
+    width: 200px;
+    height: 200px;
+
+}
+.start1,.start2,.administrator{
+    display: block;
+    width: 99.95%;
+    height: 350px;
+    background-color: deepskyblue;
+    margin: 0 auto;
+    font-size: 50px;
+    color: white;
+    border-radius: 6px;
+
+}
+.start1{
+    background-color: rgb(120,190,50);
+    color: white;
+}
+.start2{
+    background-color: rgb(240,240,240);
+    color: black;
+}
+.all{
+    margin-top: -266px;
+    border-radius: 10px;
+    background-color: rgb(240,240,240);
+    overflow: hidden;
+
+}
+.administrator{
+    background-color: rgb(237,29,122);
+}
+button{
+    /*outline:0 none !important;*/
+    /*ssion(this.onFocus=this.blur());*/
+    border: none;
+}

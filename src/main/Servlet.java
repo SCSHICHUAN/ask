@@ -64,6 +64,8 @@ public class Servlet extends HttpServlet {
             QuestionBack.getCategorys(request,response);
         }else if (Objects.equals(path, "/autoCategory")) {//自动试卷
             QuestionBack.autoCategorys(request,response);
+        }else if (Objects.equals(path, "/admin")) {//自动试卷
+            request.getRequestDispatcher("/admin.jsp").forward(request,response);
         }
 
 

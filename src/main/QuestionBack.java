@@ -179,6 +179,20 @@ public class QuestionBack {
 
         String table = tableName;
 
+        if(tableName.equals("随机试卷")){
+            System.out.println("-----------随机试卷---------");
+
+            List<String> tableIDs = getRandomQues();
+            List<TestIteam> testIteams = new ArrayList<>();
+            for (String id : tableIDs) {
+                System.out.println("id=" + id);
+                testIteams.add(Preview.getTestItemForId(id));
+            }
+            JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
+            responesToCline(respons, jsonArray.toString());
+            return;
+        }
+
         System.out.println("table=" + table);
 
         if (Objects.equals("", table) || table == null) {
@@ -413,9 +427,16 @@ public class QuestionBack {
         System.out.println("----------------autoCategorys-----------");
 
 
+        /**
+         * 清空老的随机设置
+         */
+        ClearTableContent();
+
         Map<String, List<String>> staticMap = new HashMap<>();
-        Map<String, List<String>> staticMap2 = new HashMap<>();
         staticMap = getAllltest();
+
+        Map<String, List<String>> staticMap2 = new HashMap<>();
+
 
         List<String> resultIDs = new ArrayList<>();
 
@@ -436,7 +457,12 @@ public class QuestionBack {
          */
         for (String key : staticMap2.keySet()) {
 
-            String number = (String) request.getParameter(key);
+            String number = (String) request.getParameter(key);//
+            System.out.println("选择的题目数量："+number);
+            /**
+             * 把随机获取题目和类别存入数据库
+             */
+            AutoKindAndQuesNum(key,Integer.parseInt(number));
 
             List<String> localIDs = staticMap.get(key);
             List<String> localIDs2 = new ArrayList<>();
@@ -506,6 +532,10 @@ public class QuestionBack {
     }
 
 
+    /**
+     * 按照类别把题目分类
+     * @return
+     */
     public static Map<String, List<String>> getAllltest() {
         Map<String, List<String>> map = new HashMap<>();
 
@@ -787,5 +817,166 @@ public class QuestionBack {
 
     }
 
+
+
+    public static  List<String> getRandomQues(){
+
+
+        /**
+         * 要随机的类别题目
+         */
+        Map<String,Integer> map =  GetAutoKindAndQuesNum();
+
+
+        Map<String, List<String>> staticMap = new HashMap<>();
+        staticMap = getAllltest();
+        List<String> resultIDs = new ArrayList<>();
+
+
+
+        /**
+         * 随机的抽取题目
+         */
+        for (String key : map.keySet()) {
+
+            Integer number = map.get(key);
+            System.out.println("选择的题目数量："+number);
+
+            List<String> localIDs = staticMap.get(key);
+            List<String> localIDs2 = new ArrayList<>();
+
+            if (localIDs.size() == 0){
+                staticMap.remove(key,staticMap.get(key));
+                continue;
+            }
+
+            Random random = new Random();
+            Integer item = number;
+
+
+            /**
+             * 1.循环抽取题目，
+             */
+            while (true) {
+
+                /**
+                 * 2.从一个集合随机抽取元素
+                 */
+                String quesID = localIDs.get(random.nextInt(localIDs.size()));
+                /**
+                 * 3.题目抽取出来，就从集合中删除
+                 */
+                localIDs.remove(quesID);
+                localIDs2.add(quesID);
+
+                System.out.println(quesID);
+
+                /**
+                 * 4.当抽取到指定数量break、
+                 */
+                if (localIDs2.size() == item) {
+                    resultIDs.addAll(localIDs2);
+                    System.out.println(key);
+                    System.out.println("----------");
+                    break;
+
+                }
+            }
+
+
+        }
+        System.out.println("随机题目的ID："+resultIDs);
+
+        return resultIDs;
+
+
+    }
+
+    /**
+     * 保存随机设置
+     * @param kindName
+     * @param quseNum
+     * @return
+     */
+
+    public static boolean AutoKindAndQuesNum(String kindName,int quseNum){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "insert into randomKind values (null ,?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,quseNum);
+            preparedStatement.setObject(2,kindName);
+
+            int row = preparedStatement.executeUpdate();
+            if(row>0){
+                return true;
+            }else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,preparedStatement);
+        }
+
+        return false;
+    }
+
+    /***
+     * 清空数据表
+     * @return
+     */
+    public static boolean ClearTableContent(){
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            statement = connection.createStatement();
+            String sql = "truncate table randomKind";
+           int row =  statement.executeUpdate(sql);
+           if(row>0){
+               return true;
+           }else {
+               return false;
+           }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,statement);
+        }
+        return false;
+    }
+    public static Map<String,Integer> GetAutoKindAndQuesNum(){
+
+        Map<String,Integer> map = new HashMap<>();
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select *  from randomKind";
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                String key = resultSet.getString("kindName");
+                Integer num = resultSet.getInt("qNum");
+                map.put(key,num);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,statement,resultSet);
+        }
+        System.out.println("随机设置："+map);
+        return map;
+    }
 
 }

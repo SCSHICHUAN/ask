@@ -107,6 +107,10 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/autoCategory</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
 
 
 
