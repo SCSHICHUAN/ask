@@ -7,15 +7,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28fda83-55f2-42d4-ad14-b56c3575dc44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/admin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ask.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/ask.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ask.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/ask.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/QuestionBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/QuestionBack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Servlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UserManger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UserManger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/Models/TestIteam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/Models/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/c3p0-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/jdbc/JDBC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/aliyun-java-sdk-core-3.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/aliyun-java-sdk-dysmsapi-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/c3p0-0.9.1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/commons-fileupload-1.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/commons-io-2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/jstl-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/mysql-connector-java-5.1.7-bin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/commons-collections4-4.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/poi-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/poi-ooxml-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/poi-ooxml-schemas-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/poi-scratchpad-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/taglibs-standard-impl-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/taglibs-standard-jstlel-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/taglibs-standard-spec-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/poi/xmlbeans-2.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/lib/servlet-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Administer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/DeleteItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Filter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Filter2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Preview.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/QuestionBack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Questions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Score.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/Servlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/main/UserManger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/yzm/Servletyzm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/classes/yzm/Verification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/aliyun-java-sdk-core-3.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/aliyun-java-sdk-dysmsapi-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/ask-mysql.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/c3p0-0.9.1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/commons-collections4-4.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/commons-fileupload-1.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/commons-io-2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/json.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/mysql-connector-java-5.1.7-bin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/poi-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/poi-ooxml-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/poi-ooxml-schemas-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/poi-scratchpad-3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/servlet-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/lib/xmlbeans-2.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/admin.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/admin1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/administer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/autoSelect.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/query.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/css/userScore.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/img/index.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/img/le.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/img/main.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/img/male203.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/img/timg.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/js/jquery-1.4.2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/admin1.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/administer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/autoSelect.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/query.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ask/views/userScore.jsp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -153,7 +221,7 @@
           <entry key="css" value="7" />
           <entry key="java" value="28" />
           <entry key="jsp" value="28" />
-          <entry key="sql" value="4" />
+          <entry key="sql" value="5" />
           <entry key="xml" value="6" />
         </counts>
       </usages-collector>
@@ -163,7 +231,7 @@
           <entry key="CSS" value="7" />
           <entry key="JAVA" value="28" />
           <entry key="JSP" value="28" />
-          <entry key="SQL" value="4" />
+          <entry key="SQL" value="5" />
           <entry key="XML" value="6" />
         </counts>
       </usages-collector>
@@ -172,6 +240,7 @@
           <entry key="css" value="354" />
           <entry key="java" value="2848" />
           <entry key="jsp" value="601" />
+          <entry key="sql" value="12" />
           <entry key="xml" value="25" />
         </counts>
       </usages-collector>
@@ -181,6 +250,7 @@
           <entry key="EL" value="13" />
           <entry key="JAVA" value="2848" />
           <entry key="JSP" value="588" />
+          <entry key="SQL" value="12" />
           <entry key="XML" value="25" />
         </counts>
       </usages-collector>
@@ -209,11 +279,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/QuestionBack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3">
-              <caret line="850" column="13" lean-forward="true" selection-start-line="850" selection-start-column="13" selection-end-line="850" selection-end-column="13" />
+            <state relative-caret-position="234">
+              <caret line="818" selection-start-line="818" selection-end-line="818" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -221,25 +291,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/views/admin1.jsp">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ask.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="50" column="75" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#77#83#0" expanded="true" />
-                <element signature="e#83#89#0" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#48#54#0" expanded="true" />
-                <element signature="e#54#60#0" expanded="true" />
-                <element signature="e#217#223#0" expanded="true" />
-                <element signature="e#223#229#0" expanded="true" />
-                <element signature="e#229#235#0" expanded="true" />
-                <element signature="e#235#241#0" expanded="true" />
-                <element signature="e#244#250#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="954">
+              <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -398,6 +454,7 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/Servlet.java" />
         <option value="$PROJECT_DIR$/src/main/QuestionBack.java" />
+        <option value="$PROJECT_DIR$/ask.sql" />
       </list>
     </option>
   </component>
@@ -415,8 +472,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="680" />
-    <option name="y" value="55" />
+    <option name="x" value="716" />
+    <option name="y" value="553" />
     <option name="width" value="1674" />
     <option name="height" value="1364" />
   </component>
@@ -436,55 +493,6 @@
               <item name="ask" type="b2602c69:ProjectViewProjectNode" />
               <item name="ask" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="Preview" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="QuestionBack" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="Servlet" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ask" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ask" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -498,7 +506,7 @@
     <property name="SearchEverywhereHistoryKey" value="buttonPage63&#9;null&#9;null&#10;62&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549956738782" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550022417435" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -508,19 +516,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
-      <recent name="$PROJECT_DIR$/web/img" />
-      <recent name="$PROJECT_DIR$/web/js" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF" />
-      <recent name="$PROJECT_DIR$/web" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
       <recent name="$PROJECT_DIR$/web/img" />
       <recent name="$PROJECT_DIR$/src/javaLib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
+      <recent name="$PROJECT_DIR$/web/img" />
+      <recent name="$PROJECT_DIR$/web/js" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -713,20 +721,20 @@
       <workItem from="1545188041497" duration="247000" />
       <workItem from="1545214583332" duration="2275000" />
       <workItem from="1547099837988" duration="744000" />
-      <workItem from="1549934449027" duration="17452000" />
+      <workItem from="1549934449027" duration="18983000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="542903000" />
+    <option name="totallyTimeSpent" value="544434000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="356" y="23" width="1674" height="1364" extended-state="0" />
+    <frame x="695" y="134" width="1674" height="1364" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.716763" visible="true" weight="0.22819594" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.716763" visible="true" weight="0.22819594" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info id="Test Runs" order="4" />
       <window_info id="UI Designer" order="5" />
@@ -737,7 +745,7 @@
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4983407" visible="true" weight="0.2242846" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4983407" visible="true" weight="0.2242846" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2358643" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -812,13 +820,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/src/lib/servlet-api.jar!/javax/servlet/ServletResponse.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/jquery-1.4.2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1171,11 +1172,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/QuestionBack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="850" column="13" lean-forward="true" selection-start-line="850" selection-start-column="13" selection-end-line="850" selection-end-column="13" />
+        <state relative-caret-position="234">
+          <caret line="818" selection-start-line="818" selection-end-line="818" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ask.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
         </state>
       </provider>
     </entry>
