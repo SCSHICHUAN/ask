@@ -64,9 +64,14 @@ public class Servlet extends HttpServlet {
             QuestionBack.getCategorys(request,response);
         }else if (Objects.equals(path, "/autoCategory")) {//自动试卷
             QuestionBack.autoCategorys(request,response);
-        }else if (Objects.equals(path, "/admin")) {//自动试卷
+        }else if (Objects.equals(path, "/admin")) {//管理员登录
             request.getRequestDispatcher("/admin.jsp").forward(request,response);
+        }else if (Objects.equals(path, "/time")) {//设置答题时间
+           QuestionBack.SetTime(request,response);
+        }else if (Objects.equals(path, "/getTime")) {//回显示答题时间
+            QuestionBack.GetTime(request,response);
         }
+
 
 
 

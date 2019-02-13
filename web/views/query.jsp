@@ -265,6 +265,7 @@ z-index: 999;">请求失败...
      * 获取试卷
      */
     var testPaper = [];
+    var asktime = -1;
 
     function getTestPaper() {
 
@@ -281,12 +282,14 @@ z-index: 999;">请求失败...
             dataType: 'json',
             success: function (json) {
                 console.log(json);
+                asktime = json[json.length-1].time;
 
+                console.log("time:"+asktime)
 
                 /**
                  * 此处可以直接用 testPaper = json，为了代码的阅读用下面的方法来展示
                  */
-                for (var i = 0; i < json.length; i++) {
+                for (var i = 0; i < json.length-1; i++) {
 
                     var itemQues = new Object();
                     itemQues.id = json[i].idQus;
@@ -303,7 +306,7 @@ z-index: 999;">请求失败...
                 console.log("testPaper.length: " + testPaper.length);
                 console.log("testPaper[0].title: " + testPaper[0].title);
 
-                for (var i = 0; i < json.length; i++) {
+                for (var i = 0; i < json.length-1; i++) {
 
                     console.log("testPaper[x].title: " + testPaper[i].title);
 
@@ -330,12 +333,13 @@ z-index: 999;">请求失败...
     }
 
     function clock() {
-        var i = 1800 - 1;
+        var i = asktime*60 - 1;
         var clock = setInterval(function () {
             var a = parseInt(i / 60);
             var b = i % 60;
             $(".clock").text(a + ":" + b);
             if (i <= 0) {
+                $(".wellDowne").click();
                 clearInterval(clock);
                 i = 1800 - 1;
             }

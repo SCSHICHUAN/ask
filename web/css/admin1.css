@@ -477,7 +477,8 @@ h2{
 .buttonPage61{
     margin-top: 100px;
 }
-.buttonPage61,.buttonPage62,.buttonPage63,.buttonPage64{
+.buttonPage61,.buttonPage62,.buttonPage63,.buttonPage64,.timeButton
+{
     border-bottom: 1px solid rgb(50,50,50);
 }
 .page6hoverTable2{
@@ -630,4 +631,54 @@ h2{
 .fileUp2 {
     left: 25px;
     border: 1px solid  red;
+}
+.time{
+    position: fixed;
+    margin: auto;
+    width: 300px;
+    height: 150px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(50,50,50);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+[name="time"]{
+    border: none;
+    display: block;
+    width: 200px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: rgb(100,100,100);
+    color: white;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+.buttontime,.buttontime2{
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    bottom: 10px;
+    background-color: rgb(50,50,50);
+    border-width: 1px;
+    border-style: solid;
+}
+.buttontime{
+    right: 10px;
+    border-color: greenyellow;
+}
+.buttontime2{
+   left: 10px;
+    border-color: red;
+}
+.timeTit{
+    border: none;
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
 }

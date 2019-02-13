@@ -35,6 +35,7 @@
         <div class="buttonPage2">
             <button class="buttonPage61">选择</button>
             <button class="buttonPage63">发布</button>
+            <button class="timeButton">时间</button>
             <form action="/ask/getCategory">
                 <button class="buttonPage64">自动</button>
             </form>
@@ -147,8 +148,49 @@
     </form>
     <button class="fileUp2">取消</button>
 </div>
+<div class="time">
+    <div class="timeTit">请输入答题时间/分钟</div>
+    <input type="number" name="time" placeholder="请输入整数分钟"/>
+    <button class="buttontime">设置</button>
+    <button class="buttontime2">取消</button>
+</div>
 <script type="text/javascript">
 
+
+    $(".buttontime").click(function () {
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/time",
+            data: {time:$("[name=time]").val()},
+            dataType: "text",
+            success: function () {
+                $(".time").css({'display': 'none'});
+                showtips("设置成功...");
+            }
+        })
+    })
+
+    $(".timeButton").click(function () {
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/getTime",
+            data: {},
+            dataType: "text",
+            success: function (text) {
+                console.log("oldAskTime:" + text)
+                $("[name=time]").val(text);
+            }
+        })
+        $(".time").css({'display': 'block'});
+
+    })
+
+    $(".time").css({'display': 'none'});
+    $(".buttontime2").click(function () {
+        $(".time").css({'display': 'none'});
+    })
 
     var xuanti = 0;
     var timu = 0;
@@ -274,6 +316,7 @@
      * 题库
      */
     $(".button5").click(function () {
+        $(".time").css({'display': 'none'});
         xuanti = 0;
         timu = 0;
         idArry = [];
@@ -674,6 +717,7 @@
 
     var page6Select = 0;
     $(".button3").click(function () {
+
         page6Select = 0;
         $(".page1").css({'display': 'none'});
         $(".page6").css({display: 'block'});

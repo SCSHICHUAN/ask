@@ -189,6 +189,14 @@ public class QuestionBack {
                 testIteams.add(Preview.getTestItemForId(id));
             }
             JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
+            /***
+             * 答题时间
+             */
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("time",GetAskTime());
+            System.out.println("time:"+GetAskTime());
+            jsonArray.put(jsonObject);
+
             responesToCline(respons, jsonArray.toString());
             return;
         }
@@ -208,6 +216,13 @@ public class QuestionBack {
                 testIteams.add(Preview.getTestItemForId(id));
             }
             JSONArray jsonArray = Questions.ListArrayToJSONArray(testIteams);
+            /***
+             * 答题时间
+             */
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("time",GetAskTime());
+            jsonArray.put(jsonObject);
+
             responesToCline(respons, jsonArray.toString());
         }
 
@@ -430,7 +445,7 @@ public class QuestionBack {
         /**
          * 清空老的随机设置
          */
-        ClearTableContent();
+        ClearTableContent("randomKind");
 
         Map<String, List<String>> staticMap = new HashMap<>();
         staticMap = getAllltest();
@@ -930,14 +945,14 @@ public class QuestionBack {
      * 清空数据表
      * @return
      */
-    public static boolean ClearTableContent(){
+    public static boolean ClearTableContent(String tableName){
         Connection connection = null;
         Statement statement = null;
 
         try {
             connection = JDBC.GetConnection();
             statement = connection.createStatement();
-            String sql = "truncate table randomKind";
+            String sql = "truncate table " + tableName;
            int row =  statement.executeUpdate(sql);
            if(row>0){
                return true;
@@ -978,5 +993,82 @@ public class QuestionBack {
         System.out.println("随机设置："+map);
         return map;
     }
+
+    /**
+     * 设置答题时间
+     * @param request
+     * @param response
+     * @return
+     */
+    public static boolean SetTime(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("---------SetTime-------");
+         ClearTableContent("timeAsk");
+        Integer time = Integer.parseInt(request.getParameter("time"));
+
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "insert into timeAsk values(?) ";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,time);
+           int row =  preparedStatement.executeUpdate();
+           if (row>0){
+               return true;
+           }else {
+               return false;
+           }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,preparedStatement);
+        }
+
+        return false;
+    }
+
+    /***
+     * 回显时间
+     * @param request
+     * @param response
+     */
+    public static void GetTime(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("--------GetTime----------");
+        try {
+            response.getOutputStream().write(String.valueOf(GetAskTime()).getBytes("utf8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /***
+     * 获取答题时间
+     * @return
+     */
+    public static Integer GetAskTime(){
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = JDBC.GetConnection();
+            String sql = "select * from timeAsk";
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()){
+                Integer time = resultSet.getInt("time");
+                return time;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,statement,resultSet);
+        }
+
+        return -1;
+    }
+
 
 }

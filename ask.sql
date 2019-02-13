@@ -53,3 +53,6 @@ CREATE TABLE `randomKind` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
 
+CREATE TABLE timeAsk(
+ time int default 30
+)engine=innodb default charset=utf8
