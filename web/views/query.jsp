@@ -332,6 +332,9 @@ z-index: 999;">请求失败...
         }, 200);
     }
 
+    /**
+     * 时钟
+     */
     function clock() {
         var i = asktime*60 - 1;
         var clock = setInterval(function () {
@@ -339,7 +342,31 @@ z-index: 999;">请求失败...
             var b = i % 60;
             $(".clock").text(a + ":" + b);
             if (i <= 0) {
-                $(".wellDowne").click();
+
+
+                /**
+                 * 把用户没有答完的题目添加进去
+                 */
+                while (true){
+                    /**
+                     * 保存当前的状态，添加到数组中
+                     */
+                    var id = $(".question").attr("id");
+                    answer(id);
+
+                    /**
+                     * 加一跳到新的状态
+                     */
+                    ++currentPger;
+                    if (currentPger >= testPaper.length - 1) {
+                        currentPger = testPaper.length - 1;
+                        $(".wellDowne").click();
+                        break;
+                    }
+                    getPage(currentPger);
+                }
+
+
                 clearInterval(clock);
                 i = 1800 - 1;
             }
@@ -384,8 +411,6 @@ z-index: 999;">请求失败...
         if (currentPger >= testPaper.length - 1) {
             currentPger = testPaper.length - 1;
             $(".wellDowne").css({display: 'block'});
-
-
         }
         getPage(currentPger);
 
