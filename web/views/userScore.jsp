@@ -20,6 +20,7 @@
             <div class="name">${user.name}</div>
             <div class="details">电话:&nbsp;${user.tell}&nbsp;&nbsp;</div>
             <div class="details">公司:&nbsp;${user.company}&nbsp;&nbsp;职务:&nbsp;${user.post}</div>
+            <div class="details">分数:&nbsp;${user.score}</div>
         </div>
     </c:forEach>
 </div>

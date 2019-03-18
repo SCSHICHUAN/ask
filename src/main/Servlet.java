@@ -70,6 +70,8 @@ public class Servlet extends HttpServlet {
            QuestionBack.SetTime(request,response);
         }else if (Objects.equals(path, "/getTime")) {//回显示答题时间
             QuestionBack.GetTime(request,response);
+        }else if (Objects.equals(path, "/score.do")) {//存入用户分数
+            QuestionBack.score(request,response);
         }
 
 

@@ -20,7 +20,6 @@ import java.util.*;
 public class QuestionBack {
 
 
-
     /**
      * 生层试卷
      *
@@ -179,7 +178,7 @@ public class QuestionBack {
 
         String table = tableName;
 
-        if(tableName.equals("随机试卷")){
+        if (tableName.equals("随机试卷")) {
             System.out.println("-----------随机试卷---------");
 
             List<String> tableIDs = getRandomQues();
@@ -193,8 +192,8 @@ public class QuestionBack {
              * 答题时间
              */
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("time",GetAskTime());
-            System.out.println("time:"+GetAskTime());
+            jsonObject.put("time", GetAskTime());
+            System.out.println("time:" + GetAskTime());
             jsonArray.put(jsonObject);
 
             responesToCline(respons, jsonArray.toString());
@@ -220,7 +219,7 @@ public class QuestionBack {
              * 答题时间
              */
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("time",GetAskTime());
+            jsonObject.put("time", GetAskTime());
             jsonArray.put(jsonObject);
 
             responesToCline(respons, jsonArray.toString());
@@ -461,8 +460,8 @@ public class QuestionBack {
          */
         for (String key : staticMap.keySet()) {
             String number = (String) request.getParameter(key);
-            if (Integer.valueOf(number) !=0){
-                staticMap2.put(key,staticMap.get(key));
+            if (Integer.valueOf(number) != 0) {
+                staticMap2.put(key, staticMap.get(key));
             }
         }
 
@@ -473,17 +472,17 @@ public class QuestionBack {
         for (String key : staticMap2.keySet()) {
 
             String number = (String) request.getParameter(key);//
-            System.out.println("选择的题目数量："+number);
+            System.out.println("选择的题目数量：" + number);
             /**
              * 把随机获取题目和类别存入数据库
              */
-            AutoKindAndQuesNum(key,Integer.parseInt(number));
+            AutoKindAndQuesNum(key, Integer.parseInt(number));
 
             List<String> localIDs = staticMap.get(key);
             List<String> localIDs2 = new ArrayList<>();
 
-            if (localIDs.size() == 0){
-                staticMap.remove(key,staticMap.get(key));
+            if (localIDs.size() == 0) {
+                staticMap.remove(key, staticMap.get(key));
                 continue;
             }
 
@@ -549,6 +548,7 @@ public class QuestionBack {
 
     /**
      * 按照类别把题目分类
+     *
      * @return
      */
     public static Map<String, List<String>> getAllltest() {
@@ -833,20 +833,18 @@ public class QuestionBack {
     }
 
 
-
-    public static  List<String> getRandomQues(){
+    public static List<String> getRandomQues() {
 
 
         /**
          * 要随机的类别题目
          */
-        Map<String,Integer> map =  GetAutoKindAndQuesNum();
+        Map<String, Integer> map = GetAutoKindAndQuesNum();
 
 
         Map<String, List<String>> staticMap = new HashMap<>();
         staticMap = getAllltest();
         List<String> resultIDs = new ArrayList<>();
-
 
 
         /**
@@ -855,13 +853,13 @@ public class QuestionBack {
         for (String key : map.keySet()) {
 
             Integer number = map.get(key);
-            System.out.println("选择的题目数量："+number);
+            System.out.println("选择的题目数量：" + number);
 
             List<String> localIDs = staticMap.get(key);
             List<String> localIDs2 = new ArrayList<>();
 
-            if (localIDs.size() == 0){
-                staticMap.remove(key,staticMap.get(key));
+            if (localIDs.size() == 0) {
+                staticMap.remove(key, staticMap.get(key));
                 continue;
             }
 
@@ -900,7 +898,7 @@ public class QuestionBack {
 
 
         }
-        System.out.println("随机题目的ID："+resultIDs);
+        System.out.println("随机题目的ID：" + resultIDs);
 
         return resultIDs;
 
@@ -909,12 +907,13 @@ public class QuestionBack {
 
     /**
      * 保存随机设置
+     *
      * @param kindName
      * @param quseNum
      * @return
      */
 
-    public static boolean AutoKindAndQuesNum(String kindName,int quseNum){
+    public static boolean AutoKindAndQuesNum(String kindName, int quseNum) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -922,20 +921,20 @@ public class QuestionBack {
             connection = JDBC.GetConnection();
             String sql = "insert into randomKind values (null ,?,?)";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,quseNum);
-            preparedStatement.setObject(2,kindName);
+            preparedStatement.setObject(1, quseNum);
+            preparedStatement.setObject(2, kindName);
 
             int row = preparedStatement.executeUpdate();
-            if(row>0){
+            if (row > 0) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,preparedStatement);
+            JDBC.close(connection, preparedStatement);
         }
 
         return false;
@@ -945,7 +944,7 @@ public class QuestionBack {
      * 清空数据表
      * @return
      */
-    public static boolean ClearTableContent(String tableName){
+    public static boolean ClearTableContent(String tableName) {
         Connection connection = null;
         Statement statement = null;
 
@@ -953,22 +952,23 @@ public class QuestionBack {
             connection = JDBC.GetConnection();
             statement = connection.createStatement();
             String sql = "truncate table " + tableName;
-           int row =  statement.executeUpdate(sql);
-           if(row>0){
-               return true;
-           }else {
-               return false;
-           }
+            int row = statement.executeUpdate(sql);
+            if (row > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,statement);
+            JDBC.close(connection, statement);
         }
         return false;
     }
-    public static Map<String,Integer> GetAutoKindAndQuesNum(){
 
-        Map<String,Integer> map = new HashMap<>();
+    public static Map<String, Integer> GetAutoKindAndQuesNum() {
+
+        Map<String, Integer> map = new HashMap<>();
 
         Connection connection = null;
         Statement statement = null;
@@ -979,30 +979,32 @@ public class QuestionBack {
             String sql = "select *  from randomKind";
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String key = resultSet.getString("kindName");
                 Integer num = resultSet.getInt("qNum");
-                map.put(key,num);
+                map.put(key, num);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,statement,resultSet);
+            JDBC.close(connection, statement, resultSet);
         }
-        System.out.println("随机设置："+map);
+        System.out.println("随机设置：" + map);
         return map;
     }
 
+
     /**
      * 设置答题时间
+     *
      * @param request
      * @param response
      * @return
      */
-    public static boolean SetTime(HttpServletRequest request,HttpServletResponse response){
+    public static boolean SetTime(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("---------SetTime-------");
-         ClearTableContent("timeAsk");
+        ClearTableContent("timeAsk");
         Integer time = Integer.parseInt(request.getParameter("time"));
 
 
@@ -1013,18 +1015,18 @@ public class QuestionBack {
             connection = JDBC.GetConnection();
             String sql = "insert into timeAsk values(?) ";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,time);
-           int row =  preparedStatement.executeUpdate();
-           if (row>0){
-               return true;
-           }else {
-               return false;
-           }
+            preparedStatement.setObject(1, time);
+            int row = preparedStatement.executeUpdate();
+            if (row > 0) {
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,preparedStatement);
+            JDBC.close(connection, preparedStatement);
         }
 
         return false;
@@ -1035,7 +1037,7 @@ public class QuestionBack {
      * @param request
      * @param response
      */
-    public static void GetTime(HttpServletRequest request,HttpServletResponse response){
+    public static void GetTime(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("--------GetTime----------");
         try {
             response.getOutputStream().write(String.valueOf(GetAskTime()).getBytes("utf8"));
@@ -1043,11 +1045,12 @@ public class QuestionBack {
             e.printStackTrace();
         }
     }
+
     /***
      * 获取答题时间
      * @return
      */
-    public static Integer GetAskTime(){
+    public static Integer GetAskTime() {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -1057,18 +1060,97 @@ public class QuestionBack {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Integer time = resultSet.getInt("time");
                 return time;
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,statement,resultSet);
+            JDBC.close(connection, statement, resultSet);
         }
 
         return -1;
     }
 
 
+    /**
+     * 保存用户的分数
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    public static boolean score(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("---------score-------");
+        String uID = request.getParameter("uerID");;
+        String score = request.getParameter("score");
+        JSONObject jsonObject = new JSONObject(score);
+
+
+        float score2 = 0;
+        int nexStr = 1;
+        String userHead ="";
+        String values = "";
+
+
+        for (Object key : jsonObject.keySet()) {
+
+            System.out.println(key);
+            JSONObject jsonObject1 = jsonObject.getJSONObject(key.toString());
+
+            System.out.println(jsonObject1);
+            float score1 = jsonObject1.getInt("score");
+            float allScore = jsonObject1.getInt("allScore");
+            score2 += score1/allScore;
+            nexStr++;
+            userHead += ","+"str"+nexStr+",scoreA"+nexStr+",scoreB"+nexStr;
+            values += ",'"+key.toString()+"',"+score1+","+allScore;
+
+
+            System.out.println("score:" + score1 + "  allScore:" + allScore);
+        }
+
+        deleteRow(uID);
+
+        String sql = "insert into userScore(id,userID,str1,scoreA1,scoreB1"+userHead+") values(null,"+uID+",'总分',"+score2*100+",100"+values+")";
+        System.out.println("sql:"+sql);
+
+
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            statement = connection.createStatement();
+            int row = statement.executeUpdate(sql);
+            if(row>0){
+                return true;
+            }else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,statement);
+        }
+
+        return false;
+    }
+    private static void  deleteRow(String userID){
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = JDBC.GetConnection();
+            statement = connection.createStatement();
+            int row = statement.executeUpdate("delete from userScore where userID = "+userID);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection,statement);
+        }
+
+    }
 }

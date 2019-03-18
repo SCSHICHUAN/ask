@@ -7,14 +7,16 @@ public class User {
     public String yzm;
     public String conpany;
     public String post;
+    public String score;
 
-    public User(String id,String name, String tell, String yzm, String conpany, String post) {
+    public User(String id,String name, String tell, String yzm, String conpany, String post,String score) {
         this.id = id;
         this.name = name;
         this.tell = tell;
         this.yzm = yzm;
         this.conpany = conpany;
         this.post = post;
+        this.score = score;
     }
 
     @Override
@@ -26,6 +28,7 @@ public class User {
                 ", yzm='" + yzm + '\'' +
                 ", conpany='" + conpany + '\'' +
                 ", post='" + post + '\'' +
+                ", score='" + score + '\'' +
                 '}';
     }
 }

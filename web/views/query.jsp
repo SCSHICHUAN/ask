@@ -583,7 +583,7 @@ z-index: 999;">请求失败...
 
     /**
      * 显示用户的成绩图表
-     * {"ok":{score:6,allScore:10,answerArray:[{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}
+     * {"ok":{score:6,allScore:10,answerArray:...[{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}
      *                             ,{answer: "B", grade: "1", quID: "143", category: "你好", userID: "102"}]
      * }}
      * 注意js中arry是字典的父类，如果要跟新一个key的值,不能用push().
@@ -645,6 +645,30 @@ z-index: 999;">请求失败...
         console.log("+++++++++++++");
 
         drawSpider(categorys);
+
+        /**
+         *把这个同学的成绩存入数据库
+         */
+
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/score.do",
+            traditional: true,
+            data: {
+                uerID: $(".uerName").attr('userid'),
+                score: JSON.stringify(categorys)
+            },
+            error: function () {
+                $(".removeSelf").css({display: 'block'});
+            },
+            dataType: "json",
+            success: function (json) {
+                console.log(json);
+
+            }
+
+        })
 
     }
 

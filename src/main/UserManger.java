@@ -27,7 +27,7 @@ public class UserManger {
         String post = (String) request.getParameter("post");
 
 
-        User user = new User(null, name, tell, yzm, company, post);
+        User user = new User(null, name, tell, yzm, company, post,"0");
 
         System.out.println(user.toString());
 
@@ -172,7 +172,7 @@ public class UserManger {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from user where tell  = ?";
+            String sql = "select * from user U, userScore S where S.userID = U.id and U.tell = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, phoneNumber);
             resultSet = preparedStatement.executeQuery();
@@ -183,10 +183,11 @@ public class UserManger {
                 String yzm = resultSet.getString("yzm");
                 String company = resultSet.getString("company");
                 String post = resultSet.getString("post");
+                String score = resultSet.getString("scoreA1");
 
                 System.out.println("+++query+++tell:" + tell);
 
-                return new User(id, name, tell, yzm, company, post);
+                return new User(id, name, tell, yzm, company, post,score);
             }
 
         } catch (Exception e) {
@@ -270,10 +271,12 @@ public class UserManger {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from user order by id desc limit  ?,?";
+//            String sql = "select * from user order by id desc limit  ?,?";
+//            String sql = "select * from user order by id desc";
+            String sql = "select * from user U, userScore S where S.userID = U.id  order by U.id desc";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1, start);
-            preparedStatement.setObject(2, end-start);
+//            preparedStatement.setObject(1, start);
+//            preparedStatement.setObject(2, end-start);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -283,7 +286,8 @@ public class UserManger {
                         resultSet.getString("tell"),
                         resultSet.getString("yzm"),
                         resultSet.getString("company"),
-                        resultSet.getString("post"));
+                        resultSet.getString("post"),
+                        resultSet.getString("scoreA1"));
                 System.out.println(user.toString());
                 users.add(user);
             }
@@ -372,6 +376,7 @@ public class UserManger {
             map.put("yzm", user.yzm);
             map.put("company", user.conpany);
             map.put("post", user.post);
+            map.put("score", user.score);
 
             list1.add(map);
         }
