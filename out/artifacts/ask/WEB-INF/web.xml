@@ -101,6 +101,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
+        <url-pattern>/scoreAll.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
         <url-pattern>/uplodExcleFile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

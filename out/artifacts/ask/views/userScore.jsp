@@ -10,10 +10,11 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="/ask/css/userScore.css">
+    <link rel="stylesheet" href="/ask/css/userScore1.css">
     <script type="text/javascript" src="/ask/js/jquery-1.4.2.js"></script>
 </head>
 <body>
+<button class="scoreUser">导出成绩</button>
 <div class="left">
     <c:forEach items="${userArray}" var="user">
         <div class="user" data="${user.id}" name="${user.name}">
@@ -21,6 +22,7 @@
             <div class="details">电话:&nbsp;${user.tell}&nbsp;&nbsp;</div>
             <div class="details">公司:&nbsp;${user.company}&nbsp;&nbsp;职务:&nbsp;${user.post}</div>
             <div class="details">分数:&nbsp;${user.score}</div>
+            <input type="checkbox" data={Uid:${user.id},Uscord:${user.score}} class="chick">
         </div>
     </c:forEach>
 </div>
@@ -55,6 +57,38 @@ z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
 
 <script type="text/javascript">
 
+    var scoreArry = [];
+    $('.scoreUser').click(function () {
+        scoreArry = [];
+        var chicks = $(".left .chick");
+        for (var i = 0;i<chicks.length;i++) {
+            var chickbox = chicks[i];
+            if (chickbox.checked == true){
+                scoreArry.push($(chickbox).attr("data"))
+            }
+        }
+        console.log(scoreArry)
+        $.ajax({
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: "post",
+            url: "/ask/scoreAll.do",
+            traditional: true,
+            data: {
+                score: JSON.stringify(scoreArry)
+            },
+            error: function () {
+                $(".removeSelf").css({display: 'block'});
+            },
+            dataType: "json",
+            success: function (json) {
+                console.log(json);
+
+            }
+
+        })
+    })
+
+
 
     function yy() {
         $(".removeSelf").css({display: "none"});
@@ -69,9 +103,12 @@ z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
         var elem = $(even.target);
         if (elem.attr("data") == undefined) {
             elem = elem.parent(".user")
+        }else if(elem.attr('type') == 'checkbox'){
+            return;
         }
         neamElem = elem;
         console.log(elem.attr("data"));
+        console.log('elem'+elem.attr('type'));
 
         $.ajax({
             contentType: "application/x-www-form-urlencoded; charset=utf-8",

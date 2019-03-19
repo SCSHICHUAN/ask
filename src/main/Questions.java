@@ -103,7 +103,7 @@ public class Questions {
         }else if(currentPage <= 0){
             currentPage = 1;
         }else if (currentPage == oldPge){
-//            return;
+            return;
         }
 
 
@@ -253,7 +253,6 @@ public class Questions {
         } finally {
             JDBC.close(connection, preparedStatement, resultSet);
         }
-
 
         return testIteams;
     }

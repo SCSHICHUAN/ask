@@ -1083,14 +1083,15 @@ public class QuestionBack {
      */
     public static boolean score(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("---------score-------");
-        String uID = request.getParameter("uerID");;
+        String uID = request.getParameter("uerID");
+        ;
         String score = request.getParameter("score");
         JSONObject jsonObject = new JSONObject(score);
 
 
         float score2 = 0;
         int nexStr = 1;
-        String userHead ="";
+        String userHead = "";
         String values = "";
 
 
@@ -1102,10 +1103,10 @@ public class QuestionBack {
             System.out.println(jsonObject1);
             float score1 = jsonObject1.getInt("score");
             float allScore = jsonObject1.getInt("allScore");
-            score2 += score1/allScore;
+            score2 += score1 / allScore;
             nexStr++;
-            userHead += ","+"str"+nexStr+",scoreA"+nexStr+",scoreB"+nexStr;
-            values += ",'"+key.toString()+"',"+score1+","+allScore;
+            userHead += "," + "str" + nexStr + ",scoreA" + nexStr + ",scoreB" + nexStr;
+            values += ",'" + key.toString() + "'," + score1 + "," + allScore;
 
 
             System.out.println("score:" + score1 + "  allScore:" + allScore);
@@ -1113,8 +1114,8 @@ public class QuestionBack {
 
         deleteRow(uID);
 
-        String sql = "insert into userScore(id,userID,str1,scoreA1,scoreB1"+userHead+") values(null,"+uID+",'总分',"+score2*100+",100"+values+")";
-        System.out.println("sql:"+sql);
+        String sql = "insert into userScore(id,userID,str1,scoreA1,scoreB1" + userHead + ") values(null," + uID + ",'总分'," + score2 * 100 + ",100" + values + ")";
+        System.out.println("sql:" + sql);
 
 
         Connection connection = null;
@@ -1124,33 +1125,136 @@ public class QuestionBack {
             connection = JDBC.GetConnection();
             statement = connection.createStatement();
             int row = statement.executeUpdate(sql);
-            if(row>0){
+            if (row > 0) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,statement);
+            JDBC.close(connection, statement);
         }
 
         return false;
     }
-    private static void  deleteRow(String userID){
+
+    /**
+     * 删除用户的成绩
+     *
+     * @param userID
+     */
+    private static void deleteRow(String userID) {
         Connection connection = null;
         Statement statement = null;
 
         try {
             connection = JDBC.GetConnection();
             statement = connection.createStatement();
-            int row = statement.executeUpdate("delete from userScore where userID = "+userID);
+            int row = statement.executeUpdate("delete from userScore where userID = " + userID);
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JDBC.close(connection,statement);
+            JDBC.close(connection, statement);
         }
+
+    }
+
+    /**
+     * 获取用户的成绩
+     */
+    public static void getUsersScore(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("---------getUsersScore-------");
+        String json = request.getParameter("score");
+        JSONArray jsonArray = new JSONArray(json);
+        getUserScoreFromDatabase(jsonArray);
+
+    }
+
+    /**
+     * 从数据库查寻用户的成绩
+     */
+    private static void getUserScoreFromDatabase(JSONArray jsonArray) {
+
+        String ids = "";
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = new JSONObject(jsonArray.getString(i));
+            String uid = jsonObject.get("Uid").toString();
+            ids += "U.id = " + uid + " or ";
+        }
+        ids = ids.substring(0, ids.length() - 3);
+
+        System.out.println("ids:" + ids);
+
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String sql = "select * from user U,userScore S  where U.id = S.userID and (" + ids + ")";
+        try {
+            connection = JDBC.GetConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String tell  = resultSet.getString("tell");
+                String company = resultSet.getString("company");
+                String post = resultSet.getString("post");
+
+                String str1 =resultSet.getString("str1");
+                float scoreA1 = resultSet.getFloat("scoreA1");
+                float scoreB1 = resultSet.getFloat("scoreB1");
+
+                String str2 =resultSet.getString("str2");
+                float scoreA2 = resultSet.getFloat("scoreA2");
+                float scoreB2 = resultSet.getFloat("scoreB2");
+
+                String str3 =resultSet.getString("str3");
+                float scoreA3 = resultSet.getFloat("scoreA3");
+                float scoreB3 = resultSet.getFloat("scoreB3");
+
+                String str4 =resultSet.getString("str4");
+                float scoreA4 = resultSet.getFloat("scoreA4");
+                float scoreB4 = resultSet.getFloat("scoreB4");
+
+                String str5 =resultSet.getString("str5");
+                float scoreA5 = resultSet.getFloat("scoreA5");
+                float scoreB5 = resultSet.getFloat("scoreB5");
+
+                String str6 =resultSet.getString("str6");
+                float scoreA6 = resultSet.getFloat("scoreA6");
+                float scoreB6 = resultSet.getFloat("scoreB6");
+
+                String str7 =resultSet.getString("str7");
+                float scoreA7 = resultSet.getFloat("scoreA7");
+                float scoreB7 = resultSet.getFloat("scoreB7");
+
+                String str8 =resultSet.getString("str8");
+                float scoreA8 = resultSet.getFloat("scoreA8");
+                float scoreB8 = resultSet.getFloat("scoreB8");
+
+                String str9 =resultSet.getString("str9");
+                float scoreA9 = resultSet.getFloat("scoreA9");
+                float scoreB9 = resultSet.getFloat("scoreB9");
+
+                String str10 =resultSet.getString("str10");
+                float scoreA10 = resultSet.getFloat("scoreA10");
+                float scoreB10 = resultSet.getFloat("scoreB10");
+
+
+
+                System.out.println("name:"+name+" scoreA1:"+scoreA1);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(connection, statement, resultSet);
+        }
+
 
     }
 }
