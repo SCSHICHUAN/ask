@@ -72,8 +72,6 @@ public class Servlet extends HttpServlet {
             QuestionBack.GetTime(request,response);
         }else if (Objects.equals(path, "/score.do")) {//存入用户分数
             QuestionBack.score(request,response);
-        }else if (Objects.equals(path, "/scoreAll.do")) {//管理员导出成绩
-            QuestionBack.getUsersScore(request,response);
         }else if (Objects.equals(path, "/download.do")) {//管理员导出成绩
             QuestionBack.getUsersScore(request,response);
         }

@@ -172,7 +172,7 @@ public class UserManger {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from user U, userScore S where U.tell = ?";
+            String sql = "select * from user where tell = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, phoneNumber);
             resultSet = preparedStatement.executeQuery();
@@ -183,7 +183,7 @@ public class UserManger {
                 String yzm = resultSet.getString("yzm");
                 String company = resultSet.getString("company");
                 String post = resultSet.getString("post");
-                String score = resultSet.getString("scoreA1");
+//                String score = resultSet.getString("0.00");
 
                 System.out.println("+++query+++tell:" + tell);
 
