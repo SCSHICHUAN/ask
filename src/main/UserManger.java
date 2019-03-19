@@ -172,7 +172,7 @@ public class UserManger {
 
         try {
             connection = JDBC.GetConnection();
-            String sql = "select * from user U, userScore S where S.userID = U.id and U.tell = ?";
+            String sql = "select * from user U, userScore S where U.tell = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, phoneNumber);
             resultSet = preparedStatement.executeQuery();
@@ -187,7 +187,7 @@ public class UserManger {
 
                 System.out.println("+++query+++tell:" + tell);
 
-                return new User(id, name, tell, yzm, company, post,score);
+                return new User(id, name, tell, yzm, company, post,"");
             }
 
         } catch (Exception e) {

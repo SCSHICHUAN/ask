@@ -3,10 +3,16 @@ package main;
 
 import Models.TestIteam;
 import jdbc.JDBC;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.*;
 
 
@@ -1090,6 +1097,8 @@ public class QuestionBack {
 
 
         float score2 = 0;
+        float score1 = 0;
+        float allScore = 0;
         int nexStr = 1;
         String userHead = "";
         String values = "";
@@ -1101,9 +1110,10 @@ public class QuestionBack {
             JSONObject jsonObject1 = jsonObject.getJSONObject(key.toString());
 
             System.out.println(jsonObject1);
-            float score1 = jsonObject1.getInt("score");
-            float allScore = jsonObject1.getInt("allScore");
-            score2 += score1 / allScore;
+            float A = jsonObject1.getInt("score");
+            float B = jsonObject1.getInt("allScore");
+            score1 += A;
+            allScore += B;
             nexStr++;
             userHead += "," + "str" + nexStr + ",scoreA" + nexStr + ",scoreB" + nexStr;
             values += ",'" + key.toString() + "'," + score1 + "," + allScore;
@@ -1111,10 +1121,13 @@ public class QuestionBack {
 
             System.out.println("score:" + score1 + "  allScore:" + allScore);
         }
-
+        score2 = score1/allScore*100;
+        DecimalFormat fnum  =   new   DecimalFormat("####0.00");
+        String score22 = fnum.format(score2);
+        System.out.println("score2:"+score2);
         deleteRow(uID);
 
-        String sql = "insert into userScore(id,userID,str1,scoreA1,scoreB1" + userHead + ") values(null," + uID + ",'总分'," + score2 * 100 + ",100" + values + ")";
+        String sql = "insert into userScore(id,userID,str1,scoreA1,scoreB1" + userHead + ") values(null," + uID + ",'总分'," + score22 + ",100" + values + ")";
         System.out.println("sql:" + sql);
 
 
@@ -1168,14 +1181,66 @@ public class QuestionBack {
         System.out.println("---------getUsersScore-------");
         String json = request.getParameter("score");
         JSONArray jsonArray = new JSONArray(json);
-        getUserScoreFromDatabase(jsonArray);
+        getUserScoreFromDatabase(jsonArray, response);
 
     }
 
     /**
      * 从数据库查寻用户的成绩
      */
-    private static void getUserScoreFromDatabase(JSONArray jsonArray) {
+    private static void getUserScoreFromDatabase(JSONArray jsonArray, HttpServletResponse response) {
+
+
+        List<List<String>> result = new ArrayList<>();
+        List<String> row = new ArrayList<>();
+        result.add(row);
+        row.add("姓名");
+        row.add("总分");
+        row.add("电话");
+        row.add("公司");
+        row.add("职位");
+
+        row.add("分类1");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类2");
+        row.add("类别得分");
+        row.add("类别总分");
+        ;
+
+        row.add("分类3");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类4");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类5");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类6");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类7");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类8");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类9");
+        row.add("类别得分");
+        row.add("类别总分");
+
+        row.add("分类10");
+        row.add("类别得分");
+        row.add("类别总分");
+
 
         String ids = "";
         for (int i = 0; i < jsonArray.length(); i++) {
@@ -1184,7 +1249,6 @@ public class QuestionBack {
             ids += "U.id = " + uid + " or ";
         }
         ids = ids.substring(0, ids.length() - 3);
-
         System.out.println("ids:" + ids);
 
 
@@ -1196,57 +1260,108 @@ public class QuestionBack {
             connection = JDBC.GetConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
+
             while (resultSet.next()) {
+
+                row = new ArrayList<>();
+                result.add(row);
+
                 String name = resultSet.getString("name");
-                String tell  = resultSet.getString("tell");
+                String tell = resultSet.getString("tell");
                 String company = resultSet.getString("company");
                 String post = resultSet.getString("post");
 
-                String str1 =resultSet.getString("str1");
+                String str1 = resultSet.getString("str1");
                 float scoreA1 = resultSet.getFloat("scoreA1");
                 float scoreB1 = resultSet.getFloat("scoreB1");
 
-                String str2 =resultSet.getString("str2");
+
+                row.add(name);
+                row.add(String.valueOf(scoreA1));
+                row.add(tell);
+                row.add(company);
+                row.add(post);
+
+
+                String str2 = resultSet.getString("str2");
                 float scoreA2 = resultSet.getFloat("scoreA2");
                 float scoreB2 = resultSet.getFloat("scoreB2");
+                row.add(str2);
+                row.add(String.valueOf(scoreA2));
+                row.add(String.valueOf(scoreB2));
 
-                String str3 =resultSet.getString("str3");
+                String str3 = resultSet.getString("str3");
+                row.add(str3);
                 float scoreA3 = resultSet.getFloat("scoreA3");
                 float scoreB3 = resultSet.getFloat("scoreB3");
+                row.add(String.valueOf(scoreA3));
+                row.add(String.valueOf(scoreB3));
 
-                String str4 =resultSet.getString("str4");
+                String str4 = resultSet.getString("str4");
                 float scoreA4 = resultSet.getFloat("scoreA4");
                 float scoreB4 = resultSet.getFloat("scoreB4");
+                row.add(str4);
+                row.add(String.valueOf(scoreA4));
+                row.add(String.valueOf(scoreB4));
 
-                String str5 =resultSet.getString("str5");
+                String str5 = resultSet.getString("str5");
                 float scoreA5 = resultSet.getFloat("scoreA5");
                 float scoreB5 = resultSet.getFloat("scoreB5");
+                row.add(str5);
+                row.add(String.valueOf(scoreA5));
+                row.add(String.valueOf(scoreB5));
 
-                String str6 =resultSet.getString("str6");
+                String str6 = resultSet.getString("str6");
                 float scoreA6 = resultSet.getFloat("scoreA6");
                 float scoreB6 = resultSet.getFloat("scoreB6");
+                row.add(str6);
+                row.add(String.valueOf(scoreA6));
+                row.add(String.valueOf(scoreB6));
 
-                String str7 =resultSet.getString("str7");
+                String str7 = resultSet.getString("str7");
                 float scoreA7 = resultSet.getFloat("scoreA7");
                 float scoreB7 = resultSet.getFloat("scoreB7");
+                row.add(str7);
+                row.add(String.valueOf(scoreA7));
+                row.add(String.valueOf(scoreB7));
 
-                String str8 =resultSet.getString("str8");
+                String str8 = resultSet.getString("str8");
                 float scoreA8 = resultSet.getFloat("scoreA8");
                 float scoreB8 = resultSet.getFloat("scoreB8");
+                row.add(str8);
+                row.add(String.valueOf(scoreA8));
+                row.add(String.valueOf(scoreB8));
 
-                String str9 =resultSet.getString("str9");
+                String str9 = resultSet.getString("str9");
                 float scoreA9 = resultSet.getFloat("scoreA9");
                 float scoreB9 = resultSet.getFloat("scoreB9");
+                row.add(str9);
+                row.add(String.valueOf(scoreA9));
+                row.add(String.valueOf(scoreB9));
 
-                String str10 =resultSet.getString("str10");
+                String str10 = resultSet.getString("str10");
                 float scoreA10 = resultSet.getFloat("scoreA10");
                 float scoreB10 = resultSet.getFloat("scoreB10");
+                row.add(str10);
+                row.add(String.valueOf(scoreA10));
+                row.add(String.valueOf(scoreB10));
 
 
-
-                System.out.println("name:"+name+" scoreA1:"+scoreA1);
+                System.out.println("name:" + name + " scoreA1:" + scoreA1);
 
             }
+
+
+            Workbook workbook = export(true, result);
+            response.setHeader("Content-Disposition", "attachment;filename=export.xlsx");
+            ServletOutputStream outputStream = response.getOutputStream();
+
+
+            // 直接将文件输出提供下载导出
+            workbook.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+            workbook.close();
 
 
         } catch (Exception e) {
@@ -1257,4 +1372,57 @@ public class QuestionBack {
 
 
     }
+
+    public static Workbook export(boolean isXlsx, List<List<String>> lists) {
+        Workbook workbook;
+        if (isXlsx) {
+            workbook = new XSSFWorkbook();
+        } else {
+            workbook = new HSSFWorkbook();
+        }
+        Sheet sheet = workbook.createSheet("My Sheet");
+        List<List<String>> content = lists;
+        for (int i = 0; i < content.size(); i++) {
+            Row row = sheet.createRow(i);
+            List<String> rowData = content.get(i);
+            for (int j = 0; j < rowData.size(); j++) {
+                row.createCell(j).setCellValue(rowData.get(j));
+            }
+        }
+        return workbook;
+    }
+
+//    private static List<List<String>> getContent() {
+//        List<List<String>> result = new ArrayList<>();
+//        List<String> row = new ArrayList<>();
+//        result.add(row);
+//        row.add("序号");
+//        row.add("姓名");
+//        row.add("年龄");
+//        row.add("时间");
+//
+//        row = new ArrayList<>();
+//        result.add(row);
+//        row.add("1");
+//        row.add("路人甲");
+//        row.add("18");
+//        row.add("2010-01-01");
+//
+//        row = new ArrayList<>();
+//        result.add(row);
+//        row.add("2");
+//        row.add("路人乙");
+//        row.add("19");
+//        row.add("2010-01-02");
+//
+//        row = new ArrayList<>();
+//        result.add(row);
+//        row.add("3");
+//        row.add("路人丙");
+//        row.add("20");
+//        row.add("2010-01-03");
+//        return result;
+//    }
+
+
 }

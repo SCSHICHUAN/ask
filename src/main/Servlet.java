@@ -74,6 +74,8 @@ public class Servlet extends HttpServlet {
             QuestionBack.score(request,response);
         }else if (Objects.equals(path, "/scoreAll.do")) {//管理员导出成绩
             QuestionBack.getUsersScore(request,response);
+        }else if (Objects.equals(path, "/download.do")) {//管理员导出成绩
+            QuestionBack.getUsersScore(request,response);
         }
 
 

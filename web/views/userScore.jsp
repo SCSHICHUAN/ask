@@ -52,6 +52,7 @@ z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
 <canvas id="canvas" width="500px" height="500px"></canvas>
 <div class="canvas">
     <%--<div class="score" style="top:10px;right: 10px">95.55</div>--%>
+
 </div>
 
 
@@ -68,26 +69,33 @@ z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
             }
         }
         console.log(scoreArry)
-        $.ajax({
-            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            type: "post",
-            url: "/ask/scoreAll.do",
-            traditional: true,
-            data: {
-                score: JSON.stringify(scoreArry)
-            },
-            error: function () {
-                $(".removeSelf").css({display: 'block'});
-            },
-            dataType: "json",
-            success: function (json) {
-                console.log(json);
-
-            }
-
-        })
+        // $.ajax({
+        //     contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        //     type: "post",
+        //     url: "/ask/scoreAll.do",
+        //     traditional: true,
+        //     data: {
+        //         score: JSON.stringify(scoreArry)
+        //     },
+        //     error: function () {
+        //         $(".removeSelf").css({display: 'block'});
+        //     },
+        //     dataType: {'fileName': "testAjaxDownload.xlsx"},
+        //     success: function (data, status, xhr) {
+        //         console.log("导出excle文件成功");
+        //         downloadFileByForm();
+        //     }
+        //
+        // })
+        downloadFileByForm(scoreArry);
     })
 
+    function downloadFileByForm(scoreArry) {
+        var url = "/ask/download.do";
+        var form = $("<form></form>").attr("action", url).attr("method", "post");
+        form.append($("<input></input>").attr("type", "hidden").attr("name", "score").attr("value", JSON.stringify(scoreArry)));
+        form.appendTo('body').submit().remove();
+    }
 
 
     function yy() {
