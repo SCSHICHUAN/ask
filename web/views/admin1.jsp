@@ -328,7 +328,7 @@
         $(".buttonPage2").css({display: 'none'});
         refreshQuestions();
     })
-    // $(".button5").click();
+     $(".button5").click();
     $(".pgUp").click(function () {
 
         --currentPage;

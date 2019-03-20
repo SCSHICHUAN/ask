@@ -30,7 +30,7 @@ public class Questions {
 
 
 
-   public static int oldPge;
+   public static int oldPge = -1;
 
     /**
      * 从前端获取题目
@@ -91,6 +91,7 @@ public class Questions {
 
 
         int currentPage = Integer.parseInt((String) request.getParameter("currentPage"));
+        if (currentPage <=0) currentPage = 1;
         int pageContent = 10;
         int totalRows = TestItemCoun();
         /**
@@ -98,14 +99,12 @@ public class Questions {
          */
         int pages = totalRows % pageContent == 0 ? totalRows / pageContent
                 : totalRows / pageContent + 1;
+
         if (currentPage > pages) {
             currentPage = pages;
         }else if(currentPage <= 0){
             currentPage = 1;
-        }else if (currentPage == oldPge){
-            return;
         }
-
 
 
         int start = (currentPage - 1) * pageContent;
@@ -118,7 +117,7 @@ public class Questions {
         jsonObject.put("pages",pages);
         jsonArray.put(jsonObject);
 
-        System.out.println(jsonArray.toString());
+//        System.out.println(jsonArray.toString());
 
 
         try {
