@@ -55,7 +55,6 @@ z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
 
 </div>
 
-
 <script type="text/javascript">
 
     var scoreArry = [];
@@ -67,6 +66,10 @@ z-index: 999;border: 1px solid rgb(245, 150, 40)">请求失败...
             if (chickbox.checked == true){
                 scoreArry.push($(chickbox).attr("data"))
             }
+        }
+        if(scoreArry.length<=0){
+            alert("你还没有选择要导出那些人的成绩！")
+            return;
         }
         console.log(scoreArry)
         // $.ajax({
