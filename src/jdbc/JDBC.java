@@ -20,7 +20,7 @@ public class JDBC{
     public static Connection GetConnection() throws Exception {
 
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/ask?useUnicode=true&amp;characterEncoding=utf-8",
+                "jdbc:mysql://localhost:3306/ask?useUnicode=true&characterEncoding=utf8",
                 "root",
                 "Sc!123456");
     }
